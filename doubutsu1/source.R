@@ -16,7 +16,7 @@
 
 library(Rcpp)
 
-if (!"buildTree" %in% ls()) sourceCpp("minishogi/doubutsu/Rsource.cpp")
+if (!"buildTree" %in% ls()) sourceCpp("doubutsu1/Rsource.cpp")
 
 init_state <- c(0,
                 0,

@@ -1,8 +1,8 @@
 library(Rcpp)
-sourceCpp("minishogi/doubutsu/Rsource.cpp")
-source("minishogi/doubutsu/source.R")
+sourceCpp("doubutsu1/Rsource.cpp")
+source("doubutsu1/source.R")
 
-games <- readRDS("minishogi/doubutsu/lg_states.rds")
+games <- readRDS("doubutsu1/lg_states.rds")
 hashState(games[[20]][[3]])
 hash_state(games[[20]][[3]])
 hashes <- lapply(games, function(v) sapply(v, hash_state))
@@ -40,7 +40,7 @@ end_hashes <- lapply(hashes[filt], function(v) {
 })
 end_hashes <- unique(do.call(c, end_hashes))
 ##trees <- list()
-matein <- readRDS("minishogi/doubutsu/matein.rds")
+matein <- readRDS("doubutsu1/matein.rds")
 t1 <- proc.time()
 for (h in setdiff(end_hashes, names(matein))) {
   state <- hashtab[[h]]
