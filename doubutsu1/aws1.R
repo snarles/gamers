@@ -36,7 +36,7 @@ set.seed(0)
 hashorder <- sample(names(hashtab), length(hashtab), FALSE)
 library(parallel)
 t1 <- proc.time()
-res <- mclapply(hashorder, mateX, maxdepth = 6, mc.preschedule = FALSE,
+res <- mclapply(hashorder, mateX, maxdepth = 7, mc.preschedule = FALSE,
                 mc.cores = 40)
 proc.time() - t1
 
