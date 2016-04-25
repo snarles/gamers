@@ -16,6 +16,20 @@ for (game in games) {
 
 sourceCpp("doubutsu1/Rsource2.cpp")
 
+
+mateX <- function(state, maxdepth) {
+  flag <- TRUE
+  depth <- 0
+  while (flag) {
+    val <- maxVal(state, state[4] + depth)
+    if (val != 0) {
+      return(depth * val)
+    }
+    depth <- depth  + 1
+  }
+  return(NA)
+}
+
 ####
 ##  New code mate in X
 ####
@@ -33,11 +47,16 @@ proc.time() - t1
 
 deepness <- sapply(mlist, function(v) sum(v==0))
 table(deepness)
-hs <- names(mlist)[deepness == 4]
+hs <- names(mlist)[deepness == 3]
 h <- sample(hs, 1)
 state <- hashtab[[h]]
 print_state(state)
-maxVal(state, state[4] + 6)
+
+mateX(state)
+
+t1 <- proc.time()
+maxVal(state, state[4] + 8)
+proc.time() - t1
 
 # st2 <- move(state, 8, 6, 0)
 # print_state(st2)
