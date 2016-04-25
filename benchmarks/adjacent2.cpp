@@ -9,22 +9,22 @@ using namespace Rcpp;
 int makeMove(IntegerVector board, int n, int depth, int loc) {
   // check for loss
   if (board[loc] != 0) {
-    Rprintf("|occ|");
+    //Rprintf("|occ|");
     return -1;
   }
   if (loc != 0 && board[loc - 1] != 0) {
-    Rprintf("|left|");
+    //Rprintf("|left|");
     return -1;
   }
   if (loc != (n - 1) && board[loc + 1] != 0) {
-    Rprintf("|right|");
+    //Rprintf("|right|");
     return -1;
   }
   if (depth == 0) {
-    Rprintf("|ret0|");
+    //Rprintf("|ret0|");
     return 0;
   }
-  Rprintf("DADA");
+  //Rprintf("DADA");
   board[loc] = 1;
   int ans = 1;
   int i = 0;
@@ -53,5 +53,4 @@ IntegerVector moveValues(IntegerVector board, int depth) {
 
 
 /*** R
-# R testing code
 */

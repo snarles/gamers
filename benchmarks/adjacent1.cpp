@@ -1,27 +1,55 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// This is a simple example of exporting a C++ function to R. You can
-// source this function into an R session using the Rcpp::sourceCpp 
-// function (or via the Source button on the editor toolbar). Learn
-// more about Rcpp at:
 //
-//   http://www.rcpp.org/
-//   http://adv-r.had.co.nz/Rcpp.html
-//   http://gallery.rcpp.org/
+// This version of the adjacent code uses fixed memory rather than copying the board.
 //
 
 // [[Rcpp::export]]
-NumericVector timesTwo(NumericVector x) {
-  return x * 2;
+int makeMove(IntegerVector board0, int n, int depth, int loc) {
+  IntegerVector board(clone(board0));
+  // check for loss
+  if (board[loc] != 0) {
+    //Rprintf("|occ|");
+    return -1;
+  }
+  if (loc != 0 && board[loc - 1] != 0) {
+    //Rprintf("|left|");
+    return -1;
+  }
+  if (loc != (n - 1) && board[loc + 1] != 0) {
+    //Rprintf("|right|");
+    return -1;
+  }
+  if (depth == 0) {
+    //Rprintf("|ret0|");
+    return 0;
+  }
+  //Rprintf("DADA");
+  board[loc] = 1;
+  int ans = 1;
+  int i = 0;
+  while (i < n && ans > -1) {
+    int newans = -makeMove(board, n, depth - 1, i);
+    if (newans < ans) {
+      ans = newans;
+    }
+    i++;
+  }
+  return(ans);
+}
+
+// [[Rcpp::export]]
+IntegerVector moveValues(IntegerVector board, int depth) {
+  int n = board.size();
+  IntegerVector vals(n);
+  for (int i = 0; i < n; i++) {
+    vals[i] = makeMove(board, n, depth - 1, i);
+  }
+  return vals;
 }
 
 
-// You can include R code blocks in C++ files processed with sourceCpp
-// (useful for testing and development). The R code will be automatically 
-// run after the compilation.
-//
 
 /*** R
-timesTwo(42)
 */
