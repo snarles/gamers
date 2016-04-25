@@ -2,8 +2,6 @@
 using namespace Rcpp;
 
 
-
-// [[Rcpp::export]]
 IntegerVector move(IntegerVector state, int start, int end, int prom) {
   IntegerVector state2(clone(state));
   int startind = 1 + start * 3;
@@ -28,7 +26,6 @@ IntegerVector move(IntegerVector state, int start, int end, int prom) {
   return state2;
 }
 
-// [[Rcpp::export]]
 IntegerVector dropp(IntegerVector state, int pl, int ptype, int end) {
   IntegerVector state2(clone(state));
   state2[48] = ptype;
@@ -95,13 +92,13 @@ int maxVal(IntegerVector cstate, int maxturn) {
   if (cstate[44] > 0) return -1;
   if (pl == 0) {
     if (cstate[4] == 1 && cstate[5] == 0) return 1;
-    if (cstate[7] == 1 && cstate[5] == 0) return 1;
-    if (cstate[10] == 1 && cstate[5] == 0) return 1;
+    if (cstate[7] == 1 && cstate[8] == 0) return 1;
+    if (cstate[10] == 1 && cstate[11] == 0) return 1;
   }
   else {
-    if (cstate[31] == 1 && cstate[32] == 0) return 1;
-    if (cstate[34] == 1 && cstate[33] == 0) return 1;
-    if (cstate[37] == 1 && cstate[38] == 0) return 1;
+    if (cstate[31] == 1 && cstate[32] == 1) return 1;
+    if (cstate[34] == 1 && cstate[33] == 1) return 1;
+    if (cstate[37] == 1 && cstate[38] == 1) return 1;
   }
   if (turn == maxturn) {
     return 0;

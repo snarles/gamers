@@ -1,5 +1,5 @@
 library(Rcpp)
-sourceCpp("doubutsu1/Rsource.cpp")
+sourceCpp("doubutsu1/Rsource2.cpp")
 source("doubutsu1/source.R")
 
 games <- readRDS("doubutsu1/lg_states.rds")
@@ -14,42 +14,30 @@ for (game in games) {
   }
 }
 
-
-saveRDS(hashtab, "minishogi/doubutsu/hashtab.rds")
-filt <- sapply(hashes, length) > 0
-hh <- do.call(c, hashes[filt])
-thashes <- table(hh)
-thashes <- sort(thashes, decreasing = TRUE)
-thashes[1:10]/sum(thashes)
-length(thashes) # There are 9801 unique game states in the database.
-plot(cumsum(thashes), type = "l")
-plot(log(thashes), type = "l")
-
-
-hashmat <- do.call(rbind, hashtab)
+sourceCpp("doubutsu1/Rsource2.cpp")
 
 ####
-##  Mate in X, taken from position near the end of games
+##  New code mate in X
 ####
-
-topstates <- names(thashes)[order(-thashes)]
-
-fromend = 2;
-end_hashes <- lapply(hashes[filt], function(v) {
-  rev(v)[1:pmin(length(v), 2)]
-})
-end_hashes <- unique(do.call(c, end_hashes))
-##trees <- list()
-matein <- readRDS("doubutsu1/matein.rds")
+mlist <- list()
 t1 <- proc.time()
-for (h in setdiff(end_hashes, names(matein))) {
-  state <- hashtab[[h]]
-  res <- mate_in_X(state, maxK = 6, nodemax = 1e7, verbose = FALSE)
-  ##trees[[i]] <- res$tree
-  matein[h] <- res$mate_in
-  print(c(h, matein[h]))
+maxdepth <- 2
+for (depth in 1:maxdepth) {
+  for (h in names(hashtab)) {
+    state <- hashtab[[h]]
+    if (is.null(mlist[[h]])) mlist[[h]] <- numeric(maxdepth)
+    mlist[[h]][depth] <- maxVal(state, state[4] + depth)
+  }
 }
 proc.time() - t1
-table(matein)
 
-saveRDS(matein, "minishogi/doubutsu/matein.rds")
+deepness <- sapply(mlist, function(v) sum(v==0))
+table(deepness)
+hs <- names(mlist)[deepness == 1]
+h <- sample(hs, 1)
+state <- hashtab[[h]]
+print_state(state)
+maxVal(state, state[4] + 0)
+maxVal(state, state[4] + 1)
+maxVal(state, state[4] + 2)
+maxVal(state, state[4] + 3)

@@ -16,7 +16,7 @@
 
 library(Rcpp)
 
-if (!"buildTree" %in% ls()) sourceCpp("doubutsu1/Rsource.cpp")
+if (!"maxVal" %in% ls()) sourceCpp("doubutsu1/Rsource2.cpp")
 
 init_state <- c(0,
                 0,
