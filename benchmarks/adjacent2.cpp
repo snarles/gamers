@@ -12,16 +12,12 @@ int makeMove(IntegerVector board, int n, int depth, int loc) {
     Rprintf("|occ|");
     return -1;
   }
-  if (loc == 0 && board[1] != 0) {
-    Rprintf("|0a|");
+  if (loc != 0 && board[loc - 1] != 0) {
+    Rprintf("|left|");
     return -1;
   }
-  if (loc == (n - 1) && board[(n - 2)] != 0) {
-    Rprintf("|na|");
-    return -1;
-  }
-  if (board[loc + 1] != 0 || board[loc - 1] != 0) {
-    Rprintf("|adjc|");
+  if (loc != (n - 1) && board[loc + 1] != 0) {
+    Rprintf("|right|");
     return -1;
   }
   if (depth == 0) {
@@ -32,11 +28,12 @@ int makeMove(IntegerVector board, int n, int depth, int loc) {
   board[loc] = 1;
   int ans = 1;
   int i = 0;
-  while (i < n && ans == 0) {
+  while (i < n && ans > -1) {
     int newans = -makeMove(board, n, depth - 1, i);
     if (newans < ans) {
       ans = newans;
     }
+    i++;
   }
   // undo move!
   board[loc] = 0;
