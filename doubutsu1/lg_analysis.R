@@ -21,7 +21,7 @@ sourceCpp("doubutsu1/Rsource2.cpp")
 ####
 mlist <- list()
 t1 <- proc.time()
-maxdepth <- 2
+maxdepth <- 4
 for (depth in 1:maxdepth) {
   for (h in names(hashtab)) {
     state <- hashtab[[h]]
@@ -33,11 +33,16 @@ proc.time() - t1
 
 deepness <- sapply(mlist, function(v) sum(v==0))
 table(deepness)
-hs <- names(mlist)[deepness == 1]
+hs <- names(mlist)[deepness == 3]
 h <- sample(hs, 1)
 state <- hashtab[[h]]
 print_state(state)
-maxVal(state, state[4] + 0)
-maxVal(state, state[4] + 1)
-maxVal(state, state[4] + 2)
-maxVal(state, state[4] + 3)
+maxVal(state, state[4] + 6)
+
+# st2 <- move(state, 8, 6, 0)
+# print_state(st2)
+# maxVal(st2, st2[4] + 1)
+# 
+# st3 <- move(state, 12, 9, 0)
+# print_state(st3)
+# maxVal(st3, st3[4] + 0)
