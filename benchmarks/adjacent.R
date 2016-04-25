@@ -6,3 +6,5 @@
 
 library(Rcpp)
 sourceCpp("benchmarks/adjacent2.cpp")
+moveValues(c(0, 1, 0), 1)
+moveValues(c(1, 0, 0, 0), 1)

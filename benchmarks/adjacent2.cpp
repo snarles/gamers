@@ -14,7 +14,10 @@ int makeMove(IntegerVector board, int n, int depth, int loc) {
   if (loc == 0 && board[1] != 0) {
     return -1;
   }
-  if (loc == n && board[n] != 0) {
+  if (loc == (n - 1) && board[(n - 2)] != 0) {
+    return -1;
+  }
+  if (board[loc + 1] != 0 || board[loc - 1] != 0) {
     return -1;
   }
   if (depth == 0) {
@@ -22,11 +25,11 @@ int makeMove(IntegerVector board, int n, int depth, int loc) {
   }
   else {
     board[loc] = 1;
-    int ans = -1;
+    int ans = 1;
     int i = 0;
     while (i < n && ans == 0) {
       int newans = -makeMove(board, n, depth - 1, i);
-      if (newans > ans) {
+      if (newans < ans) {
         ans = newans;
       }
     }
@@ -39,7 +42,6 @@ int makeMove(IntegerVector board, int n, int depth, int loc) {
 // [[Rcpp::export]]
 IntegerVector moveValues(IntegerVector board, int depth) {
   int n = board.size();
-  int ans = 0;
   IntegerVector vals(n);
   for (int i = 0; i < n; i++) {
     vals[i] = makeMove(board, n, depth - 1, i);
@@ -50,5 +52,5 @@ IntegerVector moveValues(IntegerVector board, int depth) {
 
 
 /*** R
-mateCheck(c(0, 0, 0), 2, 2)
+# R testing code
 */
