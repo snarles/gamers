@@ -1,6 +1,7 @@
 source("doubutsu1/source.R")
 hashtab <- readRDS("doubutsu1/hashtab.rds")
-matein <- unlist(readRDS("doubutsu1/aws_output.rds"))
+#matein <- unlist(readRDS("doubutsu1/aws_output.rds"))
+saveRDS(matein, "doubutsu1/matein.rds")
 
 games <- readRDS("doubutsu1/lg_states.rds")
 hashes <- lapply(games, function(v) sapply(v, hash_state))

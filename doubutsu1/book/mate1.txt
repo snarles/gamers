@@ -1,0 +1,4816 @@
+---------------------------------------
+[ Position id: s378070.128.36 ]
+
+
+31.K-3d-2d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | R     k|
+  | P  b  r|
+  |    K   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s612986.15125.246 ]
+
+
+17.K-2d-1d
+Gote hand: r
+  +--------+ 
+  |    k   |
+  |       p|
+  | P  B  b|
+  |       K|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s41261.1288568.30 ]
+
+
+32.b-**-3d
+Gote hand: 
+  +--------+ 
+  |        |
+  |    R  p|
+  | K  B  k|
+  | b      |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3999.19.300 ]
+
+
+27.K-2d-3d
+Gote hand: rpp
+  +--------+ 
+  |        |
+  | B  k   |
+  | b      |
+  | K      |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29387.15004.999 ]
+
+
+16.p-**-2a
+Gote hand: rb
+  +--------+ 
+  | k  p   |
+  |    R   |
+  |       B|
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s55484.220.30 ]
+
+
+32.k-1a-2a
+Gote hand: 
+  +--------+ 
+  | r  k   |
+  |    B  b|
+  | K  p   |
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s91839.15127.759 ]
+
+
+125.K-2d-2c
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  | p     r|
+  |    K  b|
+  |        |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s495138.374.513 ]
+
+
+21.K-2d-1d
+Gote hand: p
+  +--------+ 
+  |        |
+  | b  k   |
+  | b     P|
+  |       K|
+  +--------+ 
+Sente hand: RR
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1344376.121.273 ]
+
+
+21.K-3d-2d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | k      |
+  | B  b  P|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s54637.644325.33 ]
+
+
+47.K-3d-2d
+Gote hand: rrp
+  +--------+ 
+  |       p|
+  |       k|
+  | B  b   |
+  |    K   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s39936.15776.729 ]
+
+
+23.K-2d-3d
+Gote hand: 
+  +--------+ 
+  |    k   |
+  | r  p  P|
+  | B  r   |
+  | K      |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s136488.125.975 ]
+
+
+22.k-2a-1a
+Gote hand: rb
+  +--------+ 
+  |       k|
+  | B  p   |
+  | P     K|
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s35409.1288409.36 ]
+
+
+45.R-3d-2d
+Gote hand: bp
+  +--------+ 
+  |       B|
+  | k      |
+  | p  r   |
+  |    R  K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3465.163.36 ]
+
+
+19.R-**-2d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | P  b  k|
+  | r      |
+  |    R  K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s46651.11.4626 ]
+
+
+26.k-1a-2a
+Gote hand: rpp
+  +--------+ 
+  |    k   |
+  | R  B   |
+  |    K   |
+  |        |
+  +--------+ 
+Sente hand: B
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s58570.161.2919 ]
+
+
+14.k-2a-3a
+Gote hand: bp
+  +--------+ 
+  | k      |
+  |    P   |
+  | r  B  K|
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s582978.15763.246 ]
+
+
+43.K-2d-2c
+Gote hand: r
+  +--------+ 
+  |    k   |
+  | P  b   |
+  | b  K  P|
+  |        |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s41267.121.2208 ]
+
+
+31.K-2d-3d
+Gote hand: rbb
+  +--------+ 
+  |        |
+  |       k|
+  | P  r   |
+  | K      |
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s87848.14674.2946 ]
+
+
+21.K-1c-2c
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  |    b   |
+  |    K   |
+  | r      |
+  +--------+ 
+Sente hand: BP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4719.130.282 ]
+
+
+10.k-2a-1a
+Gote hand: r
+  +--------+ 
+  |       k|
+  | B      |
+  | p     K|
+  |        |
+  +--------+ 
+Sente hand: RBP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3487.162052.270 ]
+
+
+19.K-1c-1d
+Gote hand: p
+  +--------+ 
+  |       k|
+  |    b  B|
+  | r      |
+  |    P  K|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s2095.1128369.3 ]
+
+
+34.k-1b-1a
+Gote hand: 
+  +--------+ 
+  |+P  B  k|
+  | K      |
+  |    P  b|
+  |       r|
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4719.13563.39 ]
+
+
+20.p-3c-3d
+Gote hand: 
+  +--------+ 
+  |       k|
+  | B      |
+  |    K  R|
+  |+p      |
+  +--------+ 
+Sente hand: RBP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s445709.322113.729 ]
+
+
+15.P-**-3d
+Gote hand: 
+  +--------+ 
+  | r      |
+  |    k   |
+  | r  B  p|
+  | P  K   |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s493196.121.2946 ]
+
+
+12.r-2b-3b
+Gote hand: bp
+  +--------+ 
+  |       k|
+  | r     B|
+  |       K|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s83.5698.2919 ]
+
+
+20.r-**-2a
+Gote hand: bp
+  +--------+ 
+  | k  r   |
+  |        |
+  |    K  B|
+  | P      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s59297.157.270 ]
+
+
+19.K-2d-3d
+Gote hand: p
+  +--------+ 
+  |        |
+  | k  b  b|
+  |    p   |
+  | K     R|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s121127.1100.273 ]
+
+
+17.K-2d-3d
+Gote hand: rp
+  +--------+ 
+  |        |
+  |    k  P|
+  | b  B   |
+  | K      |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s121847.495.273 ]
+
+
+19.K-2d-1d
+Gote hand: rp
+  +--------+ 
+  |        |
+  |    k  p|
+  | b  B   |
+  |       K|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s33275.1611237.39 ]
+
+
+28.k-1b-1c
+Gote hand: 
+  +--------+ 
+  |        |
+  | B  R   |
+  | K     k|
+  |      +p|
+  +--------+ 
+Sente hand: RBP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s46651.484257.3 ]
+
+
+49.P-3c-3b
+Gote hand: r
+  +--------+ 
+  | b      |
+  | P  k  p|
+  |    b  r|
+  |    K   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s496106.15132.3 ]
+
+
+19.K-2c-1d
+Gote hand: r
+  +--------+ 
+  |    k   |
+  | p     R|
+  | b     P|
+  | B     K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s55484.485.30 ]
+
+
+16.k-1a-2a
+Gote hand: 
+  +--------+ 
+  | r  k   |
+  |    B  b|
+  | P     K|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4752.15226.3 ]
+
+
+121.P-2c-2b
+Gote hand: r
+  +--------+ 
+  |    k   |
+  | p  P  r|
+  |       b|
+  | K  b   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s54637.45.273 ]
+
+
+46.k-3a-2a
+Gote hand: r
+  +--------+ 
+  |    k   |
+  | b  B   |
+  | K  P   |
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1198626.374.732 ]
+
+
+16.k-2a-3a
+Gote hand: b
+  +--------+ 
+  | k      |
+  | r  P  p|
+  | B  K   |
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s6237.154.759 ]
+
+
+18.k-3a-2a
+Gote hand: b
+  +--------+ 
+  |    k  r|
+  | P      |
+  |    B  K|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3999.848.786 ]
+
+
+16.r-1b-1c
+Gote hand: b
+  +--------+ 
+  | k      |
+  | B      |
+  | K     r|
+  |        |
+  +--------+ 
+Sente hand: RPP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s375408.121.4383 ]
+
+
+23.R-1d-1c
+Gote hand: b
+  +--------+ 
+  |        |
+  | k      |
+  | r  b  R|
+  |    K   |
+  +--------+ 
+Sente hand: PP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43996.158.2430 ]
+
+
+49.K-3d-2d
+Gote hand: 
+  +--------+ 
+  |        |
+  | k  b  p|
+  |    b   |
+  |    K  R|
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s59330.14927.729 ]
+
+
+30.r-**-1a
+Gote hand: b
+  +--------+ 
+  | k  B  r|
+  |    P   |
+  | R  P   |
+  |    K   |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.18678.36 ]
+
+
+10.k-2a-1a
+Gote hand: 
+  +--------+ 
+  | r     k|
+  |    R   |
+  |    P   |
+  | B  K   |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s49313.15147.972 ]
+
+
+25.K-3c-2d
+Gote hand: 
+  +--------+ 
+  |    k   |
+  | p  r   |
+  |    b  p|
+  |    K   |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s327492.14674.759 ]
+
+
+44.k-2b-2a
+Gote hand: b
+  +--------+ 
+  |    k   |
+  | R     P|
+  |    B   |
+  |    K   |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s66.157.60 ]
+
+
+17.K-1d-2d
+Gote hand: rrpp
+  +--------+ 
+  |        |
+  | b  b  k|
+  |        |
+  |    K   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s495138.128.2439 ]
+
+
+25.K-2d-1d
+Gote hand: b
+  +--------+ 
+  |        |
+  | k     R|
+  | b     P|
+  |       K|
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s922.15037.270 ]
+
+
+12.k-2b-2a
+Gote hand: r
+  +--------+ 
+  | r  k  p|
+  |        |
+  | B  B   |
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43989.220.1002 ]
+
+
+15.K-1d-2d
+Gote hand: rp
+  +--------+ 
+  |        |
+  |    P  k|
+  |    b   |
+  |    K   |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s52514.131.975 ]
+
+
+29.P-1a-1b
+Gote hand: r
+  +--------+ 
+  |        |
+  | k    +P|
+  |    b  K|
+  |+p      |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s495858.165.495 ]
+
+
+27.P-3d-3c
+Gote hand: b
+  +--------+ 
+  |        |
+  |    p  k|
+  | P     b|
+  |       K|
+  +--------+ 
+Sente hand: RR
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s46651.5491.9 ]
+
+
+25.K-1d-2d
+Gote hand: b
+  +--------+ 
+  | p      |
+  | r  p  k|
+  | r  b   |
+  |    K   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43996.1100.2919 ]
+
+
+42.k-1a-2a
+Gote hand: bp
+  +--------+ 
+  | r  k   |
+  |    B   |
+  |    K  p|
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s6358.979.273 ]
+
+
+21.B-2c-3b
+Gote hand: rp
+  +--------+ 
+  |        |
+  | B  k   |
+  |       p|
+  | B  K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s610324.20.2190 ]
+
+
+16.r-3a-3b
+Gote hand: p
+  +--------+ 
+  |       k|
+  | r  b  B|
+  | p  K   |
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s332824.15169.3 ]
+
+
+66.k-1a-2a
+Gote hand: 
+  +--------+ 
+  | b  k   |
+  | b     R|
+  |    P  P|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s41987.15004.999 ]
+
+
+26.k-1b-1a
+Gote hand: rb
+  +--------+ 
+  |       k|
+  | p  R   |
+  |       B|
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s51909.121.3189 ]
+
+
+11.K-1d-1c
+Gote hand: rp
+  +--------+ 
+  |        |
+  | k      |
+  |    b  K|
+  |        |
+  +--------+ 
+Sente hand: RBP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1022208.14685.975 ]
+
+
+21.K-3d-3c
+Gote hand: r
+  +--------+ 
+  |    k   |
+  |    p   |
+  | K  b  P|
+  |        |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s41872.4236.9 ]
+
+
+15.P-**-1c
+Gote hand: b
+  +--------+ 
+  |       b|
+  | r     k|
+  |    r  P|
+  |+p     K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s920.34.63 ]
+
+
+15.R-**-3d
+Gote hand: bpp
+  +--------+ 
+  |        |
+  | k  b   |
+  |        |
+  | R  K  R|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s58570.154.3162 ]
+
+
+13.K-2d-1d
+Gote hand: r
+  +--------+ 
+  |        |
+  | k  b   |
+  |    p   |
+  |       K|
+  +--------+ 
+Sente hand: RBP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.483274.2226 ]
+
+
+9.K-2d-3d
+Gote hand: rbp
+  +--------+ 
+  |       b|
+  |       k|
+  |    r   |
+  | K      |
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s35332.20416.3 ]
+
+
+41.B-3c-2b
+Gote hand: r
+  +--------+ 
+  |    k  p|
+  | b  B   |
+  |    r  p|
+  | K      |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4719.220.282 ]
+
+
+28.p-2b-2c
+Gote hand: r
+  +--------+ 
+  | k      |
+  |       B|
+  | K  p   |
+  |        |
+  +--------+ 
+Sente hand: RBP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29291.160.279 ]
+
+
+17.P-**-1d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | k  b  K|
+  |    r   |
+  |       P|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s120712.483164.27 ]
+
+
+6.p-**-1a
+Gote hand: 
+  +--------+ 
+  | r  k  p|
+  |    b  R|
+  |    K   |
+  | B      |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s54637.222.2190 ]
+
+
+33.K-3d-2d
+Gote hand: r
+  +--------+ 
+  |        |
+  | k  P  r|
+  |    b  B|
+  |    K   |
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s121847.1104.246 ]
+
+
+16.k-2a-1a
+Gote hand: r
+  +--------+ 
+  |       k|
+  | B  b   |
+  | P  K  p|
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s52998.121.3162 ]
+
+
+19.P-**-1d
+Gote hand: r
+  +--------+ 
+  |        |
+  |       k|
+  | K  b   |
+  |       P|
+  +--------+ 
+Sente hand: RBP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s334154.14674.756 ]
+
+
+20.k-2b-2a
+Gote hand: b
+  +--------+ 
+  | r  k   |
+  | p     R|
+  |    B   |
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s535084.146553.27 ]
+
+
+45.P-3a-2a
+Gote hand: p
+  +--------+ 
+  |   +P   |
+  |    r  k|
+  | K  b  b|
+  |    r   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s495138.1430.255 ]
+
+
+23.P-2c-2b
+Gote hand: rb
+  +--------+ 
+  |       k|
+  |    P   |
+  | b     P|
+  |       K|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s46651.209.2457 ]
+
+
+22.b-3b-2c
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  |    B  R|
+  | K  b   |
+  |        |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s376739.161073.2214 ]
+
+
+41.K-3d-2d
+Gote hand: p
+  +--------+ 
+  |       k|
+  |    r   |
+  | B  b  r|
+  |    K   |
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s495138.979.273 ]
+
+
+19.K-2d-1d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | B  k   |
+  | b     P|
+  |       K|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4727.499.486 ]
+
+
+38.k-2a-1a
+Gote hand: rr
+  +--------+ 
+  | b     k|
+  | B      |
+  | P  K  P|
+  |        |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29530.1334.783 ]
+
+
+20.k-3b-3a
+Gote hand: b
+  +--------+ 
+  | k     R|
+  |    R   |
+  | B      |
+  | K      |
+  +--------+ 
+Sente hand: PP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s6237.44902.2190 ]
+
+
+15.B-2c-1b
+Gote hand: r
+  +--------+ 
+  |    b   |
+  |    k  B|
+  | p      |
+  |    K  R|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s6237.220.741 ]
+
+
+25.P-2c-2b
+Gote hand: rb
+  +--------+ 
+  |        |
+  |    P  k|
+  | p      |
+  |    K  R|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s83.14677.2457 ]
+
+
+19.K-3c-3d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  | b  b   |
+  |        |
+  | K  R   |
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s121847.1102.30 ]
+
+
+11.P-**-1b
+Gote hand: rp
+  +--------+ 
+  |        |
+  | r  k  P|
+  | b  B   |
+  |       K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4719.514111.0 ]
+
+
+47.P-2c-2b
+Gote hand: 
+  +--------+ 
+  | b  r  k|
+  | r  P  p|
+  |       b|
+  | K      |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s119262.245.54 ]
+
+
+39.B-1d-2c
+Gote hand: pp
+  +--------+ 
+  |        |
+  | r     b|
+  |    B  k|
+  | K  R   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s55968.495.975 ]
+
+
+25.K-1d-2d
+Gote hand: r
+  +--------+ 
+  |        |
+  |    k  p|
+  | P  b   |
+  |    K   |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3999.20.1002 ]
+
+
+26.k-2a-1a
+Gote hand: rb
+  +--------+ 
+  |       k|
+  |       B|
+  |    K  p|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29282.1611237.3648 ]
+
+
+40.k-3b-3c
+Gote hand: bbp
+  +--------+ 
+  |        |
+  |    R   |
+  | k     K|
+  |+p      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s52998.1617.732 ]
+
+
+30.k-2a-3b
+Gote hand: b
+  +--------+ 
+  |       p|
+  | k  B   |
+  |    P  R|
+  | K      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s35332.11.768 ]
+
+
+15.K-2d-3d
+Gote hand: rbp
+  +--------+ 
+  |        |
+  |    k   |
+  |    r  p|
+  | K      |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40656.1127941.9 ]
+
+
+29.K-2d-1d
+Gote hand: b
+  +--------+ 
+  |       R|
+  | k  P  p|
+  | B  r   |
+  |       K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s347.34.39 ]
+
+
+12.p-**-2a
+Gote hand: 
+  +--------+ 
+  | k  p  R|
+  |        |
+  | K  B   |
+  |        |
+  +--------+ 
+Sente hand: RBP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s59297.1123.732 ]
+
+
+26.p-3b-3c
+Gote hand: b
+  +--------+ 
+  | k     r|
+  |    P   |
+  | p  B  K|
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s623883.14883.27 ]
+
+
+6.k-2a-3b
+Gote hand: 
+  +--------+ 
+  | r     b|
+  | k  p  B|
+  |       R|
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.143.3672 ]
+
+
+57.K-1c-1d
+Gote hand: p
+  +--------+ 
+  |        |
+  | k  r   |
+  |    r   |
+  |       K|
+  +--------+ 
+Sente hand: BBP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.34.2226 ]
+
+
+12.k-2a-3a
+Gote hand: p
+  +--------+ 
+  | k      |
+  |    R   |
+  | K  B   |
+  |        |
+  +--------+ 
+Sente hand: RBP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s489203.1610521.495 ]
+
+
+43.K-2d-3d
+Gote hand: b
+  +--------+ 
+  |+P      |
+  |    k   |
+  | b     p|
+  | K      |
+  +--------+ 
+Sente hand: RR
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s608289.161082.27 ]
+
+
+39.P-**-3b
+Gote hand: p
+  +--------+ 
+  |       k|
+  | P  r   |
+  | K  B  b|
+  |    r   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s136488.1581.30 ]
+
+
+10.k-2a-1a
+Gote hand: 
+  +--------+ 
+  |       k|
+  | B  p   |
+  | b     R|
+  | K      |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4719.644578.513 ]
+
+
+32.k-2a-1a
+Gote hand: rr
+  +--------+ 
+  |       k|
+  | B      |
+  |    K  B|
+  |       P|
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s137170.30042.9 ]
+
+
+43.P-**-2c
+Gote hand: b
+  +--------+ 
+  |    r   |
+  | K  b  k|
+  |    P  p|
+  |    R   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40665.14887.729 ]
+
+
+67.K-2d-1d
+Gote hand: 
+  +--------+ 
+  |    k   |
+  | p     r|
+  | B  r   |
+  | P     K|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s55968.14685.975 ]
+
+
+22.k-1a-2a
+Gote hand: rb
+  +--------+ 
+  |    k   |
+  | p  B   |
+  |    P   |
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s119185.484.1002 ]
+
+
+15.K-3c-3d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | p      |
+  |    B  k|
+  | K      |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s326101.123.4383 ]
+
+
+32.k-2a-1a
+Gote hand: pp
+  +--------+ 
+  |       k|
+  | R     B|
+  | K     R|
+  |        |
+  +--------+ 
+Sente hand: B
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s137821.121.741 ]
+
+
+30.k-2a-1a
+Gote hand: b
+  +--------+ 
+  | R     k|
+  | P  p   |
+  |       K|
+  |        |
+  +--------+ 
+Sente hand: RB
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s54637.130.273 ]
+
+
+16.k-1a-2a
+Gote hand: r
+  +--------+ 
+  |    k   |
+  | b  B   |
+  | p     K|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.1.792 ]
+
+
+25.R-**-3d
+Gote hand: bpp
+  +--------+ 
+  |        |
+  | k      |
+  |    r   |
+  | R     K|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.58941.27 ]
+
+
+56.r-**-1a
+Gote hand: 
+  +--------+ 
+  | k     r|
+  |    R   |
+  | B  K  B|
+  |    P   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s11979.2090.3162 ]
+
+
+25.K-2c-1b
+Gote hand: r
+  +--------+ 
+  | k      |
+  |    b  K|
+  | P      |
+  |        |
+  +--------+ 
+Sente hand: RBP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4846.498.2430 ]
+
+
+28.k-2a-3a
+Gote hand: rp
+  +--------+ 
+  | k     r|
+  | B      |
+  | B  K  P|
+  |        |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s117211.14916.2214 ]
+
+
+7.K-1c-1d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  | r  b   |
+  |    B   |
+  |    R  K|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s32670.14674.63 ]
+
+
+21.K-2d-3d
+Gote hand: bpp
+  +--------+ 
+  |    k   |
+  |    b   |
+  |    r  r|
+  | K      |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s51909.653741.732 ]
+
+
+24.k-1c-1b
+Gote hand: b
+  +--------+ 
+  |        |
+  |    B  k|
+  | K  p   |
+  | P     r|
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s46651.13464.270 ]
+
+
+21.K-1d-2d
+Gote hand: p
+  +--------+ 
+  |+P      |
+  |    b  k|
+  | r  b   |
+  |    K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1020886.2663.2190 ]
+
+
+16.k-3a-3b
+Gote hand: p
+  +--------+ 
+  |       p|
+  | k  B  b|
+  |       K|
+  |       R|
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s6358.276.2190 ]
+
+
+9.K-1d-2d
+Gote hand: r
+  +--------+ 
+  |        |
+  | r  b  k|
+  |       p|
+  | B  K   |
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s6479.154.975 ]
+
+
+41.K-1d-2d
+Gote hand: r
+  +--------+ 
+  |        |
+  | k  b   |
+  |       p|
+  | P  K   |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s6237.161087.270 ]
+
+
+20.k-1a-2a
+Gote hand: r
+  +--------+ 
+  | r  k   |
+  |       P|
+  |    B  B|
+  | K      |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s54637.123.57 ]
+
+
+18.k-1a-2a
+Gote hand: 
+  +--------+ 
+  |    k   |
+  |    B  b|
+  | K     R|
+  |        |
+  +--------+ 
+Sente hand: RPP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29893.14729.2439 ]
+
+
+44.b-3b-2c
+Gote hand: rp
+  +--------+ 
+  | k    +P|
+  |    R   |
+  |    b   |
+  |    K   |
+  +--------+ 
+Sente hand: B
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s326101.15129.252 ]
+
+
+51.K-2d-1d
+Gote hand: b
+  +--------+ 
+  |    k   |
+  | p     p|
+  | r     b|
+  |       K|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s922.14677.270 ]
+
+
+10.k-2b-2a
+Gote hand: r
+  +--------+ 
+  | r  k  p|
+  |        |
+  |    B  B|
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s612266.3762.3 ]
+
+
+54.k-2a-3a
+Gote hand: 
+  +--------+ 
+  | k      |
+  | p  b  B|
+  |    K  p|
+  | R      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43989.163.273 ]
+
+
+33.K-3d-2d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | P  b  k|
+  |    b   |
+  |    K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4967.322113.57 ]
+
+
+28.b-2b-1a
+Gote hand: 
+  +--------+ 
+  | k     b|
+  | B      |
+  |    K   |
+  |       R|
+  +--------+ 
+Sente hand: RPP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3388.5491.18 ]
+
+
+23.K-2d-1d
+Gote hand: bb
+  +--------+ 
+  | p      |
+  | r  p  k|
+  | r      |
+  |       K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s492476.15134.732 ]
+
+
+34.k-2a-1a
+Gote hand: b
+  +--------+ 
+  |       k|
+  | B     r|
+  | P     p|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s129355.11.2199 ]
+
+
+21.B-1b-2c
+Gote hand: rb
+  +--------+ 
+  |        |
+  |    k   |
+  |    B  P|
+  | r     K|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s105.14677.513 ]
+
+
+23.K-3c-3d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  | b  b   |
+  |        |
+  | K  P   |
+  +--------+ 
+Sente hand: RR
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s496227.14643.12 ]
+
+
+12.p-**-1b
+Gote hand: 
+  +--------+ 
+  | p     k|
+  | B     p|
+  |       R|
+  |    K   |
+  +--------+ 
+Sente hand: RB
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43996.11.2466 ]
+
+
+21.K-1d-2d
+Gote hand: bp
+  +--------+ 
+  |        |
+  |    k   |
+  |    b   |
+  | R  K   |
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3575.14.2223 ]
+
+
+22.k-3a-2a
+Gote hand: p
+  +--------+ 
+  |    k  r|
+  | R      |
+  | B  K   |
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s129355.14674.30 ]
+
+
+47.B-**-2c
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  |    b   |
+  | P  B   |
+  | K     r|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s32670.15134.1458 ]
+
+
+22.k-2a-1a
+Gote hand: bb
+  +--------+ 
+  |       k|
+  | R  R   |
+  | p     P|
+  |    K   |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s41872.3994.252 ]
+
+
+17.P-**-1c
+Gote hand: b
+  +--------+ 
+  |       b|
+  |       k|
+  |    r  P|
+  |+p     K|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s58570.322136.279 ]
+
+
+24.k-2a-3a
+Gote hand: r
+  +--------+ 
+  | k      |
+  |    P   |
+  | K  B   |
+  |       R|
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s51997.130.2193 ]
+
+
+26.k-1a-1b
+Gote hand: p
+  +--------+ 
+  |    b   |
+  |    B  k|
+  | K     p|
+  |        |
+  +--------+ 
+Sente hand: RR
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s286174.5401.12 ]
+
+
+19.B-**-2c
+Gote hand: rb
+  +--------+ 
+  | p      |
+  |    R   |
+  | K  B  k|
+  | P      |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s700172.11.15 ]
+
+
+40.k-1a-2a
+Gote hand: 
+  +--------+ 
+  |    k   |
+  | P  B  p|
+  |    K   |
+  |        |
+  +--------+ 
+Sente hand: RRB
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3584.154.36 ]
+
+
+15.P-**-3d
+Gote hand: bp
+  +--------+ 
+  |        |
+  |    b  k|
+  | r      |
+  | P  K  R|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s535062.121.60 ]
+
+
+17.K-2d-3c
+Gote hand: rrpp
+  +--------+ 
+  |        |
+  |       k|
+  | K  b  b|
+  |        |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s384665.1610511.12 ]
+
+
+24.p-1c-1d
+Gote hand: 
+  +--------+ 
+  | k      |
+  | B  P  R|
+  | K      |
+  |      +p|
+  +--------+ 
+Sente hand: RB
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s68614.14677.27 ]
+
+
+24.r-**-3b
+Gote hand: 
+  +--------+ 
+  | r     k|
+  | r  P   |
+  | B  B   |
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40656.14685.999 ]
+
+
+77.K-3c-3d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |    p   |
+  |    r  B|
+  | K      |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s6358.342.732 ]
+
+
+15.K-1d-2d
+Gote hand: r
+  +--------+ 
+  |        |
+  | r  P  k|
+  |       p|
+  | B  K   |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s68607.124.2919 ]
+
+
+25.R-1d-1c
+Gote hand: r
+  +--------+ 
+  |        |
+  | k     b|
+  |    p  R|
+  | K      |
+  +--------+ 
+Sente hand: BP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3487.14674.999 ]
+
+
+23.K-2c-3d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |    b   |
+  |       r|
+  | K  P   |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s83.15037.2457 ]
+
+
+25.K-1c-1d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  | b  b   |
+  |        |
+  |    R  K|
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s136010.2182.729 ]
+
+
+30.r-2c-1c
+Gote hand: b
+  +--------+ 
+  | k     R|
+  | B  p   |
+  | P     r|
+  | K      |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s584067.14916.3 ]
+
+
+40.k-2a-2b
+Gote hand: 
+  +--------+ 
+  |       p|
+  | p  k  B|
+  |    B  R|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29530.219.36 ]
+
+
+15.K-1c-1d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | k  B +P|
+  |    r   |
+  | r     K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s332825.15125.732 ]
+
+
+28.k-2b-2a
+Gote hand: b
+  +--------+ 
+  | p  k   |
+  | b     R|
+  |       P|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s59299.34.975 ]
+
+
+14.k-2a-3a
+Gote hand: rb
+  +--------+ 
+  | k     p|
+  |    P   |
+  |    B  K|
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4719.29316.2457 ]
+
+
+65.K-3c-3d
+Gote hand: p
+  +--------+ 
+  |    r   |
+  |    b  k|
+  |       b|
+  | K      |
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.14644.306 ]
+
+
+24.k-3b-3a
+Gote hand: r
+  +--------+ 
+  | k      |
+  |    R   |
+  | B      |
+  |    K   |
+  +--------+ 
+Sente hand: BPP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s55968.11.522 ]
+
+
+22.k-1a-2a
+Gote hand: rr
+  +--------+ 
+  |    k   |
+  |    B  p|
+  |    K   |
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s51909.15169.975 ]
+
+
+17.K-3d-3c
+Gote hand: r
+  +--------+ 
+  |    k   |
+  |    p  p|
+  | K  b   |
+  |        |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s213037.0.4386 ]
+
+
+25.R-3d-2d
+Gote hand: rb
+  +--------+ 
+  |        |
+  |        |
+  | K  b  k|
+  |    R   |
+  +--------+ 
+Sente hand: PP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s119185.33.2460 ]
+
+
+18.b-**-2b
+Gote hand: rp
+  +--------+ 
+  | k      |
+  |    b  K|
+  |    B   |
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s108966.34.732 ]
+
+
+21.R-1c-2c
+Gote hand: r
+  +--------+ 
+  |        |
+  | k  b   |
+  | p  R   |
+  |    K  P|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s609604.644215.2190 ]
+
+
+22.k-2a-1a
+Gote hand: p
+  +--------+ 
+  |       k|
+  | B  b  r|
+  |    K   |
+  | P      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s66.190960.765 ]
+
+
+29.K-3c-2d
+Gote hand: bp
+  +--------+ 
+  |    r  k|
+  |    r +p|
+  |        |
+  |    K   |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s32670.484253.36 ]
+
+
+21.P-1c-1b
+Gote hand: bp
+  +--------+ 
+  |       b|
+  |    k  P|
+  | r  r   |
+  |       K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s11374.644702.6 ]
+
+
+35.B-2d-3c
+Gote hand: rr
+  +--------+ 
+  |       p|
+  | b  k  p|
+  | B      |
+  |       K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s32670.121.3672 ]
+
+
+27.K-2d-1d
+Gote hand: p
+  +--------+ 
+  |        |
+  |       k|
+  | r  r   |
+  |       K|
+  +--------+ 
+Sente hand: BBP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s105.1245849.2190 ]
+
+
+22.k-2b-3a
+Gote hand: p
+  +--------+ 
+  | k  p   |
+  |        |
+  |    B   |
+  | K  b  r|
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.163.279 ]
+
+
+21.K-2d-3d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | P  b  k|
+  |    r   |
+  | K      |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s920.34.2223 ]
+
+
+7.R-**-3d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | k  b   |
+  |        |
+  | R  K  R|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s626907.14883.732 ]
+
+
+18.k-2a-3a
+Gote hand: b
+  +--------+ 
+  | k      |
+  | p  p  B|
+  |       R|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s495138.124.513 ]
+
+
+22.k-2a-3a
+Gote hand: rr
+  +--------+ 
+  | k      |
+  | p     B|
+  | B     K|
+  |        |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s699930.121.486 ]
+
+
+25.K-3d-2d
+Gote hand: 
+  +--------+ 
+  |        |
+  |       k|
+  | B  b  p|
+  |    K  P|
+  +--------+ 
+Sente hand: RR
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s63360.17666.27 ]
+
+
+28.r-**-2a
+Gote hand: 
+  +--------+ 
+  | k  r   |
+  |    P  B|
+  | B      |
+  |    K  R|
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.157.2214 ]
+
+
+15.K-2d-1d
+Gote hand: p
+  +--------+ 
+  |        |
+  | b  b  k|
+  |    r   |
+  | R     K|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s612266.495.246 ]
+
+
+17.K-2d-1d
+Gote hand: r
+  +--------+ 
+  |        |
+  | p  k   |
+  | b  B  P|
+  |       K|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s332750.229422.9 ]
+
+
+35.R-**-1a
+Gote hand: b
+  +--------+ 
+  | k  p  R|
+  | p     K|
+  | r     B|
+  |        |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s489203.154.2433 ]
+
+
+15.K-2d-3d
+Gote hand: r
+  +--------+ 
+  |        |
+  | k  b   |
+  | b     p|
+  | K      |
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s582978.20207.732 ]
+
+
+27.K-2d-2c
+Gote hand: r
+  +--------+ 
+  |    k  p|
+  | r      |
+  | b  K  P|
+  |        |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s41344.15008.729 ]
+
+
+17.R-**-2d
+Gote hand: 
+  +--------+ 
+  |    k   |
+  | b     p|
+  |    r  P|
+  |    R  K|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.11.5115 ]
+
+
+19.K-2d-1d
+Gote hand: rb
+  +--------+ 
+  |        |
+  |    k   |
+  |    r   |
+  |       K|
+  +--------+ 
+Sente hand: BPP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s922.34.279 ]
+
+
+10.p-**-1a
+Gote hand: r
+  +--------+ 
+  | r  k  p|
+  |        |
+  |    B  K|
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s54637.1.2460 ]
+
+
+20.k-1a-2a
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  |    B  b|
+  |       K|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s138127.243.732 ]
+
+
+13.K-1d-2d
+Gote hand: r
+  +--------+ 
+  |        |
+  | r     k|
+  |    P  p|
+  | B  K   |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.14677.2457 ]
+
+
+19.K-2d-1d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |    b  b|
+  |    r   |
+  |       K|
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s59297.397.30 ]
+
+
+16.k-2a-1a
+Gote hand: 
+  +--------+ 
+  | r     k|
+  |    P   |
+  | K  B  B|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s73207.1621885.12 ]
+
+
+27.K-1c-1b
+Gote hand: rb
+  +--------+ 
+  | B    +P|
+  | k     K|
+  |   +p   |
+  | r      |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.158.36 ]
+
+
+17.K-2d-3d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | k  b  p|
+  |    r   |
+  | K     R|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40656.1353.2943 ]
+
+
+37.K-3c-3d
+Gote hand: p
+  +--------+ 
+  |       k|
+  |    r   |
+  |    r  B|
+  | K      |
+  +--------+ 
+Sente hand: BP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30017.15004.999 ]
+
+
+15.K-1c-1d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |       b|
+  |    r   |
+  | P     K|
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s53075.14685.12 ]
+
+
+21.R-**-2d
+Gote hand: rb
+  +--------+ 
+  |    k   |
+  |    p   |
+  |    b  K|
+  | P  R   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s653596.157.3 ]
+
+
+15.R-**-3c
+Gote hand: r
+  +--------+ 
+  |        |
+  | b  b  k|
+  | R     p|
+  | P  K   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s61952.14674.999 ]
+
+
+60.k-2a-1a
+Gote hand: rb
+  +--------+ 
+  |       k|
+  | R  P   |
+  |    B   |
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1043.276.30 ]
+
+
+7.P-**-1d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | r  b  k|
+  |        |
+  | B  K  P|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s136488.161543.246 ]
+
+
+17.K-3c-3d
+Gote hand: r
+  +--------+ 
+  | k      |
+  | p     B|
+  |    P  b|
+  | K      |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3696.276.2214 ]
+
+
+9.K-1d-2d
+Gote hand: p
+  +--------+ 
+  |        |
+  | r  b  k|
+  |       r|
+  | B  K   |
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s41994.154.36 ]
+
+
+20.k-2a-1a
+Gote hand: 
+  +--------+ 
+  | r     k|
+  | p  R   |
+  |    B  K|
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s947678.14644.486 ]
+
+
+23.P-2d-2c
+Gote hand: 
+  +--------+ 
+  |    k   |
+  | b      |
+  | B  P +p|
+  | K      |
+  +--------+ 
+Sente hand: RR
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.947.765 ]
+
+
+23.K-2d-3d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | k  P  R|
+  |    r   |
+  | K      |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s173377.440.729 ]
+
+
+36.r-3c-2c
+Gote hand: b
+  +--------+ 
+  | k  p  R|
+  | p     K|
+  |    r  B|
+  |        |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.121.315 ]
+
+
+21.K-2d-3d
+Gote hand: bbpp
+  +--------+ 
+  |        |
+  |       k|
+  |    r   |
+  | K      |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.1.2475 ]
+
+
+27.K-2d-1d
+Gote hand: bbp
+  +--------+ 
+  |        |
+  |       k|
+  |    r   |
+  |       K|
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s551760.161084.30 ]
+
+
+42.r-1a-1b
+Gote hand: 
+  +--------+ 
+  | k      |
+  | B  P  r|
+  |    B   |
+  | K      |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s52160.14685.732 ]
+
+
+27.K-2d-3c
+Gote hand: r
+  +--------+ 
+  |    k   |
+  |    p   |
+  | K  b   |
+  | P     r|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s129355.1375.12 ]
+
+
+68.b-1c-2b
+Gote hand: 
+  +--------+ 
+  | R     k|
+  |    b  p|
+  |    P   |
+  |       K|
+  +--------+ 
+Sente hand: RB
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3465.15763.36 ]
+
+
+12.k-2b-3a
+Gote hand: 
+  +--------+ 
+  | k  r   |
+  |       R|
+  | p  B   |
+  |    K   |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s0.760.1269 ]
+
+
+48.k-3b-3c
+Gote hand: rrb
+  +--------+ 
+  |        |
+  |        |
+  | k  B  K|
+  |        |
+  +--------+ 
+Sente hand: PP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29387.397.2430 ]
+
+
+28.p-**-2a
+Gote hand: rp
+  +--------+ 
+  | k  p   |
+  |    R   |
+  | K  B  B|
+  |        |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.374.2223 ]
+
+
+20.r-**-1a
+Gote hand: p
+  +--------+ 
+  | k     r|
+  |    R   |
+  | B  K   |
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s326101.2787.2196 ]
+
+
+36.k-2a-1a
+Gote hand: p
+  +--------+ 
+  |       k|
+  | R     B|
+  | K     P|
+  |       R|
+  +--------+ 
+Sente hand: B
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.14672.765 ]
+
+
+20.k-2a-3a
+Gote hand: b
+  +--------+ 
+  | k      |
+  |    R   |
+  | p  R   |
+  |    K   |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s286187.322111.2196 ]
+
+
+42.k-3a-3b
+Gote hand: p
+  +--------+ 
+  |    R   |
+  | k  b  K|
+  | p      |
+  |       R|
+  +--------+ 
+Sente hand: B
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.573.759 ]
+
+
+46.k-2a-3a
+Gote hand: b
+  +--------+ 
+  | k      |
+  |    R   |
+  | K  b  P|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s12073.161315.2196 ]
+
+
+23.K-2c-1d
+Gote hand: b
+  +--------+ 
+  | k      |
+  | r  r   |
+  |       P|
+  |    B  K|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s6479.15037.246 ]
+
+
+17.K-2c-2d
+Gote hand: r
+  +--------+ 
+  |    k   |
+  | b  b   |
+  |       p|
+  | P  K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43989.657525.15 ]
+
+
+34.k-1a-2a
+Gote hand: 
+  +--------+ 
+  |    k   |
+  |    B   |
+  |    K   |
+  | P    +p|
+  +--------+ 
+Sente hand: RRB
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4846.100.2439 ]
+
+
+11.P-2c-2b
+Gote hand: b
+  +--------+ 
+  |        |
+  | k  P   |
+  | b      |
+  | K     R|
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s7.160.1026 ]
+
+
+13.K-1c-1b
+Gote hand: pp
+  +--------+ 
+  |        |
+  | k  b  K|
+  |        |
+  |       R|
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s609604.15125.2190 ]
+
+
+28.k-2a-3a
+Gote hand: p
+  +--------+ 
+  | k      |
+  | r  b  B|
+  |       P|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s61952.157.270 ]
+
+
+19.K-2d-1d
+Gote hand: p
+  +--------+ 
+  |        |
+  | b  b  k|
+  | r  p   |
+  |       K|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.13321.765 ]
+
+
+9.K-2d-3d
+Gote hand: bp
+  +--------+ 
+  |      +P|
+  |    k   |
+  |    r   |
+  | K     R|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s93247.15763.732 ]
+
+
+18.k-1b-2b
+Gote hand: b
+  +--------+ 
+  |    r   |
+  | P  k   |
+  |    B  p|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3575.14674.2943 ]
+
+
+28.k-2b-2a
+Gote hand: bp
+  +--------+ 
+  | r  k   |
+  |       R|
+  |    B   |
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3696.15129.252 ]
+
+
+19.K-3c-2d
+Gote hand: b
+  +--------+ 
+  |    k   |
+  | p     p|
+  |       r|
+  | B  K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s35332.1610511.1461 ]
+
+
+34.k-2a-1a
+Gote hand: bb
+  +--------+ 
+  |       k|
+  | P  R   |
+  | K      |
+  |      +p|
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s2134.487.2199 ]
+
+
+66.r-**-2a
+Gote hand: p
+  +--------+ 
+  |    r  k|
+  | K      |
+  | B     P|
+  |        |
+  +--------+ 
+Sente hand: RB
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s35332.154.2919 ]
+
+
+27.K-2d-3d
+Gote hand: r
+  +--------+ 
+  |        |
+  | k  b   |
+  |    r  p|
+  | K      |
+  +--------+ 
+Sente hand: BP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s70549.382.6 ]
+
+
+42.k-2a-3a
+Gote hand: 
+  +--------+ 
+  | k      |
+  | p  P   |
+  | b  K  B|
+  |        |
+  +--------+ 
+Sente hand: RR
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40733.1818.27 ]
+
+
+28.r-**-2a
+Gote hand: 
+  +--------+ 
+  | k  r   |
+  |    R  b|
+  | P     B|
+  |       K|
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s137100.760.252 ]
+
+
+18.p-2a-2b
+Gote hand: r
+  +--------+ 
+  |       r|
+  |    p  P|
+  | k  B  K|
+  |        |
+  +--------+ 
+Sente hand: B
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s55968.15004.273 ]
+
+
+21.K-1d-2d
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  | b      |
+  |    b  P|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.121.2955 ]
+
+
+14.k-2a-3a
+Gote hand: bp
+  +--------+ 
+  | k      |
+  |    R   |
+  |       K|
+  |        |
+  +--------+ 
+Sente hand: RBP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s59297.15128.732 ]
+
+
+28.k-1b-1a
+Gote hand: b
+  +--------+ 
+  | r     k|
+  |    P   |
+  | B     P|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s136488.222.732 ]
+
+
+35.K-2d-1d
+Gote hand: r
+  +--------+ 
+  |        |
+  | r  P  k|
+  | b  P   |
+  |       K|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30017.14663.45 ]
+
+
+14.k-2a-3a
+Gote hand: 
+  +--------+ 
+  | k     p|
+  |    R   |
+  |    R   |
+  |    K   |
+  +--------+ 
+Sente hand: BBP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s522487.14.2187 ]
+
+
+27.R-**-3c
+Gote hand: 
+  +--------+ 
+  |        |
+  | b  k   |
+  | R  r  b|
+  | P     K|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.14644.2943 ]
+
+
+25.K-3c-3d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |       b|
+  |    r   |
+  | K     R|
+  +--------+ 
+Sente hand: BP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43989.504.975 ]
+
+
+28.k-3a-2a
+Gote hand: rb
+  +--------+ 
+  |    k   |
+  |    B   |
+  | P  K  p|
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s612266.61237.3 ]
+
+
+17.K-2d-3d
+Gote hand: r
+  +--------+ 
+  | r  p   |
+  |    k   |
+  | P  B  b|
+  | K      |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.20.1728 ]
+
+
+18.p-1b-1c
+Gote hand: rbb
+  +--------+ 
+  |       k|
+  |    R   |
+  |    K  p|
+  |        |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s496227.161421.3 ]
+
+
+28.p-**-1a
+Gote hand: 
+  +--------+ 
+  | k     p|
+  | p     B|
+  | r     B|
+  |       K|
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43989.1611489.2193 ]
+
+
+21.B-**-1b
+Gote hand: rr
+  +--------+ 
+  |      +P|
+  |    k  B|
+  |    b   |
+  |    K   |
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s50402.34.246 ]
+
+
+29.K-3c-2d
+Gote hand: r
+  +--------+ 
+  |        |
+  |    b  k|
+  |    b  p|
+  | P  K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s627627.4114.246 ]
+
+
+22.k-2a-1a
+Gote hand: r
+  +--------+ 
+  |       k|
+  | p  p  B|
+  |       K|
+  | B      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s46651.243.2223 ]
+
+
+22.k-3b-2a
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |    B  R|
+  | R     K|
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s327492.1364.279 ]
+
+
+35.K-1d-2d
+Gote hand: bp
+  +--------+ 
+  |       k|
+  |    b   |
+  | r     p|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s68607.157.270 ]
+
+
+14.r-3a-3b
+Gote hand: r
+  +--------+ 
+  |       k|
+  | r  P   |
+  | B  B  K|
+  |        |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s535069.121.2457 ]
+
+
+28.k-2a-3b
+Gote hand: rp
+  +--------+ 
+  | r      |
+  | k  B  B|
+  |       K|
+  |        |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s94.147.279 ]
+
+
+26.b-**-2a
+Gote hand: r
+  +--------+ 
+  |    b  k|
+  |        |
+  | K  R  P|
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.1123.36 ]
+
+
+21.K-2d-3d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | P  b  k|
+  |    r   |
+  | K     R|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s105.154.522 ]
+
+
+23.K-1c-1d
+Gote hand: bp
+  +--------+ 
+  |        |
+  | k  b   |
+  |        |
+  |    P  K|
+  +--------+ 
+Sente hand: RR
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3575.13464.36 ]
+
+
+19.R-**-1d
+Gote hand: bp
+  +--------+ 
+  |+P      |
+  |    b  k|
+  | r      |
+  |    K  R|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1020877.14685.2433 ]
+
+
+22.k-2a-3b
+Gote hand: rp
+  +--------+ 
+  |        |
+  | k  B  b|
+  |    P   |
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3824.518.729 ]
+
+
+34.r-**-3a
+Gote hand: b
+  +--------+ 
+  | r  k  p|
+  | R      |
+  | K  B  P|
+  |        |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s52151.14685.999 ]
+
+
+36.k-2a-1b
+Gote hand: rb
+  +--------+ 
+  | R      |
+  |    B  k|
+  |    P   |
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40656.1090.999 ]
+
+
+26.k-1b-1a
+Gote hand: rb
+  +--------+ 
+  |       k|
+  | b  R   |
+  | K     p|
+  |        |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s53306.383.30 ]
+
+
+19.K-1d-2d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | b  k  P|
+  |    b  R|
+  |    K   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s7995.44088.975 ]
+
+
+21.K-3b-3c
+Gote hand: r
+  +--------+ 
+  |    b   |
+  |    p  k|
+  | K      |
+  | P      |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s39936.14687.2916 ]
+
+
+20.k-2a-1a
+Gote hand: bp
+  +--------+ 
+  |       k|
+  |    R  b|
+  |    P  R|
+  |    K   |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s33281.322565.27 ]
+
+
+26.p-**-2c
+Gote hand: 
+  +--------+ 
+  | k      |
+  | B  R   |
+  | K  p  B|
+  |       R|
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s117211.322485.27 ]
+
+
+23.B-3d-2c
+Gote hand: p
+  +--------+ 
+  | r      |
+  | b  k  P|
+  |    B   |
+  |    R  K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s49313.1290245.243 ]
+
+
+21.K-1d-2d
+Gote hand: 
+  +--------+ 
+  | k     B|
+  |    r  p|
+  | p  b   |
+  |    K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s327500.11.2919 ]
+
+
+14.b-2b-3a
+Gote hand: bp
+  +--------+ 
+  | b  k   |
+  | P     R|
+  |    K   |
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.130.2928 ]
+
+
+30.k-2a-3a
+Gote hand: bp
+  +--------+ 
+  | k      |
+  |    R   |
+  | p     K|
+  |        |
+  +--------+ 
+Sente hand: RB
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s83.44048.2919 ]
+
+
+30.k-3b-3a
+Gote hand: bp
+  +--------+ 
+  | k  r   |
+  |        |
+  | P     K|
+  |    B   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s91839.14674.2460 ]
+
+
+32.k-2a-2b
+Gote hand: rp
+  +--------+ 
+  |        |
+  |    k  B|
+  |    B   |
+  |    K   |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s50169.34.243 ]
+
+
+32.p-**-3a
+Gote hand: r
+  +--------+ 
+  | p  k  r|
+  | P  B   |
+  | K  B   |
+  |        |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29282.1289135.5106 ]
+
+
+30.k-3b-3c
+Gote hand: bpp
+  +--------+ 
+  |        |
+  |    R   |
+  | k     K|
+  | b      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s93247.484759.27 ]
+
+
+37.K-3d-2c
+Gote hand: p
+  +--------+ 
+  | k     b|
+  |    b  r|
+  | p  K   |
+  |    R   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s53306.161.2214 ]
+
+
+10.r-**-3b
+Gote hand: p
+  +--------+ 
+  |    k   |
+  | r  B   |
+  | r  B  K|
+  |        |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4719.483375.30 ]
+
+
+19.P-2c-2b
+Gote hand: rp
+  +--------+ 
+  |       b|
+  | r  P  k|
+  | b      |
+  |       K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s47498.1100.2196 ]
+
+
+26.p-1b-1c
+Gote hand: p
+  +--------+ 
+  |    k  r|
+  | R  B   |
+  |    K  p|
+  |        |
+  +--------+ 
+Sente hand: B
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s91839.15127.2919 ]
+
+
+15.K-3c-2c
+Gote hand: r
+  +--------+ 
+  |    k   |
+  | p     r|
+  |    K  b|
+  |        |
+  +--------+ 
+Sente hand: BP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1344376.14685.246 ]
+
+
+17.K-3d-2d
+Gote hand: r
+  +--------+ 
+  |    k   |
+  |    p   |
+  | B  b  P|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.161418.759 ]
+
+
+41.K-2d-1d
+Gote hand: rp
+  +--------+ 
+  | k      |
+  | b     p|
+  |    r   |
+  |       K|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s67887.14.759 ]
+
+
+14.k-2a-3a
+Gote hand: b
+  +--------+ 
+  | k      |
+  | r  P   |
+  | B  K   |
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3993.760.2460 ]
+
+
+19.K-3c-3b
+Gote hand: rp
+  +--------+ 
+  |        |
+  | K  b  k|
+  |       b|
+  |        |
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4727.15127.30 ]
+
+
+11.K-1c-1d
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  | r     p|
+  | b      |
+  | B     K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s696190.152.729 ]
+
+
+14.r-**-2a
+Gote hand: b
+  +--------+ 
+  |    r   |
+  | k  B  P|
+  | p  R  K|
+  |        |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s8041.15154.738 ]
+
+
+23.K-1d-1c
+Gote hand: b
+  +--------+ 
+  |    k   |
+  | p  r  R|
+  |       K|
+  |   +p   |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s83.14676.4383 ]
+
+
+9.R-1d-2d
+Gote hand: b
+  +--------+ 
+  |    k   |
+  | r  b   |
+  |        |
+  | K  R   |
+  +--------+ 
+Sente hand: PP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s535062.121.2700 ]
+
+
+26.k-2a-3b
+Gote hand: rrp
+  +--------+ 
+  |        |
+  | k  B  B|
+  |       K|
+  |        |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s73207.1611325.252 ]
+
+
+29.B-3a-2b
+Gote hand: b
+  +--------+ 
+  |      +P|
+  | k  B  K|
+  |   +p   |
+  | r      |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s54637.161095.2433 ]
+
+
+22.k-1a-2a
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  |    B  b|
+  |    P   |
+  | K      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29365.14.2223 ]
+
+
+20.r-**-2a
+Gote hand: p
+  +--------+ 
+  | k  r   |
+  |    R   |
+  | B  K   |
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s49313.30382.732 ]
+
+
+41.K-1d-2d
+Gote hand: r
+  +--------+ 
+  |    r   |
+  |    k  P|
+  | p  b   |
+  |    K   |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s606331.1610521.6 ]
+
+
+60.k-2a-1a
+Gote hand: 
+  +--------+ 
+  |       k|
+  | P  b  B|
+  |    K   |
+  |      +p|
+  +--------+ 
+Sente hand: RR
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43989.1.5349 ]
+
+
+17.K-1d-2d
+Gote hand: r
+  +--------+ 
+  |        |
+  | k      |
+  |    b   |
+  |    K   |
+  +--------+ 
+Sente hand: RBPP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s286174.5331.252 ]
+
+
+21.R-2b-3b
+Gote hand: b
+  +--------+ 
+  | p      |
+  | R      |
+  | K  B  k|
+  | P      |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4719.14916.2217 ]
+
+
+29.K-2d-3d
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  | r  b   |
+  |       b|
+  | K      |
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29365.154.63 ]
+
+
+36.r-3a-2a
+Gote hand: 
+  +--------+ 
+  |    r  k|
+  |    R   |
+  | K  B   |
+  |        |
+  +--------+ 
+Sente hand: BPP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s922.14666.756 ]
+
+
+15.R-**-3d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |    r  b|
+  |        |
+  | R  K  P|
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4967.243.2217 ]
+
+
+9.K-2d-1d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | r     k|
+  |       b|
+  | B     K|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.14644.3186 ]
+
+
+16.k-2a-3a
+Gote hand: rbp
+  +--------+ 
+  | k      |
+  |    R   |
+  | B      |
+  |    K   |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s4846.1.306 ]
+
+
+13.K-2d-3d
+Gote hand: bpp
+  +--------+ 
+  |        |
+  | k      |
+  | b      |
+  | K     R|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s654926.287.3 ]
+
+
+24.b-**-1b
+Gote hand: 
+  +--------+ 
+  |    k  b|
+  | P     b|
+  | R  P  K|
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s622930.44044.270 ]
+
+
+21.K-1d-1c
+Gote hand: p
+  +--------+ 
+  |    b   |
+  | k      |
+  | b  P  K|
+  |    r   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29387.374.2439 ]
+
+
+29.P-**-2d
+Gote hand: b
+  +--------+ 
+  |        |
+  |    k  b|
+  |    r   |
+  | K  P   |
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s281.118503.270 ]
+
+
+25.B-1b-2a
+Gote hand: p
+  +--------+ 
+  | k  B   |
+  |    p   |
+  |        |
+  | K  b  r|
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3999.441.57 ]
+
+
+15.R-**-2b
+Gote hand: rpp
+  +--------+ 
+  |        |
+  | b  R  k|
+  |       b|
+  |       K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s0.2090.5349 ]
+
+
+18.k-2b-3c
+Gote hand: rbpp
+  +--------+ 
+  |        |
+  |        |
+  | k  B   |
+  |       K|
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.15004.3186 ]
+
+
+15.K-2d-3d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |       b|
+  |    r   |
+  | K      |
+  +--------+ 
+Sente hand: RBP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s0.161090.5349 ]
+
+
+45.K-2c-3b
+Gote hand: r
+  +--------+ 
+  |       k|
+  | K  b   |
+  |        |
+  |        |
+  +--------+ 
+Sente hand: RBPP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1168382.15008.0 ]
+
+
+23.R-**-3c
+Gote hand: 
+  +--------+ 
+  |    k   |
+  | b     p|
+  | R  r  B|
+  | P     K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s7414.161051.2442 ]
+
+
+43.K-2c-3d
+Gote hand: rb
+  +--------+ 
+  | k      |
+  |        |
+  |      +p|
+  | K  b   |
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s493205.124.30 ]
+
+
+16.k-2a-3a
+Gote hand: 
+  +--------+ 
+  | k     p|
+  | B     r|
+  | K     B|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29365.483164.63 ]
+
+
+17.R-**-2d
+Gote hand: bpp
+  +--------+ 
+  |       b|
+  |    k   |
+  |    r   |
+  | K  R   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s30015.154.2223 ]
+
+
+10.k-2a-1a
+Gote hand: p
+  +--------+ 
+  | r     k|
+  |    R   |
+  |    B  K|
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s53306.253.63 ]
+
+
+22.r-**-1b
+Gote hand: 
+  +--------+ 
+  |    k   |
+  |    B  r|
+  | R  K   |
+  |        |
+  +--------+ 
+Sente hand: BPP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43996.163.30 ]
+
+
+11.P-1c-1b
+Gote hand: rp
+  +--------+ 
+  |        |
+  | k  b  P|
+  |    b   |
+  |    K  R|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s136488.211.30 ]
+
+
+26.b-3b-2c
+Gote hand: 
+  +--------+ 
+  | k      |
+  |    p  B|
+  | K  b  R|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29288.154.3186 ]
+
+
+18.k-2a-3a
+Gote hand: rbp
+  +--------+ 
+  | k      |
+  |    R   |
+  |    B  K|
+  |        |
+  +--------+ 
+Sente hand: P
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s71269.124.975 ]
+
+
+31.P-3d-3c
+Gote hand: r
+  +--------+ 
+  |        |
+  | b     k|
+  | P  p   |
+  |       K|
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s100067.14641.1488 ]
+
+
+35.K-2d-2c
+Gote hand: rp
+  +--------+ 
+  |    k   |
+  |        |
+  |    K  P|
+  | r      |
+  +--------+ 
+Sente hand: BB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s41366.154.12 ]
+
+
+29.P-**-2d
+Gote hand: rb
+  +--------+ 
+  |        |
+  | k  b   |
+  |    r  P|
+  |    P  K|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s58570.848.1008 ]
+
+
+16.k-2a-1a
+Gote hand: rb
+  +--------+ 
+  |       k|
+  |    P   |
+  | r     K|
+  |        |
+  +--------+ 
+Sente hand: BP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40013.364.2214 ]
+
+
+17.R-1d-2d
+Gote hand: p
+  +--------+ 
+  |        |
+  | k     b|
+  | B  r   |
+  | K  R   |
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s495858.979.273 ]
+
+
+23.K-2d-3d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | B  k   |
+  | b     P|
+  | K      |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s83.397.2217 ]
+
+
+13.R-**-2d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | b  b  k|
+  |        |
+  |    R  K|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s213037.1288408.4377 ]
+
+
+44.k-1a-1b
+Gote hand: pp
+  +--------+ 
+  |    r   |
+  | K  B  k|
+  |        |
+  | b      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s49313.331.30 ]
+
+
+20.b-1b-2c
+Gote hand: 
+  +--------+ 
+  |    k   |
+  | P  B   |
+  | K  b  R|
+  |        |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s3487.14674.2919 ]
+
+
+21.K-2c-3d
+Gote hand: r
+  +--------+ 
+  |    k   |
+  |    b   |
+  |       r|
+  | K  P   |
+  +--------+ 
+Sente hand: BP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s43998.34.273 ]
+
+
+37.P-**-3d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | k  b   |
+  |    b   |
+  | P  K   |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s58570.1127358.288 ]
+
+
+14.k-2a-1a
+Gote hand: r
+  +--------+ 
+  |       k|
+  |    P   |
+  |       K|
+  | r      |
+  +--------+ 
+Sente hand: BBP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s495138.124.273 ]
+
+
+19.K-2d-3d
+Gote hand: rp
+  +--------+ 
+  |        |
+  | b     k|
+  | P     b|
+  | K      |
+  +--------+ 
+Sente hand: R
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s121847.15129.246 ]
+
+
+42.k-2a-3a
+Gote hand: r
+  +--------+ 
+  | k      |
+  |    b  B|
+  | P     P|
+  |    K   |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s54637.14685.273 ]
+
+
+28.k-1a-2a
+Gote hand: r
+  +--------+ 
+  |    k   |
+  | b  B   |
+  |    P   |
+  |    K   |
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40656.164076.2214 ]
+
+
+17.K-1c-1d
+Gote hand: p
+  +--------+ 
+  | r     k|
+  |       b|
+  | B  r   |
+  |       K|
+  +--------+ 
+Sente hand: P
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s121849.381766.0 ]
+
+
+19.P-3c-3b
+Gote hand: 
+  +--------+ 
+  | r  p   |
+  | P  k   |
+  |    B  b|
+  | K     r|
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s119218.644281.2190 ]
+
+
+16.k-3b-3a
+Gote hand: p
+  +--------+ 
+  | k  B   |
+  |    b  K|
+  |    r   |
+  | P      |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1022208.162041.30 ]
+
+
+34.b-**-1c
+Gote hand: 
+  +--------+ 
+  |        |
+  | p  B  k|
+  |    R  b|
+  |       K|
+  +--------+ 
+Sente hand: RP
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s55968.154.2673 ]
+
+
+32.k-1a-2a
+Gote hand: rrp
+  +--------+ 
+  |    k   |
+  | p  B   |
+  |    B  K|
+  |        |
+  +--------+ 
+Sente hand: 
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s0.161090.69 ]
+
+
+15.K-2c-3b
+Gote hand: rrbpp
+  +--------+ 
+  |       k|
+  | K  b   |
+  |        |
+  |        |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s41267.2816.36 ]
+
+
+21.K-2d-3d
+Gote hand: bp
+  +--------+ 
+  | r      |
+  |    b  k|
+  | P  r   |
+  | K      |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s105.15037.513 ]
+
+
+19.K-3c-3d
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |    b  b|
+  |        |
+  | K  P   |
+  +--------+ 
+Sente hand: RR
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29282.31383.765 ]
+
+
+77.K-1c-1b
+Gote hand: bp
+  +--------+ 
+  | k  r   |
+  |    p  K|
+  |    r   |
+  |        |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s0.760.5349 ]
+
+
+26.k-3b-3c
+Gote hand: rbpp
+  +--------+ 
+  |        |
+  |        |
+  | k  B  K|
+  |        |
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s374099.14641.2457 ]
+
+
+23.K-3d-3c
+Gote hand: p
+  +--------+ 
+  |    k   |
+  |        |
+  | K  b  r|
+  |    B   |
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s582978.15125.975 ]
+
+
+15.K-2d-2c
+Gote hand: r
+  +--------+ 
+  |    k   |
+  |       p|
+  | P  K  b|
+  |        |
+  +--------+ 
+Sente hand: RB
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40656.1375.759 ]
+
+
+21.B-2d-1c
+Gote hand: rp
+  +--------+ 
+  |       k|
+  |    p   |
+  |    r  B|
+  | K      |
+  +--------+ 
+Sente hand: B
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s1505427.11.15 ]
+
+
+27.P-3d-3c
+Gote hand: rrb
+  +--------+ 
+  |        |
+  |    k   |
+  | P  b  P|
+  |    K   |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s29365.374.4383 ]
+
+
+21.R-1d-2d
+Gote hand: b
+  +--------+ 
+  |        |
+  |    k  b|
+  |    r   |
+  | K  R   |
+  +--------+ 
+Sente hand: PP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s612266.5335.246 ]
+
+
+34.k-2a-1a
+Gote hand: r
+  +--------+ 
+  |       k|
+  | B  b  p|
+  |    K   |
+  |       P|
+  +--------+ 
+Sente hand: R
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s40656.1.2466 ]
+
+
+13.K-2d-3d
+Gote hand: bp
+  +--------+ 
+  |        |
+  |       k|
+  |    r  B|
+  | K      |
+  +--------+ 
+Sente hand: RP
+** GOTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s121127.14410.6 ]
+
+
+24.p-1c-1d
+Gote hand: 
+  +--------+ 
+  |       k|
+  |    b  B|
+  | p  K   |
+  |      +p|
+  +--------+ 
+Sente hand: RR
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s378070.147.9 ]
+
+
+36.k-1a-2a
+Gote hand: 
+  +--------+ 
+  |    k   |
+  | R  B  p|
+  | K  R  P|
+  |        |
+  +--------+ 
+Sente hand: B
+** SENTE TO MOVE (mate in 1) **
+---------------------------------------
+[ Position id: s123299.31372.27 ]
+
+
+57.R-2d-3d
+Gote hand: p
+  +--------+ 
+  |    r  k|
+  | K  b   |
+  |    B  p|
+  | R      |
+  +--------+ 
+Sente hand: 
+** GOTE TO MOVE (mate in 1) **
