@@ -95,7 +95,64 @@ for (i in 1:length(goteTrue)) {
 }
 
 
-sum(sentePred == senteTrue)/length(senteTrue)
-sum(gotePred == goteTrue)/length(goteTrue)
+sum(sentePred == senteTrue)/length(senteTrue) # 0.2668428
+sum(gotePred == goteTrue)/length(goteTrue) # 0.3180109
+
+sum(senteProb == 0)/length(senteTrue) # 0.1902246
+sum(goteProb == 0)/length(senteTrue) # 0.1875826
+hist(senteProbs)
+hist(goteProbs)
 
 
+####
+##  Limit to legal moves
+####
+
+
+senteProbs <- numeric()
+sentePred <- character()
+for (i in 1:length(senteTrue)) {
+  v <- sentePrevTe[i]
+  senteTrue[i]
+  rule <- senteRule[[v]]
+  lg <- resTe$senteChoice[[i]]
+  rule <- rule[names(rule) %in% lg]
+  if (length(rule) == 0) {
+    sentePred[i] <- "unknown"
+    senteProbs[i] <- 0
+  } else {
+    rule <- rule/sum(rule)
+    (sentePred[i] <- names(rule)[rule == max(rule)][1])
+    if (senteTrue[i] %in% names(rule)) {
+      senteProbs[i] <- rule[names(rule)==senteTrue[i]]
+    }    
+  }
+}
+
+goteProbs <- numeric()
+gotePred <- character()
+for (i in 1:length(goteTrue)) {
+  v <- gotePrevTe[i]
+  goteTrue[i]
+  rule <- goteRule[[v]]
+  lg <- resTe$goteChoice[[i]]
+  rule <- rule[names(rule) %in% lg]
+  if (length(rule) == 0) {
+    gotePred[i] <- "unknown"
+    goteProbs[i] <- 0
+  } else {
+    rule <- rule/sum(rule)
+    (gotePred[i] <- names(rule)[rule == max(rule)][1])
+    if (goteTrue[i] %in% names(rule)) {
+      goteProbs[i] <- rule[names(rule)==goteTrue[i]]
+    }    
+  }
+}
+
+sum(sentePred == senteTrue)/length(senteTrue) # 0.440775
+sum(gotePred == goteTrue)/length(goteTrue) # 0.4588383
+
+sum(senteProb == 0)/length(senteTrue) # 0.1902246
+sum(goteProb == 0)/length(senteTrue) # 0.1875826
+hist(senteProbs)
+hist(goteProbs)
