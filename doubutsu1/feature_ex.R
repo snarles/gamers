@@ -34,3 +34,25 @@ for (i in 1:length(games)) {
 
 
 saveRDS(games2, "doubutsu1/altMoves.rds")
+
+
+lmoves <- games2
+
+movestr <- function(movev) {
+  paste(PIECESTRS[movev[1] + 1, 1],
+        c("**", LOX)[movev[2] + 1],
+        c("**", LOX)[movev[3] + 1],
+        sep = "-")
+}
+
+for (i in 1:length(games)) {
+  if (length(games[[i]]) > 0) {
+    for (j in 1:length(games[[i]])) {
+      alt <- games2[[i]][[j]]
+      mvm <- alt[, 49:51, drop = FALSE]
+      lmoves[[i]][[j]] <- apply(mvm, 1, movestr)
+    }
+  }
+}
+
+saveRDS(lmoves, "doubutsu1/lmoves.rds")

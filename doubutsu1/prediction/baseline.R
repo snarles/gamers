@@ -78,3 +78,8 @@ for (i in 1:length(senteTrue)) {
   }
 }
 
+
+####
+##  Get legal moves
+####
+
