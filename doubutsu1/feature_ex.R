@@ -28,6 +28,7 @@ for (i in 1:length(games)) {
       alt[ind, 1] <- 1
       games2[[i]][[j]] <- alt
     }
+    games2[[i]][[j+1]] <- NULL
   }
 }
 
