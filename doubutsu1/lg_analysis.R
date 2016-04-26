@@ -1,5 +1,5 @@
 ####
-##  More of a setup script at this point
+##  Extract some more features
 ####
 
 source("doubutsu1/source.R")
