@@ -1,8 +1,8 @@
-source("minishogi/doubutsu/source.R")
-hashtab <- readRDS("minishogi/doubutsu/hashtab.rds")
-matein <- readRDS("minishogi/doubutsu/matein.rds")
+source("doubutsu1/source.R")
+hashtab <- readRDS("doubutsu1/hashtab.rds")
+matein <- unlist(readRDS("doubutsu1/aws_output.rds"))
 
-games <- readRDS("minishogi/doubutsu/lg_states.rds")
+games <- readRDS("doubutsu1/lg_states.rds")
 hashes <- lapply(games, function(v) sapply(v, hash_state))
 
 mate_in_what <- 3
@@ -10,11 +10,10 @@ blind <- FALSE
 
 ## Mate in X puzzles
 
-h <- names(matein)[sample(which(matein == mate_in_what * 2), 1)]
+h <- names(matein)[sample(which(matein == mate_in_what * 2 + 1), 1)]
 gameno <- which(sapply(hashes, function(v) h %in% v))
-nextnode <- which(hashes[[gameno]] == h)[1]
-problem <- games[[gameno]][[nextnode - 1]]
-answer <- games[[gameno]][[nextnode]]
+cnode <- which(hashes[[gameno]] == h)[1]
+problem <- games[[gameno]][[cnode]]
 {
   print_state(problem, blind = blind)
   if (problem[4] %% 2 == 0) {
@@ -23,4 +22,3 @@ answer <- games[[gameno]][[nextnode]]
     catn(paste0("** GOTE TO MOVE (mate in ", mate_in_what, ") **"))
   }
 }
-# print_state(answer)
