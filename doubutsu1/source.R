@@ -16,7 +16,7 @@
 
 library(Rcpp)
 
-if (!"maxVal" %in% ls()) sourceCpp("doubutsu1/Rsource2.cpp")
+# if (!"maxVal" %in% ls()) sourceCpp("doubutsu1/Rsource2.cpp")
 
 init_state <- c(0,
                 0,
@@ -207,4 +207,19 @@ mate_in_X <- function(state, maxK = 4, nodemax = 2e6, verbose = FALSE) {
     }
   }
   return(list(mate_in = NA, tree = tree));
+}
+
+
+
+mateX <- function(state, maxdepth) {
+  flag <- TRUE
+  depth <- 0
+  while (flag) {
+    val <- maxVal(state, state[4] + depth)
+    if (val != 0) {
+      return(depth * val)
+    }
+    depth <- depth  + 1
+  }
+  return(NA)
 }

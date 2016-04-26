@@ -68,6 +68,136 @@ dim(allstates)
 allstates <- unique(allstates)
 dim(allstates)
 
+####
+##  Sort out sente and gote
+####
+
+library(scrapeR)
+dsplit <- function(v, l, r) strsplit(strsplit(v, l)[[1]][2], r)[[1]][1]
+
+get_sente_gote <- function(gid) {
+  (url <- paste0("https://www.littlegolem.net/jsp/game/game.jsp?gid=", gid))
+  raw <- scrape(url, parse = FALSE)[[1]]
+  res1 <- dsplit(raw, "Black</div>", "<br>")
+  res1 <- dsplit(res1, "plid=", "</a>")
+  Psente <- strsplit(res1, ">")[[1]][2]
+  res2 <- dsplit(raw, "White</div>", "<br>")
+  res2 <- dsplit(res2, "plid=", "</a>")
+  Pgote <- strsplit(res2, ">")[[1]][2]
+  c(Psente = Psente, Pgote = Pgote)
+}
+
+colnames(gametable)
+outcome <- gametable[, "outcome"]
+
+stripd <- sapply(glist, function(v) {
+  if (length(v) > 0 && rev(v)[1]=="resign") return(v[-length(v)])
+  return(v)
+})
+lens <- sapply(stripd, length)
+p1sente <- rep(NA, nrow(gametable))
+
+filt <- (outcome == "win") & (lens %% 2 == 1)
+p1sente[filt] <- TRUE
+filt <- (outcome == "lose") & (lens %% 2 == 1)
+p1sente[filt] <- FALSE
+filt <- (outcome == "win") & (lens %% 2 == 0)
+p1sente[filt] <- FALSE
+filt <- (outcome == "lose") & (lens %% 2 == 0)
+p1sente[filt] <- TRUE
+
+sum(is.na(p1sente))
+
+(gno <- sample(which(lens > 0), 1))
+gametable[gno, 1:6]
+p1sente[gno]
+
+Psente <- get_sente_gote(gametable[gno, "gid"])[1]
+
+c(p1sente[gno], Psente == gametable[gno, "player1"])
+
+
+sente <- character(nrow(gametable))
+gote <- character(nrow(gametable))
+pos <- !is.na(p1sente) & p1sente
+sente[pos] <- gametable[pos, "player1"]
+gote[pos] <- gametable[pos, "player2"]
+neg <- !is.na(p1sente) & !p1sente
+sente[neg] <- gametable[neg, "player2"]
+gote[neg] <- gametable[neg, "player1"]
+
+
+(gno <- sample(which(lens > 0 & sente != ""), 1))
+gametable[gno, 1:6]
+res <- get_sente_gote(gametable[gno, "gid"])
+
+c(sente[gno], res[1])
+c(gote[gno], res[2])
+
+rem <- which(sente == "")
+for (gno in rem) {
+  res <- get_sente_gote(gametable[gno, "gid"])
+  print(gametable[gno, 1:5])
+  sente[gno] <- res[1]
+  gote[gno] <- res[2]
+  print(res)
+}
+
+sente[is.na(sente)] <- ""
+gote[is.na(gote)] <- ""
+
+allpl <- c(sente, gote, gametable[, "player1"], gametable[, "player2"])
+sort(unique(allpl))
+sum(sort(table(allpl), decreasing = TRUE) > 5)
+## anonymizing mapping
+ANAMES <- c("LukeSkywalker", "ObiWanKenobi", "PrincessLeia", "Chewbacca", "HanSolo",
+            "PadmeAmidala", "DarthVader", "AnakinSkywalker", "JarJarBinks", "C3P0",
+            "Palpatine", "GenGrievous", "R2D2", "Yoda", "MaceWindu",
+            "CountDooku", "BobaFett", "LandoC", "Rey", "Finn",
+            "KyloRen", "BB8", "PoeDameron", "AdmiralAckbar", "WedgeAntilles",
+            "JangoFett", "QuiGonJinn", "JabbaTheHutt", "OwenLars", "DarthMaul",
+            "DarthVader", "RogueSquadron", "DarkSide", "Sebulba", "Snoke",
+            "GrandMoffTarkin", "DarthTyranus", "Wookie", "JediKnight", "SithLord",
+            "CaptainKirk", "Spock", "LeonardMcCoy", "NyotaUhura", "HikaruSulu",
+            "PavelChekov", "JeanLucPicard", "Data", "Worf", "Klingon",
+            "TheBorg", "Q", "CaptainJaneway", "Neelix", "SevenOf9", "Scotty",
+            "IndianaJones", "JamesBond", "Superman", "Buffy", "Willow",
+            "Xander", "ProfGiles", "Angel", "Cortana", "MasterChief",
+            "Xena", "Eowyn", "Samus", "Hermione", "HarryPotter",
+            "RonWeasley", "Voldemort", "Daenarys", "Dumbledore", "ProfSnape",
+            "DracoMalfoy", "Neo", "Trinity", "Morpheus", "HomerSimpson",
+            "MargeSimpson", "BartSimpson", "LisaSimpson", "Flanders",
+            "KrustyTheClown", "Smithers", "MrBurns", "Millhouse", "Spiderman",
+            "Batman", "Gandalf", "Wolverine")
+length(ANAMES)
+set.seed(0)
+conv <- sample(ANAMES, length(ANAMES), FALSE)
+names(conv) <- unique(allpl)
+conv[sente[1:100]]
+saveRDS(conv, "doubutsu1/anonymizer.rds")
+
+winner <- character(nrow(gametable))
+loser <- character(nrow(gametable))
+winner[outcome == "win"] <- gametable[outcome=="win", "player1"]
+winner[outcome == "lost"] <- gametable[outcome=="lost", "player2"]
+loser[outcome == "win"] <- gametable[outcome=="win", "player2"]
+loser[outcome == "lost"] <- gametable[outcome=="lost", "player1"]
+
+# gametable <- gametable0
+gametable0 <- gametable
+
+gametable0[1, ]
+
+gametable <- data.frame(gid = gametable[, "gid"], sente = conv[sente], gote = conv[gote], 
+                        winner = conv[winner], loser = conv[loser], len = lens, stringsAsFactors = FALSE)
+gametable$winner[is.na(gametable$winner)] <- ""
+gametable$loser[is.na(gametable$loser)] <- ""
+
+View(gametable)
+
+save(gametable, glist, file = "doubutsu1/lg_data.rda")
+
+
 ## various testing stuff
 # Export the subroutines to run the test!
 #  
@@ -79,4 +209,8 @@ dim(allstates)
 # print_state(mirrorState(state))
 # hashState0(state)
 # hashState0(mirrorState(state))
+
+
+
+
 
