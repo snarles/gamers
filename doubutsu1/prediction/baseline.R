@@ -1,4 +1,5 @@
 source("doubutsu1/lg_analysis_setup.R")
+lmoves <- readRDS("doubutsu1/lmoves.rds")
 
 ####
 ##  Markov chain model
@@ -7,23 +8,30 @@ source("doubutsu1/lg_analysis_setup.R")
 makeMarkovTables <- function(ginds) {
   senteTab <- matrix("", 0, 2)
   goteTab <- matrix("", 0, 2)
+  senteMoves <- list()
+  goteMoves <- list()
   colnames(senteTab) <- c("prev", "next")
   colnames(goteTab) <- c("prev", "next")
   for (gind in ginds) {
     game <- glist[[gind]]
+    mvs <- lmoves[[gind]]
     for (turn in 2:length(game)) {
       mv <- game[turn]
       prev <- game[turn - 1]
       if (mv != "resign") {
+        lmv <- mvs[[turn]]
         if (turn %% 2 == 1) {
           senteTab <- rbind(senteTab, c(prev, mv))
+          senteMoves <- c(senteMoves, list(lmv))
         } else {
           goteTab <- rbind(goteTab, c(prev, mv))
+          goteMoves <- c(goteMoves, list(lmv))
         }
       }
     }
   }
-  list(senteTab = senteTab, goteTab = goteTab)
+  list(senteTab = senteTab, goteTab = goteTab,
+       senteChoice = senteMoves, goteChoice = goteMoves)
 }
 
 aggPreds <- function(tab, xs) {
@@ -32,7 +40,7 @@ aggPreds <- function(tab, xs) {
     if (!xx %in% tab[, 1]) {
       ans[[xx]] <- c(unknown = 1)      
     } else {
-      m <- table(tab[tab[, 1]==xx, ])
+      m <- table(tab[tab[, 1]==xx, 2])
       ans[[xx]] <- m/sum(m)
     }
   }
@@ -54,6 +62,14 @@ senteRule <- aggPreds(resTr$senteTab, unique(sentePrevTe))
 goteRule <- aggPreds(resTr$goteTab, unique(gotePrevTe))
 
 
+# for (i in 1:length(senteTrue)) {
+#   if (!senteTrue[i] %in% resTe$senteChoice[[i]]) print(i)
+# }
+# for (i in 1:length(goteTrue)) {
+#   if (!goteTrue[i] %in% resTe$goteChoice[[i]]) print(i)
+# }
+
+
 senteProbs <- numeric()
 sentePred <- character()
 for (i in 1:length(senteTrue)) {
@@ -68,7 +84,7 @@ for (i in 1:length(senteTrue)) {
 
 goteProbs <- numeric()
 gotePred <- character()
-for (i in 1:length(senteTrue)) {
+for (i in 1:length(goteTrue)) {
   v <- gotePrevTe[i]
   goteTrue[i]
   rule <- goteRule[[v]]
@@ -79,7 +95,7 @@ for (i in 1:length(senteTrue)) {
 }
 
 
-####
-##  Get legal moves
-####
+sum(sentePred == senteTrue)/length(senteTrue)
+sum(gotePred == goteTrue)/length(goteTrue)
+
 
