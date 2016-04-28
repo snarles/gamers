@@ -5,6 +5,9 @@
 source("doubutsu1/lg_analysis_setup.R")
 alts <- readRDS("doubutsu1/altMoves.rds")
 
+eye11 <- pracma::eye(11)
+ut3 <- pracma::eye(3); ut3[upper.tri(ut3)] <- 1
+
 expand_state <- function(state) {
   board <- matrix(state[5:40], nrow = 3)
   hand1 <- state[41:44]
@@ -75,7 +78,7 @@ makeAltTable <- function(ginds) {
 }
 
 mcm_probs <- function(mat, bt, feature = ident) {
-  mat <- t(apply(mat, 1, feature))
+ # mat <- t(apply(mat, 1, feature))
   ips <- mat %*% bt
   ps <- exp(ips)
   ps/sum(ps)
@@ -86,12 +89,12 @@ mcm_sgd <- function(mats, choice, bt = NULL, penalty_type = 1, pen = 0.1, eps = 
   if (length(eps)==1) eps <- rep(eps, n)
   if (is.null(bt)) {
     mat <- mats[[1]]
-    mat <- t(apply(mat, 1, feature))
+   # mat <- t(apply(mat, 1, feature))
     bt <- numeric(ncol(mat))
   }
   for (i in 1:n) {
     xx <- mats[[i]]
-    xx <- t(apply(xx, 1, feature))
+ #   xx <- t(apply(xx, 1, feature))
     y <- choice[i]
     ps <- mcm_probs(xx, bt)
     bt <- bt + eps[i] * (xx[y, ] - as.numeric(t(ps) %*% xx))
@@ -106,7 +109,7 @@ mcm_loss <- function(mats, choice, bt, feature = ident) {
   corrects <- numeric(n)
   for (i in 1:n) {
     xx <- mats[[i]]
-    xx <- t(apply(xx, 1, feature))
+   # xx <- t(apply(xx, 1, feature))
     y <- choice[i]
     ps <- mcm_probs(xx, bt)
     if (which(ps == max(ps))[1] == y) corrects[i] <- 1
@@ -126,12 +129,22 @@ bt <- mcm_sgd(mats, choice, penalty_type = 1, pen = 0.1, eps = 0.1)
 mcm_loss(mats, choice, bt)[1:2]
 bt <- mcm_sgd(mats, choice, bt, penalty_type = 1, pen = 0.01, eps = 0.1)
 mcm_loss(mats, choice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, penalty_type = 2, pen = 0.001, eps = 0.0004)
+bt <- mcm_sgd(mats, choice, bt, penalty_type = 2, pen = 0.001, eps = 0.0004) # 0.37
+mcm_loss(mats, choice, bt)[1:2]
+
+mats <- resTr$goteAlts
+choice <- resTr$goteChoice
+bt <- mcm_sgd(mats, choice, penalty_type = 1, pen = 0.1, eps = 0.1)
+mcm_loss(mats, choice, bt)[1:2]
+bt <- mcm_sgd(mats, choice, bt, penalty_type = 1, pen = 0.01, eps = 0.1)
+mcm_loss(mats, choice, bt)[1:2]
+bt <- mcm_sgd(mats, choice, bt, penalty_type = 2, pen = 0.001, eps = 0.0004)  ## 0.37
 mcm_loss(mats, choice, bt)[1:2]
 
 
-##  Try with 2-interactions
-bt <- mcm_sgd(mats, choice, penalty_type = 1, pen = 0.1, eps = 0.1, feature = ixn2)
-mcm_loss(mats, choice, bt, feature = ixn2)[1:2]
-bt <- mcm_sgd(mats, choice, bt, penalty_type = 1, pen = 0.01, eps = 0.1, feature = ixn2)
-mcm_loss(mats, choice, bt, feature = ixn2)[1:2]
+# 
+# ##  Try with 2-interactions
+# bt <- mcm_sgd(mats, choice, penalty_type = 1, pen = 0.1, eps = 0.1, feature = ixn2)
+# mcm_loss(mats, choice, bt, feature = ixn2)[1:2]
+# bt <- mcm_sgd(mats, choice, bt, penalty_type = 1, pen = 0.01, eps = 0.1, feature = ixn2)
+# mcm_loss(mats, choice, bt, feature = ixn2)[1:2]
