@@ -108,9 +108,9 @@ nrow(resTe$senteX)
 # head(preds)
 prinds <- apply(preds, 1, function(v) which(v==max(v))[1])
 mpreds <- colnames(preds)[prinds]
-sum(mpreds == resTe$senteChosen)/length(mpreds) # 0.56
+sum(mpreds == resTe$senteChosen)/length(mpreds) # 0.5627
 mpreds <- legal_preds(preds, resTe$senteMoves)
-sum(mpreds == resTe$senteChosen)/length(mpreds) # 0.57
+sum(mpreds == resTe$senteChosen)/length(mpreds) # 0.5737
 
 ## Gote predictions
 filt <- filter_moves_by_count(resTr$goteChosen, 8)
@@ -118,6 +118,6 @@ trfitG <- glmnet(resTr$goteX[filt, ], resTr$goteChosen[filt], family = "multinom
 preds <- predict(trfitG, resTe$goteX, s = 0.001)[,, 1]
 prinds <- apply(preds, 1, function(v) which(v==max(v))[1])
 mpreds <- colnames(preds)[prinds]
-sum(mpreds == resTe$goteChosen)/length(mpreds) # 0.29
+sum(mpreds == resTe$goteChosen)/length(mpreds) # 0.2962
 mpreds <- legal_preds(preds, resTe$goteMoves)
-sum(mpreds == resTe$goteChosen)/length(mpreds) # 0.33
+sum(mpreds == resTe$goteChosen)/length(mpreds) # 0.3293
