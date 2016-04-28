@@ -40,8 +40,8 @@ ginds <- trinds
 gind <- 1
 
 makePosTables <- function(ginds) {
-  senteChosen <- numeric()
-  goteChosen <- numeric()
+  senteChosen <- character()
+  goteChosen <- character()
   senteMoves <- list()
   goteMoves <- list()
   sentePos <- numeric()
@@ -56,12 +56,12 @@ makePosTables <- function(ginds) {
       if (mv != "resign") {
         lmv <- mvs[[turn]]
         if (turn %% 2 == 1) {
-          senteChosen <- c(senteChosen, which(allmoves==mv)[1])
-          senteMoves <- c(senteMoves, list(match(lmv, allmoves)))
+          senteChosen <- c(senteChosen, mv)
+          senteMoves <- c(senteMoves, list(lmv))
           sentePos <- rbind(sentePos, prev)
         } else {
-          goteChosen <- c(goteChosen, which(allmoves==mv)[1])
-          goteMoves <- c(goteMoves, list(match(lmv, allmoves)))
+          goteChosen <- c(goteChosen, mv)
+          goteMoves <- c(goteMoves, list(lmv))
           gotePos <- rbind(gotePos, prev)
         }
       }
@@ -71,15 +71,53 @@ makePosTables <- function(ginds) {
   rownames(senteX) <- NULL
   goteX <- t(apply(gotePos, 1, expand_state))
   rownames(goteX) <- NULL
-  senteChosen <- factor(senteChosen, 1:nmoves)
-  goteChosen <- factor(goteChosen, 1:nmoves)
   list(senteX = senteX, senteChosen = senteChosen,
        senteMoves = senteMoves,
        goteX = goteX, goteChosen = goteChosen,
        goteMoves = goteMoves)
 }
 
+filter_moves_by_count <- function(chosen, thres = 1) {
+  tab <- table(chosen)
+  smoves <- names(tab)[tab  > thres]
+  chosen %in% smoves
+}
+
+legal_preds <- function(preds, legals) {
+  mpreds <- character()
+  for (i in 1:nrow(preds)) {
+    inds <- intersect(legals[[i]], colnames(preds))
+    if (length(inds) == 0) {
+      mpreds[i] <- "unknown"
+    } else {
+      pvs <- preds[i, inds]
+      mpreds[i] <- inds[pvs == max(pvs)][1]
+    }
+  }
+  mpreds
+}
+
 resTr <- makePosTables(trinds)
 resTe <- makePosTables(teinds)
 
-trfit <- glmnet(resTr$senteX, resTr$senteChosen, family = "multinomial")
+## Sente predictions
+filt <- filter_moves_by_count(resTr$senteChosen, 8)
+trfitS <- glmnet(resTr$senteX[filt, ], resTr$senteChosen[filt], family = "multinomial", alpha = 1, maxit = 1e6)
+preds <- predict(trfitS, resTe$senteX, s = 0.001)[,, 1]
+nrow(resTe$senteX)
+# head(preds)
+prinds <- apply(preds, 1, function(v) which(v==max(v))[1])
+mpreds <- colnames(preds)[prinds]
+sum(mpreds == resTe$senteChosen)/length(mpreds) # 0.56
+mpreds <- legal_preds(preds, resTe$senteMoves)
+sum(mpreds == resTe$senteChosen)/length(mpreds) # 0.57
+
+## Gote predictions
+filt <- filter_moves_by_count(resTr$goteChosen, 8)
+trfitG <- glmnet(resTr$goteX[filt, ], resTr$goteChosen[filt], family = "multinomial", alpha = 1, maxit=1e6)
+preds <- predict(trfitG, resTe$goteX, s = 0.001)[,, 1]
+prinds <- apply(preds, 1, function(v) which(v==max(v))[1])
+mpreds <- colnames(preds)[prinds]
+sum(mpreds == resTe$goteChosen)/length(mpreds) # 0.29
+mpreds <- legal_preds(preds, resTe$goteMoves)
+sum(mpreds == resTe$goteChosen)/length(mpreds) # 0.33
