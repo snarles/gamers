@@ -3,7 +3,8 @@
 ####
 
 source("doubutsu1/lg_analysis_setup.R")
-Rcpp::sourceCpp("doubutsu1/prediction/interaction.cpp")
+# Rcpp::sourceCpp("doubutsu1/prediction/interaction.cpp")
+Rcpp::sourceCpp("doubutsu1/prediction/interaction3.cpp")  ## use for order-3!!!
 alts <- readRDS("doubutsu1/altMoves.rds")
 
 eye11 <- pracma::eye(11)
@@ -78,7 +79,7 @@ mcm_sgd <- function(mats, choice, bt = NULL, l1p = 0.1, l2p = 0, eps = 0.1) {
     ps <- mcm_probs(xx, bt)
     ps[y] <- ps[y] - 1
     grad <- average2(xx, ps)
-    bt <- bt + eps * grad
+    bt <- bt - eps * grad
     bt <- shrinker(bt, eps * l1p, eps * l2p)
   }
   bt
@@ -106,26 +107,40 @@ resTr$senteAlts[[1]]
 mats <- resTr$senteAlts
 choice <- resTr$senteChoice
 bt <- mcm_sgd(mats, choice, l1p = 0.01, l2p = 0.1, eps = 0.1)
-# bt <- mcm_sgd(mats, choice, bt = rnorm(ncols2(136)), penalty_type = 1, pen = 0.1, eps = 0.1)
 mcm_loss(mats, choice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, l1p = 0.01, l2p = 0.1, eps = 0.01)
+bt <- mcm_sgd(mats, choice, bt, l1p = 0.1, l2p = 0.01, eps = 0.001)
+mcm_loss(mats, choice, bt)[1:2] 
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2] 
+
+
+bt <- mcm_sgd(mats, choice, bt, l1p = 1e-3, l2p = 1e-4, eps = 1e-3)
 mcm_loss(mats, choice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, penalty_type = 2, pen = 0.001, eps = 0.0004) # 0.37
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+
+bt <- mcm_sgd(mats, choice, bt, l1p = 0, l2p = 0, eps = 1e-3)
 mcm_loss(mats, choice, bt)[1:2]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+plot(bt)
+
+
+
+bt <- mcm_sgd(mats, choice, bt, l1p = 1e-3, l2p = 1e-4, eps = 1e-3)
+mcm_loss(mats, choice, bt)[1:2]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+bt <- mcm_sgd(mats, choice, bt, l1p = 1e-3, l2p = 1e-4, eps = 1e-3)
+mcm_loss(mats, choice, bt)[1:2]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+bt <- mcm_sgd(mats, choice, bt, l1p = 1e-3, l2p = 1e-4, eps = 1e-3)
+mcm_loss(mats, choice, bt)[1:2]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+
+
 
 mats <- resTr$goteAlts
 choice <- resTr$goteChoice
-bt <- mcm_sgd(mats, choice, penalty_type = 1, pen = 0.1, eps = 0.1)
+bt <- mcm_sgd(mats, choice, l1p = 0.01, l2p = 0.1, eps = 0.1)
 mcm_loss(mats, choice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, penalty_type = 1, pen = 0.01, eps = 0.1)
-mcm_loss(mats, choice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, penalty_type = 2, pen = 0.001, eps = 0.0004)  ## 0.37
+bt <- mcm_sgd(mats, choice, bt, l1p = 0.01, l2p = 0.1, eps = 0.0001)
 mcm_loss(mats, choice, bt)[1:2]
 
-
-# 
-# ##  Try with 2-interactions
-# bt <- mcm_sgd(mats, choice, penalty_type = 1, pen = 0.1, eps = 0.1, feature = ixn2)
-# mcm_loss(mats, choice, bt, feature = ixn2)[1:2]
-# bt <- mcm_sgd(mats, choice, bt, penalty_type = 1, pen = 0.01, eps = 0.1, feature = ixn2)
-# mcm_loss(mats, choice, bt, feature = ixn2)[1:2]
+mcm_loss(resTe$goteAlts, resTe$goteChoice, bt)[1:2]
