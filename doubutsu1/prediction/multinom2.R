@@ -1,8 +1,9 @@
 ####
-##  Multinomial prediction
+##  Multinomial prediction with interactions
 ####
 
 source("doubutsu1/lg_analysis_setup.R")
+Rcpp::sourceCpp("doubutsu1/prediction/interaction.cpp")
 alts <- readRDS("doubutsu1/altMoves.rds")
 
 eye11 <- pracma::eye(11)
@@ -26,30 +27,12 @@ expand_state <- function(state) {
   ans
 }
 
-ident <- function(v) v
-
-## makes interaction vector
-ixn2 <- function(v) {
-  p <- length(v)
-  nv <- names(v)
-  ix2 <- v %x% v
-  names(ix2) <- paste(rep(nv, each = p), ".", rep(nv, p), sep = "")
-  ## remove self-interactions
-  rmset <- paste(nv, ".", nv, sep = "")
-  ix2 <- ix2[!names(ix2) %in% rmset]
-  c(v, ix2)
-}
-
-shrinker <- function(bt, type, pen) {
-  if (type ==1) {
-    s <- sign(bt)
-    filt <- abs(bt) > pen
-    bt[!filt] <- 0
-    bt[filt] <- bt[filt] - s[filt] * pen
-  }
-  if (type == 2) {
-    bt <- bt - pen * bt
-  }
+shrinker <- function(bt, l1p, l2p) {
+  s <- sign(bt)
+  filt <- abs(bt) > l1p
+  bt[!filt] <- 0
+  bt[filt] <- bt[filt] - s[filt] * l1p
+  bt <- bt - l2p * bt
   bt
 }
 
@@ -77,28 +60,26 @@ makeAltTable <- function(ginds) {
        goteAlts = goteAlts, goteChoice = goteChoice)
 }
 
-mcm_probs <- function(mat, bt, feature = ident) {
- # mat <- t(apply(mat, 1, feature))
-  ips <- mat %*% bt
+mcm_probs <- function(mat, bt) {
+  ips <- predict2(mat, bt)
   ps <- exp(ips)
   ps/sum(ps)
 }
 
-mcm_sgd <- function(mats, choice, bt = NULL, penalty_type = 1, pen = 0.1, eps = 0.1, feature = ident) {
+mcm_sgd <- function(mats, choice, bt = NULL, l1p = 0.1, l2p = 0, eps = 0.1) {
   n <- length(mats)
-  if (length(eps)==1) eps <- rep(eps, n)
   if (is.null(bt)) {
     mat <- mats[[1]]
-   # mat <- t(apply(mat, 1, feature))
-    bt <- numeric(ncol(mat))
+    bt <- numeric(ncols2(ncol(mat)))
   }
   for (i in 1:n) {
     xx <- mats[[i]]
- #   xx <- t(apply(xx, 1, feature))
     y <- choice[i]
     ps <- mcm_probs(xx, bt)
-    bt <- bt + eps[i] * (xx[y, ] - as.numeric(t(ps) %*% xx))
-    bt <- shrinker(bt, penalty_type, eps[i] * pen)
+    ps[y] <- ps[y] - 1
+    grad <- average2(xx, ps)
+    bt <- bt + eps * grad
+    bt <- shrinker(bt, eps * l1p, eps * l2p)
   }
   bt
 }
@@ -109,7 +90,6 @@ mcm_loss <- function(mats, choice, bt, feature = ident) {
   corrects <- numeric(n)
   for (i in 1:n) {
     xx <- mats[[i]]
-   # xx <- t(apply(xx, 1, feature))
     y <- choice[i]
     ps <- mcm_probs(xx, bt)
     if (which(ps == max(ps))[1] == y) corrects[i] <- 1
@@ -125,10 +105,10 @@ resTr$senteAlts[[1]]
 
 mats <- resTr$senteAlts
 choice <- resTr$senteChoice
-bt <- mcm_sgd(mats, choice, penalty_type = 1, pen = 0.1, eps = 0.1)
-bt <- mcm_sgd(mats, choice, bt = rnorm(136), penalty_type = 1, pen = 0.1, eps = 0.1)
+bt <- mcm_sgd(mats, choice, l1p = 0.01, l2p = 0.1, eps = 0.1)
+# bt <- mcm_sgd(mats, choice, bt = rnorm(ncols2(136)), penalty_type = 1, pen = 0.1, eps = 0.1)
 mcm_loss(mats, choice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, penalty_type = 1, pen = 0.01, eps = 0.1)
+bt <- mcm_sgd(mats, choice, bt, l1p = 0.01, l2p = 0.1, eps = 0.01)
 mcm_loss(mats, choice, bt)[1:2]
 bt <- mcm_sgd(mats, choice, bt, penalty_type = 2, pen = 0.001, eps = 0.0004) # 0.37
 mcm_loss(mats, choice, bt)[1:2]
