@@ -134,6 +134,17 @@ bt <- mcm_sgd(mats, choice, bt, l1p = 1e-3, l2p = 1e-4, eps = 1e-3)
 mcm_loss(mats, choice, bt)[1:2]
 mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
 
+bt <- mcm_sgd(mats, choice, bt, l1p = 1e-4, l2p = 1e-5, eps = 1e-3)
+mcm_loss(mats, choice, bt)[1:2]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+bt <- mcm_sgd(mats, choice, bt, l1p = 1e-4, l2p = 1e-5, eps = 1e-3)
+mcm_loss(mats, choice, bt)[1:2]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+bt <- mcm_sgd(mats, choice, bt, l1p = 1e-4, l2p = 1e-5, eps = 1e-3)
+mcm_loss(mats, choice, bt)[1:2]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+
+saveRDS(bt, "doubutsu1/prediction/bt_order3sente_516.rds")
 
 
 mats <- resTr$goteAlts
