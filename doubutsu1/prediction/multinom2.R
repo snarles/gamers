@@ -120,6 +120,13 @@ mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
 bt <- mcm_sgd(mats, choice, bt, l1p = 0, l2p = 0, eps = 1e-3)
 mcm_loss(mats, choice, bt)[1:2]
 mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+bt <- mcm_sgd(mats, choice, bt, l1p = 0, l2p = 0, eps = 1e-3)
+mcm_loss(mats, choice, bt)[1:2]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+bt <- mcm_sgd(mats, choice, bt, l1p = 0, l2p = 0, eps = 1e-3)
+mcm_loss(mats, choice, bt)[1:2]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
+
 plot(bt)
 
 
