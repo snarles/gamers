@@ -3,8 +3,10 @@
 ####
 
 source("doubutsu1/lg_analysis_setup.R")
-# Rcpp::sourceCpp("doubutsu1/prediction/interaction.cpp")
-Rcpp::sourceCpp("doubutsu1/prediction/interaction3.cpp")  ## use for order-3!!!
+Rcpp::sourceCpp("doubutsu1/prediction/interaction.cpp")
+# Rcpp::sourceCpp("doubutsu1/prediction/interaction3.cpp")  ## use for order-3!!!
+
+
 alts <- readRDS("doubutsu1/altMoves.rds")
 
 eye11 <- pracma::eye(11)
@@ -26,15 +28,6 @@ expand_state <- function(state) {
   ans <- c(bboard, h1, h2)
   ## length(ans) ## 136
   ans
-}
-
-shrinker <- function(bt, l1p, l2p) {
-  s <- sign(bt)
-  filt <- abs(bt) > l1p
-  bt[!filt] <- 0
-  bt[filt] <- bt[filt] - s[filt] * l1p
-  bt <- bt - l2p * bt
-  bt
 }
 
 makeAltTable <- function(ginds) {
@@ -62,7 +55,7 @@ makeAltTable <- function(ginds) {
 }
 
 mcm_probs <- function(mat, bt) {
-  ips <- predict2(mat, bt)
+  ips <- predictX(mat, bt)
   ps <- exp(ips)
   ps/sum(ps)
 }
@@ -71,15 +64,14 @@ mcm_sgd <- function(mats, choice, bt = NULL, l1p = 0.1, l2p = 0, eps = 0.1) {
   n <- length(mats)
   if (is.null(bt)) {
     mat <- mats[[1]]
-    bt <- numeric(ncols2(ncol(mat)))
+    bt <- numeric(ncolsX(ncol(mat)))
   }
   for (i in 1:n) {
     xx <- mats[[i]]
     y <- choice[i]
     ps <- mcm_probs(xx, bt)
     ps[y] <- ps[y] - 1
-    grad <- average2(xx, ps)
-    bt <- bt - eps * grad
+    bt <- gradientX(bt, -eps * ps)
     bt <- shrinker(bt, eps * l1p, eps * l2p)
   }
   bt

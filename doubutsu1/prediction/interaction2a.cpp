@@ -6,23 +6,11 @@ int ncols2(int sz) {
   return sz + ((sz - 1) * sz)/2;
 }
 
-
 // [[Rcpp::export]]
-NumericVector shrinker(NumericVector bt, double l1p, double l2p) {
-  int n = bt.size();
-  for (int i = 0; i < n; i++) {
-    if (bt[i] >= -l1p && bt[i] <= l1p) {
-      bt[i] = 0;
-    }
-    if (bt[i] > l1p) {
-      bt[i] = bt[i] - l1p;
-    }
-    if (bt[i] < - l1p) {
-      bt[i] = bt[i] + l1p;
-    }
-    bt[i] = bt[i] * (1 - l2p);
-  }
-  return (bt);
+int index2(int p, int x, int y) {
+  int j = p - x;
+  int ans = (p - 1) + (p * (p - 1))/2 - (j * (j - 1))/2 + y - (p - j);
+  return (ans);
 }
 
 // [[Rcpp::export]]
@@ -75,6 +63,7 @@ NumericVector gradient2(NumericVector mu, NumericMatrix x, NumericVector ws) {
 // sourceCpp("doubutsu1/prediction/interaction.cpp")
 
 /*** R
+set.seed(0)
 x <- pracma::randn(3)
 bt <- rnorm(6)
 ws <- rnorm(3)
@@ -83,10 +72,4 @@ x2 %*% bt
 predict2(x, bt)
 bt + t(ws) %*% x2
 gradient2(bt, x, ws)
-c(-(5:1) + 0.1, 0, (1:5) - 0.1) * (1 - 0.2)
-shrinker(-5:5, 0.1, 0.2)
-
-predictX <- predict2
-gradientX <- gradient2
-ncolsX <- ncols2
 */
