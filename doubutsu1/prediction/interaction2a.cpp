@@ -91,15 +91,21 @@ NumericVector gradient2(NumericVector mu, NumericMatrix x, NumericVector ws) {
   int nr = x.nrow();
   int nc = x.ncol();
   for (int i = 0; i < nr; i++) {
-    int l = 0;
-    for (int j = 0; j < nc; j++) {
-      mu[l] = mu[l] + x(i, j) * ws[i];
-      l++;
+    NumericMatrix::Row rw = x(i, _);
+    NumericVector v(rw);
+    IntegerVector inds = nonzeroInds(v);
+    int nv = inds.size();
+    for (int jj = 0; jj < nv; jj++) {
+      int j = inds[jj];
+      int l = j;
+      mu[l] = mu[l] + v[j] * ws[i];
     }
-    for (int j = 0; j < (nc - 1); j++) {
-      for (int k = (j + 1); k < nc; k++) {
-        mu[l] = mu[l] + x(i, j) * x(i, k) * ws[i];
-        l++;
+    for (int jj = 0; jj < (nv - 1); jj++) {
+      for (int kk = (jj + 1); kk < nv; kk++) {
+        int j = inds[jj];
+        int k = inds[kk];
+        int l = index2(nc, j, k);
+        mu[l] = mu[l] + v[j] * v[j] * ws[i];
       }
     }
   }
