@@ -71,7 +71,7 @@ mcm_sgd <- function(mats, choice, bt = NULL, l1p = 0.1, l2p = 0, eps = 0.1) {
     y <- choice[i]
     ps <- mcm_probs(xx, bt)
     ps[y] <- ps[y] - 1
-    bt <- gradientX(bt, -eps * ps)
+    bt <- gradientX(bt, xx, -eps * ps)
     bt <- shrinker(bt, eps * l1p, eps * l2p)
   }
   bt
@@ -100,57 +100,17 @@ mats <- resTr$senteAlts
 choice <- resTr$senteChoice
 bt <- mcm_sgd(mats, choice, l1p = 0.01, l2p = 0.1, eps = 0.1)
 mcm_loss(mats, choice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, l1p = 0.1, l2p = 0.01, eps = 0.001)
-mcm_loss(mats, choice, bt)[1:2] 
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2] 
+bt <- mcm_sgd(mats, choice, bt, l1p = 0, l2p = 0, eps = 0.1)
+mcm_loss(mats, choice, bt)[[1]]
+mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[[1]] 
 
-
-bt <- mcm_sgd(mats, choice, bt, l1p = 1e-3, l2p = 1e-4, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
-
-bt <- mcm_sgd(mats, choice, bt, l1p = 0, l2p = 0, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, l1p = 0, l2p = 0, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, l1p = 0, l2p = 0, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
 
 plot(bt)
-
-
-
-bt <- mcm_sgd(mats, choice, bt, l1p = 1e-3, l2p = 1e-4, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, l1p = 1e-3, l2p = 1e-4, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, l1p = 1e-3, l2p = 1e-4, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
-
-bt <- mcm_sgd(mats, choice, bt, l1p = 1e-4, l2p = 1e-5, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, l1p = 1e-4, l2p = 1e-5, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, l1p = 1e-4, l2p = 1e-5, eps = 1e-3)
-mcm_loss(mats, choice, bt)[1:2]
-mcm_loss(resTe$senteAlts, resTe$senteChoice, bt)[1:2]
-
-saveRDS(bt, "doubutsu1/prediction/bt_order3sente_516.rds")
-
 
 mats <- resTr$goteAlts
 choice <- resTr$goteChoice
 bt <- mcm_sgd(mats, choice, l1p = 0.01, l2p = 0.1, eps = 0.1)
 mcm_loss(mats, choice, bt)[1:2]
-bt <- mcm_sgd(mats, choice, bt, l1p = 0.01, l2p = 0.1, eps = 0.0001)
-mcm_loss(mats, choice, bt)[1:2]
-
-mcm_loss(resTe$goteAlts, resTe$goteChoice, bt)[1:2]
+bt <- mcm_sgd(mats, choice, bt, l1p = 0, l2p = 0, eps = 0.1)
+mcm_loss(mats, choice, bt)[1]
+mcm_loss(resTe$goteAlts, resTe$goteChoice, bt)[1]
