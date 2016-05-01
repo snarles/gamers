@@ -105,7 +105,7 @@ NumericVector gradient2(NumericVector mu, NumericMatrix x, NumericVector ws) {
         int j = inds[jj];
         int k = inds[kk];
         int l = index2(nc, j, k);
-        mu[l] = mu[l] + v[j] * v[j] * ws[i];
+        mu[l] = mu[l] + v[j] * v[k] * ws[i];
       }
     }
   }
@@ -119,20 +119,20 @@ NumericVector gradient2(NumericVector mu, NumericMatrix x, NumericVector ws) {
 // sourceCpp("doubutsu1/prediction/interaction.cpp")
 
 /*** R
-x <- pracma::randn(3)
-x[1, 1] <- 0
-x[2, 3] <- 0
-bt <- rnorm(6)
-ws <- rnorm(3)
-x2 <- cbind(x, x[, 1] * x[, 2], x[, 1] * x[, 3], x[, 2] * x[, 3])
-x2 %*% bt
-predict2(x, bt)
-bt + t(ws) %*% x2
-gradient2(bt, x, ws)
-c(-(5:1) + 0.1, 0, (1:5) - 0.1) * (1 - 0.2)
-shrinker(-5:5, 0.1, 0.2)
-l0norm(c(0, 0.0, 2.0, -1))
-nonzeroInds(c(0, 0, 2, 1, 0, 0, 3, 0))
+# x <- pracma::randn(3)
+# x[1, 1] <- 0
+# x[2, 3] <- 0
+# bt <- rnorm(6)
+# ws <- rnorm(3)
+# x2 <- cbind(x, x[, 1] * x[, 2], x[, 1] * x[, 3], x[, 2] * x[, 3])
+# x2 %*% bt
+# predict2(x, bt)
+# bt + t(ws) %*% x2
+# gradient2(bt, x, ws)
+# c(-(5:1) + 0.1, 0, (1:5) - 0.1) * (1 - 0.2)
+# shrinker(-5:5, 0.1, 0.2)
+# l0norm(c(0, 0.0, 2.0, -1))
+# nonzeroInds(c(0, 0, 2, 1, 0, 0, 3, 0))
 
 predictX <- predict2
 gradientX <- gradient2

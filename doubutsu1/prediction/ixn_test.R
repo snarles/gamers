@@ -32,6 +32,6 @@ k = p - y
 (subind <- lastind2 - k * (k-1)/2 + 1)
 subind + z - (y + 1)
 
-lastind - 1 - j*(j-1)*(j-2)/6 + (j-1)*(j-2)/2 - k*(k-1)/2 + z-y+1
+lastind + 1 - j*(j-1)*(j-2)/6 + (j-1)*(j-2)/2 - k*(k-1)/2 + z-y-1
 
 nms[nms==paste(x, y, z, sep = ".")]
