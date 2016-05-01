@@ -40,3 +40,23 @@ title("Top players")
 # bt <- mcm_sgd(mats, choice, bt, l1p = 2e-5, l2p = 1e-5, eps = 0.01, weights = weights)
 # 
 # saveRDS(bt, "doubutsu1/prediction/multinom_fit2_sente_topPL.rds")
+
+
+
+p <- ncol(mats[[1]]) # base dimension
+nms1 <- colnames(mats[[1]])
+nms2 <- c()
+for (i in 1:(p - 1)) {
+  for (j in (i + 1):p) {
+    nms2 <- c(nms2, paste(nms1[i], nms1[j], sep = "."))
+  }
+}
+nms <- c(nms1, nms2)
+bt0 <- readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
+bt1 <- readRDS("doubutsu1/prediction/multinom_fit2_sente_topPL.rds")
+names(bt0) <- nms
+names(bt1) <- nms
+
+plot(bt0, bt1)
+sort(bt0 - bt1, decreasing = TRUE)[1:10]
+sort(bt0 - bt1)[1:10]
