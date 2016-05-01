@@ -1,14 +1,11 @@
 source("doubutsu1/lg_analysis_setup.R")
 lmoves <- readRDS("doubutsu1/lmoves.rds")
 gstates <- readRDS("doubutsu1/lg_states.rds")
-allmoves <- setdiff(sort(unique(do.call(c, glist))), "resign")
-nmoves <- length(allmoves)
+temp <-unique(unlist(sapply(lmoves, unlist)))
+allmoves <- setdiff(sort(temp), "resign")
+(nmoves <- length(allmoves))
 
 library(glmnet)
-
-print_state(state)
-
-state <- prev
 
 eye11 <- pracma::eye(11)
 ut3 <- pracma::eye(3); ut3[upper.tri(ut3)] <- 1

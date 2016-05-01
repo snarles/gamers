@@ -53,6 +53,9 @@ for (i in 1:length(games)) {
       lmoves[[i]][[j]] <- apply(mvm, 1, movestr)
     }
   }
+  else {
+    lmoves[[i]] <- list("resign")
+  }
 }
 
 saveRDS(lmoves, "doubutsu1/lmoves.rds")
