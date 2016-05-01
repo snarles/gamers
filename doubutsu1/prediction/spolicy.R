@@ -94,5 +94,18 @@ legal_preds <- function(preds, legals) {
   mpreds
 }
 
+fitter <- function(X, B, Y, nits = 10, eps = 0.1, l1p = 0.1, l2p = 0.1,
+                   verb = FALSE) {
+  old_ll <- loglik(X, B, Y)
+  for (i in 1:nits) {
+    B <- gdes(X, B, Y, l1p, l2p, eps)
+    llnew <- loglik(X, B, Y)
+    if (verb) print(c(llnew, eps))
+    if (llnew < old_ll) eps <- eps/2
+    old_ll <- llnew
+  }
+  B
+}
+
 resTr <- makePosTables(trinds)
 resTe <- makePosTables(teinds)
