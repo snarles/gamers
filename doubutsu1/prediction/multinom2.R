@@ -3,7 +3,7 @@
 ####
 
 source("doubutsu1/lg_analysis_setup.R")
-Rcpp::sourceCpp("doubutsu1/prediction/interaction.cpp")
+Rcpp::sourceCpp("doubutsu1/prediction/interaction2a.cpp")
 # Rcpp::sourceCpp("doubutsu1/prediction/interaction3.cpp")  ## use for order-3!!!
 
 
@@ -93,7 +93,6 @@ mcm_loss <- function(mats, choice, bt, feature = ident) {
 
 resTr <- makeAltTable(trinds)
 resTe <- makeAltTable(teinds)
-resTr$senteAlts[[1]]
 
 
 mats <- resTr$senteAlts
