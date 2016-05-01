@@ -35,18 +35,20 @@ mcm_probs <- function(mat, bt) {
   ps/sum(ps)
 }
 
-mcm_sgd <- function(mats, choice, bt = NULL, l1p = 0.1, l2p = 0, eps = 0.1) {
+mcm_sgd <- function(mats, choice, bt = NULL, l1p = 0.1, l2p = 0, eps = 0.1,
+                    weights = rep(1, length(mats))) {
   n <- length(mats)
   if (is.null(bt)) {
     mat <- mats[[1]]
     bt <- numeric(ncolsX(ncol(mat)))
   }
   for (i in 1:n) {
+    ww <- weights[i]
     xx <- mats[[i]]
     y <- choice[i]
     ps <- mcm_probs(xx, bt)
     ps[y] <- ps[y] - 1
-    bt <- gradientX(bt, xx, -eps * ps)
+    bt <- gradientX(bt, xx, -ww * eps * ps)
     bt <- shrinker(bt, eps * l1p, eps * l2p)
   }
   bt

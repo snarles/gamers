@@ -58,3 +58,5 @@ cf2 <- cfs[, filt][, o]
 for (i in 1:sum(o)) {
   text(min(cf2[, i]) - 0.5, i, nms[i])
 }
+
+saveRDS(tab, "doubutsu1/prediction/player_ranks.rds")
