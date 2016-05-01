@@ -6,9 +6,6 @@ source("doubutsu1/lg_analysis_setup.R")
 # Rcpp::sourceCpp("doubutsu1/prediction/interaction2a.cpp")
 # Rcpp::sourceCpp("doubutsu1/prediction/interaction3.cpp")  ## use for order-3!!!
 
-
-alts <- readRDS("doubutsu1/altMoves.rds")
-
 eye11 <- pracma::eye(11)
 ut3 <- pracma::eye(3); ut3[upper.tri(ut3)] <- 1
 
@@ -30,35 +27,7 @@ expand_state <- function(state) {
   ans
 }
 
-makeAltTable <- function(ginds) {
-  senteAlts <- list()
-  goteAlts <- list()
-  senteChoice <- numeric()
-  goteChoice <- numeric()
-  sentePl <- character()
-  gotePl <- character()
-  for (gind in ginds) {
-    game <- alts[[gind]]
-    meta <- gametable[gind, ]
-    for (turn in 2:length(game)) {
-      alt <- game[[turn]]
-      choice <- which(alt[, 1]==1)[1]
-      mat <- t(apply(alt, 1, expand_state))
-      if (turn %% 2 == 1) {
-        senteAlts <- c(senteAlts, list(mat))
-        senteChoice <- c(senteChoice, choice)
-        sentePl <- c(sentePl, meta$sente)
-      } else {
-        goteAlts <- c(goteAlts, list(mat))
-        goteChoice <- c(goteChoice, choice)
-        gotePl <- c(gotePl, meta$gote)
-      }
-    }
-  }
-  list(senteAlts = senteAlts, senteChoice = senteChoice,
-       goteAlts = goteAlts, goteChoice = goteChoice,
-       sentePl = sentePl, gotePl = gotePl)
-}
+
 
 mcm_probs <- function(mat, bt) {
   ips <- predictX(mat, bt)
@@ -83,21 +52,22 @@ mcm_sgd <- function(mats, choice, bt = NULL, l1p = 0.1, l2p = 0, eps = 0.1) {
   bt
 }
 
-mcm_loss <- function(mats, choice, bt, feature = ident) {
+mcm_loss <- function(mats, choice, legals, bt) {
   n <- length(mats)
   probs <- numeric(n)
   corrects <- numeric(n)
+  pmat <- matrix(NA, n, length(allmoves)); colnames(pmat) <- allmoves
   for (i in 1:n) {
     xx <- mats[[i]]
+    mvs <- legals[[i]]
     y <- choice[i]
     ps <- mcm_probs(xx, bt)
+    pmat[i, match(mvs, allmoves)] <- ps
     if (which(ps == max(ps))[1] == y) corrects[i] <- 1
     probs[i] <- ps[y]
   }
   list(acc = sum(corrects)/n, likloss = sum(log(probs)), 
-       probs = probs, corrects = corrects)
+       probs = probs, corrects = corrects, pmat = pmat)
 }
 
-resTr <- makeAltTable(trinds)
-resTe <- makeAltTable(teinds)
 

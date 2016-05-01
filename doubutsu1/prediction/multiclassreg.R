@@ -29,13 +29,17 @@ gdes <- function(X, B, Y, l1p=0, l2p=0, eps=0.1) {
 
 predict_acc <- function(X, B, Y, Yc) {
   ps <- mpreds(X, B)
+  colnames(ps) <- allmoves
   Yh <- 0 * Y
   probs <- 0 * Y
   for (i in 1:length(Y)) {
-    ps[i, -Yc[[i]]] <- -Inf
-    Yh[i] <- which(ps[i, ]==max(ps[i, ]))[1]
-    probs[i] <- ps[i, Yh[i]]
+    ps[i, -Yc[[i]]] <- NA
+    Yh[i] <- which(ps[i, ]==max(ps[i, ], na.rm = TRUE))[1]
+    probs[i] <- ps[i, Yh[i]]/sum(ps[i, Yc[[i]]])
   }
-  list(acc = sum(Yh==Y)/length(Y), logloss = sum(log(probs)))
+  list(acc = sum(Yh==Y)/length(Y), logloss = sum(log(probs)),
+       pmat = ps)
 }
+
+
 

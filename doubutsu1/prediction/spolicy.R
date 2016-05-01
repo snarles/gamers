@@ -32,44 +32,44 @@ expand_state <- function(state) {
 
 ginds <- trinds
 gind <- 1
-
-makePosTables <- function(ginds) {
-  senteChosen <- character()
-  goteChosen <- character()
-  senteMoves <- list()
-  goteMoves <- list()
-  sentePos <- numeric()
-  gotePos <- numeric()
-  for (gind in ginds) {
-    game <- glist[[gind]]
-    gs <- gstates[[gind]]
-    mvs <- lmoves[[gind]]
-    for (turn in 2:length(game)) {
-      mv <- game[[turn]]
-      prev <- gs[[turn - 1]]
-      if (mv != "resign") {
-        lmv <- mvs[[turn]]
-        if (turn %% 2 == 1) {
-          senteChosen <- c(senteChosen, mv)
-          senteMoves <- c(senteMoves, list(lmv))
-          sentePos <- rbind(sentePos, prev)
-        } else {
-          goteChosen <- c(goteChosen, mv)
-          goteMoves <- c(goteMoves, list(lmv))
-          gotePos <- rbind(gotePos, prev)
-        }
-      }
-    }
-  }
-  senteX <- t(apply(sentePos, 1, expand_state))
-  rownames(senteX) <- NULL
-  goteX <- t(apply(gotePos, 1, expand_state))
-  rownames(goteX) <- NULL
-  list(senteX = senteX, senteChosen = senteChosen,
-       senteMoves = senteMoves,
-       goteX = goteX, goteChosen = goteChosen,
-       goteMoves = goteMoves)
-}
+# 
+# makePosTables <- function(ginds) {
+#   senteChosen <- character()
+#   goteChosen <- character()
+#   senteMoves <- list()
+#   goteMoves <- list()
+#   sentePos <- numeric()
+#   gotePos <- numeric()
+#   for (gind in ginds) {
+#     game <- glist[[gind]]
+#     gs <- gstates[[gind]]
+#     mvs <- lmoves[[gind]]
+#     for (turn in 2:length(game)) {
+#       mv <- game[[turn]]
+#       prev <- gs[[turn - 1]]
+#       if (mv != "resign") {
+#         lmv <- mvs[[turn]]
+#         if (turn %% 2 == 1) {
+#           senteChosen <- c(senteChosen, mv)
+#           senteMoves <- c(senteMoves, list(lmv))
+#           sentePos <- rbind(sentePos, prev)
+#         } else {
+#           goteChosen <- c(goteChosen, mv)
+#           goteMoves <- c(goteMoves, list(lmv))
+#           gotePos <- rbind(gotePos, prev)
+#         }
+#       }
+#     }
+#   }
+#   senteX <- t(apply(sentePos, 1, expand_state))
+#   rownames(senteX) <- NULL
+#   goteX <- t(apply(gotePos, 1, expand_state))
+#   rownames(goteX) <- NULL
+#   list(senteX = senteX, senteChosen = senteChosen,
+#        senteMoves = senteMoves,
+#        goteX = goteX, goteChosen = goteChosen,
+#        goteMoves = goteMoves)
+# }
 
 filter_moves_by_count <- function(chosen, thres = 1) {
   tab <- table(chosen)
@@ -104,5 +104,5 @@ fitter <- function(X, B, Y, nits = 10, eps = 0.1, l1p = 0.1, l2p = 0.1,
   B
 }
 
-resTr <- makePosTables(trinds)
-resTe <- makePosTables(teinds)
+# resTr <- makePosTables(trinds)
+# resTe <- makePosTables(teinds)
