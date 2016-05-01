@@ -59,3 +59,15 @@ for (i in 1:length(games)) {
 }
 
 saveRDS(lmoves, "doubutsu1/lmoves.rds")
+
+
+####
+##  all non-resign moves
+####
+
+lmoves <- readRDS("doubutsu1/lmoves.rds")
+temp <-unique(unlist(sapply(lmoves, unlist)))
+allmoves <- setdiff(sort(temp), "resign")
+allmoves <- stringr::str_sort(allmoves)
+(nmoves <- length(allmoves))
+saveRDS(allmoves, file = "doubutsu1/allmoves.rds")

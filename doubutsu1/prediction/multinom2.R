@@ -35,8 +35,11 @@ makeAltTable <- function(ginds) {
   goteAlts <- list()
   senteChoice <- numeric()
   goteChoice <- numeric()
+  sentePl <- character()
+  gotePl <- character()
   for (gind in ginds) {
     game <- alts[[gind]]
+    meta <- gametable[gind, ]
     for (turn in 2:length(game)) {
       alt <- game[[turn]]
       choice <- which(alt[, 1]==1)[1]
@@ -44,14 +47,17 @@ makeAltTable <- function(ginds) {
       if (turn %% 2 == 1) {
         senteAlts <- c(senteAlts, list(mat))
         senteChoice <- c(senteChoice, choice)
+        sentePl <- c(sentePl, meta$sente)
       } else {
         goteAlts <- c(goteAlts, list(mat))
         goteChoice <- c(goteChoice, choice)
+        gotePl <- c(gotePl, meta$gote)
       }
     }
   }
   list(senteAlts = senteAlts, senteChoice = senteChoice,
-       goteAlts = goteAlts, goteChoice = goteChoice)
+       goteAlts = goteAlts, goteChoice = goteChoice,
+       sentePl = sentePl, gotePl = gotePl)
 }
 
 mcm_probs <- function(mat, bt) {
@@ -88,7 +94,8 @@ mcm_loss <- function(mats, choice, bt, feature = ident) {
     if (which(ps == max(ps))[1] == y) corrects[i] <- 1
     probs[i] <- ps[y]
   }
-  list(acc = sum(corrects)/n, likloss = sum(log(probs)), probs = probs, corrects = corrects)
+  list(acc = sum(corrects)/n, likloss = sum(log(probs)), 
+       probs = probs, corrects = corrects)
 }
 
 resTr <- makeAltTable(trinds)

@@ -14,6 +14,8 @@ load("doubutsu1/lg_data.rda", verbose = TRUE)
 length(games)
 length(glist)
 
+allmoves <- readRDS("doubutsu1/allmoves.rds")
+
 ginds <- which(sapply(glist, length) > 2)
 set.seed(0)
 trinds <- sort(sample(ginds, 500, FALSE))

@@ -1,9 +1,6 @@
 source("doubutsu1/lg_analysis_setup.R")
 lmoves <- readRDS("doubutsu1/lmoves.rds")
 gstates <- readRDS("doubutsu1/lg_states.rds")
-temp <-unique(unlist(sapply(lmoves, unlist)))
-allmoves <- setdiff(sort(temp), "resign")
-(nmoves <- length(allmoves))
 
 library(glmnet)
 
