@@ -53,4 +53,8 @@ filt <- tab$total > 10
 o <- order(cf0[filt])
 boxplot(cfs[, filt][, o], horizontal = TRUE, ylim = xl)
 points(cf0[filt][o], 1:sum(filt), pch = "+", col = "red")
-
+nms <- players[filt][o]
+cf2 <- cfs[, filt][, o]
+for (i in 1:sum(o)) {
+  text(min(cf2[, i]) - 0.5, i, nms[i])
+}
