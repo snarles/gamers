@@ -2,7 +2,7 @@
 ##  Multinomial prediction with interactions
 ####
 
-source("doubutsu1/lg_analysis_setup.R")
+if (!"allmoves" %in% ls()) source("doubutsu1/lg_analysis_setup.R")
 # Rcpp::sourceCpp("doubutsu1/prediction/interaction2a.cpp")
 # Rcpp::sourceCpp("doubutsu1/prediction/interaction3.cpp")  ## use for order-3!!!
 

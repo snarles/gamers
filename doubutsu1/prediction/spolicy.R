@@ -1,4 +1,4 @@
-source("doubutsu1/lg_analysis_setup.R")
+if (!"allmoves" %in% ls()) source("doubutsu1/lg_analysis_setup.R")
 lmoves <- readRDS("doubutsu1/lmoves.rds")
 gstates <- readRDS("doubutsu1/lg_states.rds")
 
