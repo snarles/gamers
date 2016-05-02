@@ -67,6 +67,9 @@ draw_piece <- function(x, y, ptype, pl, prom) {
   pstr <- paste0(pstr, c("k", "r", "b", "p", "t")[ptype + prom])
   img <- readPNG(paste0("graphics/", pstr, ".png"))
   rasterImage(img, x - 1 + .2, y - 1 + .2, x -.2, y -.2)
+  if (pl == 0) {
+    polygon(c(0.2, 0.2, 0.8, 0.8) + x -1, c(0.2, 0.8, 0.8, 0.2) + y - 1, border = rgb(0,0,0,0.8), lwd = 4)
+  }
 }
 
 draw_state <- function(state) {
