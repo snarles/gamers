@@ -12,3 +12,5 @@ for (i in 1:length(game)) {
   dev.off()
 }
 
+tab <- readRDS("doubutsu1/prediction/player_ranks.rds")
+View(tab[order(-tab$total), ])
