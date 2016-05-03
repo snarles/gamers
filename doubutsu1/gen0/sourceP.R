@@ -46,7 +46,7 @@ movestr <- function(movev) {
         sep = "-")
 }
 
-legal_moves <- function(state, tree = build_tree(state, 1)) {
+legal_moves <- function(state, tree = build_tree(state, 1, 200)) {
   mvs <- apply(tree[-1, 49:51, drop = FALSE], 1, movestr)
   mvs
 }
@@ -57,7 +57,7 @@ ai_move <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3) {
   } else {
     B <- Bg
   }
-  tree <- build_tree(state, 1)
+  tree <- build_tree(state, 1, nodemax = 200)
   mvs <- legal_moves(state, tree)
   s2 <- tree[-1, , drop = FALSE]
   ex <- expand_state(state)
