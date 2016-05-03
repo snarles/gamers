@@ -1,4 +1,4 @@
-if (!"allmoves" %in% ls()) source("doubutsu1/lg_analysis_setup.R")
+
 lmoves <- readRDS("doubutsu1/lmoves.rds")
 gstates <- readRDS("doubutsu1/lg_states.rds")
 
@@ -103,6 +103,6 @@ fitter <- function(X, B, Y, nits = 10, eps = 0.1, l1p = 0.1, l2p = 0.1,
   }
   B
 }
-
+if (!"allmoves" %in% ls()) source("doubutsu1/lg_analysis_setup.R")
 # resTr <- makePosTables(trinds)
 # resTe <- makePosTables(teinds)

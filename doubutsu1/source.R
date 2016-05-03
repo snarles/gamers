@@ -220,6 +220,7 @@ mateX <- function(state, maxdepth) {
       return(depth * val)
     }
     depth <- depth  + 1
+    if (depth > maxdepth) flag <- FALSE
   }
   return(NA)
 }

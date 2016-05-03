@@ -17,6 +17,7 @@ B <- fitter(X, B, Y, l1p = 1e-3, l2p = 1e-3, eps = 0.001, nits = 100, verb = TRU
 predict_acc(X, B, Y, Yc)[1]
 res_sp_sente <- predict_acc(Xte, B, Yte, Ycte)
 res_sp_sente[1] # 0.563
+colnames(B) <- allmoves
 # saveRDS(B, "doubutsu1/prediction/spfit1_sente.rds")
 
 ## GOTE
@@ -34,5 +35,5 @@ B <- fitter(X, B, Y, l1p = 1e-3, l2p = 1e-3, eps = 0.001, nits = 100, verb = TRU
 predict_acc(X, B, Y, Yc)[1]
 res_sp_gote <- predict_acc(Xte, B, Yte, Ycte)
 res_sp_gote[1] #0.547
-
+colnames(B) <- allmoves
 # saveRDS(B, "doubutsu1/prediction/spfit1_gote.rds")
