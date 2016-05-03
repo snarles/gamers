@@ -100,4 +100,3 @@ draw_state <- function(state) {
   }
 }
 
-draw_state(states[[3]])

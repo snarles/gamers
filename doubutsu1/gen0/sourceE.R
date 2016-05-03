@@ -62,12 +62,13 @@ ai_moveE <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3) {
   tree <- build_tree(state, 1, nodemax = 200)
   mvs <- legal_moves(state, tree)
   s2 <- tree[-1, , drop = FALSE]
-  a1 <- t(apply(s2, 1, expand_state))
+  a1 <- t(apply(s2, 1, expandState))
   ps <- mcm_probs(a1, B)
   mv <- sample(mvs, pmin(nsample, length(mvs)), FALSE, prob = ps)
-  vals <- numeric(length(mv))
-  for (i in 1:length(mv)) {
-    vals[i] <- mateX(s2[i, ], mateXdepth)
+  inds <- match(mv, mvs)
+  vals <- 0 * inds
+  for (i in 1:length(inds)) {
+    vals[i] <- mateX(s2[inds[i], ], mateXdepth)
   }
   vals[is.na(vals)] <- 0; names(vals) <- mv
   print(vals)
