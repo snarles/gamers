@@ -1,7 +1,7 @@
 #include <Rcpp.h>
 using namespace Rcpp;
 
-// [[Rcpp::export]]
+// // [[Rcpp::export]]
 IntegerVector move(IntegerVector state, int start, int end, int prom) {
   IntegerVector state2(clone(state));
   int startind = 1 + start * 3;
@@ -26,7 +26,7 @@ IntegerVector move(IntegerVector state, int start, int end, int prom) {
   return state2;
 }
 
-// [[Rcpp::export]]
+// // [[Rcpp::export]]
 IntegerVector dropp(IntegerVector state, int pl, int ptype, int end) {
   IntegerVector state2(clone(state));
   state2[48] = ptype;
@@ -317,7 +317,7 @@ IntegerVector mirrorState(IntegerVector state) {
   return(state);
 }
 
-//[[Rcpp::export]]
+// //[[Rcpp::export]]
 IntegerVector hashState(IntegerVector state0) {
   IntegerVector state(clone(state0));
   //IntegerVector hh2(3);
