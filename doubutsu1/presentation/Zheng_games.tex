@@ -336,7 +336,7 @@ Real-valued $E(s)$ may be more realistic, anyways.
 \item For fixed player $p$, let $\{(s_i, a_i)\}_{i=1}^n$ denote all the state-action pairs for that player in the database.
 \item Fit a logistic evaluation model, minimizing the loss
 \[
-\sum_{i=1}^n \vec{x}(s'(s_i, a_i))^T \beta - \log(\sum_{a \in \mathcal{A}} \exp[\beta^T \vec{x}(s'(s_i, a))]).
+-\sum_{i=1}^n \vec{x}(s'(s_i, a_i))^T \beta - \log(\sum_{a \in \mathcal{A}} \exp[\beta^T \vec{x}(s'(s_i, a))]).
 \]
 \item Loss function is convex!
 \item For large feature models, recommended to use L1 and L2 regularization.
@@ -362,6 +362,212 @@ Real-valued $E(s)$ may be more realistic, anyways.
 \includegraphics[scale = 0.1]{lg.png}
 \end{center}
 \end{frame}
+
+\begin{frame}
+\frametitle{Ranking the players}
+\begin{itemize}
+\item $\theta_i$ parameterizes the skill level of player $i$
+\[\Pr[i\text{ wins}|i\text{ vs }j] = \frac{\exp[\theta_i - \theta_j]}{1 + \exp[\theta_i - \theta_j]}.
+\]
+Bradley-Terry model
+\item A spread of $\theta_i - \theta_j = 1$ means a 73\% win rate for $i$.
+\item Fit using glmnet: add some regularization
+\item Bootstrap to get `confidence' intervals
+\end{itemize}
+
+\end{frame}
+
+\begin{frame}
+\begin{center}
+All players
+
+\includegraphics[scale = 0.25]{../prediction/ranking_ordered.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+Players with $ > 5$ games.
+\includegraphics[scale = 0.3]{../prediction/ranking_filtered.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{How close are we to perfect play?}
+The game is a theoretical loss for player 1.
+We looked at games where both players are above a given skill threshold... does the win \% approach the theoretical value?
+
+\begin{center}
+\begin{tabular}{c|c|c}\hline
+Group & \# of games & \% win for P1\\ \hline
+All & 701 & 0.48\\ \hline
+$\theta > 0$ & 119 & 0.44\\ \hline
+$\theta > 0.2$, $>5$ games & 19 & 0.31 \\ \hline
+$\theta > 0.3$, $>5$ games & 10 & 0.40 \\ \hline
+Theoretical & & 0 \\ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Move prediction}
+First step: lump all of the players into one group.  How well can we predict?
+\begin{center}
+\begin{tabular}{c|c|c}\hline
+Method & No. params & Accuracy\\ \hline
+Markov model & 186 & 0.441 \\\hline
+Policy, order-1 & 25k & 0.565 \\ \hline
+Policy, order-2 & 1.7m & 0.559 \\ \hline
+Eval, order-1 & 136 & 0.370 \\ \hline
+Eval, order-2 & 9316 & 0.559 \\ \hline
+Eval, order-3 & 419k & 0.439 \\ \hline
+\end{tabular}
+\end{center}
+Note: regularization was done in an ad hoc way.
+\end{frame}
+
+\begin{frame}
+\frametitle{Move prediction}
+What happens if we combine the policy and evaluation models?
+\[
+\hat{\Pr}[a|s] = 0.5 \hat{\Pr}_{policy}[a|s] + 0.5 \hat{\Pr}_{eval}[a|s]
+\]
+\begin{center}
+\begin{tabular}{c|c|c}\hline
+Method & No. params & Accuracy\\ \hline
+Policy, order-1 & 25k & 0.565 \\ \hline
+Eval, order-2 & 9316 & 0.559 \\ \hline
+Ensemble & 9316 & 0.611 \\ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Validating the evaluation function}
+\begin{itemize}
+\item The learned eval function should estimate some monotonic function of the probability of a win.
+\item Take game states near the ends of games:
+\begin{itemize}
+\item if player 1 won: $E(s)$ should be high.
+\item if player 1 lost: $E(s)$ should be low.
+\end{itemize}
+\item This gives a somewhat independent validation, since the win vs lose information was \emph{not} used to fit the evaluation model!
+\item We apply this for the second-order model (9316 params, 0.559 accuracy)
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Validating the evaluation function}
+Win
+
+\begin{tabular}{ccc}
+\includegraphics[scale = 0.15]{val1.pdf} & 
+\includegraphics[scale = 0.15]{val2.pdf} & 
+\includegraphics[scale = 0.15]{val3.pdf}\\ 
+\end{tabular}
+
+Lose
+
+\begin{tabular}{ccc}
+\includegraphics[scale = 0.15]{val4.pdf} & 
+\includegraphics[scale = 0.15]{val5.pdf} & 
+\includegraphics[scale = 0.15]{val6.pdf}\\
+\end{tabular}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Validating the evaluation function}
+Game states 3 or 4 moves from the end of the game, on Player 1's move.
+\begin{center}
+\includegraphics[scale = 0.5]{validation.pdf}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Personalized Prediction}
+\begin{itemize}
+\item Data $(p_i, s_i, a_i)$ where $p_i$ is the player
+\item Let $P$ be a set of `similar' players.
+\item We would like to predict moves made by players in $P$.
+\item Fit the evaluation model by minimizing
+\[
+-\sum_{i=1}^n w_i(\vec{x}(s'(s_i, a_i))^T \beta - \log(\sum_{a \in \mathcal{A}} \exp[\beta^T \vec{x}(s'(s_i, a))])).
+\]
+\item Set $w_i = 1 + w$ if $p \in P$ and $w_i = 1$ for $p \notin P$.  (Then normalize so $\sum w_i = n$).
+\item $w$ controls the extra weight given to players in $P$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Personalized Prediction}
+\begin{center}
+\includegraphics[scale = 0.4]{../prediction/personalized_topplayers.pdf}
+\end{center}
+Players with $\theta > 0.2$ and more than 5 games (6 players).
+\end{frame}
+
+\begin{frame}
+\frametitle{Personalized Prediction}
+\begin{center}
+\includegraphics[scale = 0.4]{../prediction/personalized_leastrated.pdf}
+\end{center}
+Players with $\theta < 0.2$ and more than 5 games (16 players).
+\end{frame}
+
+\begin{frame}
+\frametitle{Personalized Prediction}
+\begin{center}
+\includegraphics[scale = 0.4]{../prediction/personalized_boba.pdf}
+\end{center}
+BobaFett, 78 wins - 118 losses, $\theta = -0.02$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Personalized Prediction}
+\begin{center}
+\includegraphics[scale = 0.4]{../prediction/presonalized_landoC.pdf}
+\end{center}
+LandoC, 108 wins - 7 losses, $\theta = 0.38$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Personalized Prediction}
+\begin{center}
+\includegraphics[scale = 0.4]{../prediction/personalized_klingon.pdf}
+\end{center}
+Klingon, 98 wins - 7 losses, $\theta = 0.44$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Future play}
+\emph{As opposed to future `work'}.
+\begin{itemize}
+\item More games! More complex games and different types of games!
+\item Decision trees might be very, very good!
+\item `Regularize' the evaluation functions using the assumption of self-consistency
+\[
+E(s) \approx \min_{a \in \mathcal{A}(s)} \max_{a' \in \mathcal{A}(s')} E(s'(s', a')).
+\]
+\item Track player improvement over time.
+\item Our predictive models should be better than using a computer player to predict human moves, right?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\begin{center}
+\begin{tabular}{ccc}
+& \includegraphics[scale = 0.2]{../../graphics/Pawn.png} & \\
+\includegraphics[scale = 0.2]{../../graphics/Rook.png}&
+\includegraphics[scale = 0.2]{../../graphics/King.png}&
+\includegraphics[scale = 0.2]{../../graphics/Bishop.png}\\
+\end{tabular}
+\vspace{0.5in}
+
+Thanks!
+\end{center}
+\end{frame}
+
 
 \end{document}
 
