@@ -35,27 +35,27 @@ Bg1 <- bg
 winners <- character()
 
 i <- 1
-while (i < 101) {
-  #res <- selfplay(i, ai_moveP, Bs, Bg, nsample, mateXdepth)
-  if (i %% 2 ==0) {
-    sente <- "Eval"; gote <- "Pol"
-    res <- cvc(i, ai_moveE, bs, bg, ai_moveP, Bs, Bg, nsample, mateXdepth)
-  } else {
-    sente <- "Pol"; gote <- "Eval"
-    res <- cvc(i, ai_moveP, Bs, Bg, ai_moveE, bs, bg, nsample, mateXdepth)
-  }
+while (i < 1001) {
+  res <- selfplay(i, ai_moveE, bs, bg, nsample, mateXdepth)
+  # if (i %% 2 ==0) {
+  #   sente <- "Eval"; gote <- "Pol"
+  #   res <- cvc(i, ai_moveE, bs, bg, ai_moveP, Bs, Bg, nsample, mateXdepth)
+  # } else {
+  #   sente <- "Pol"; gote <- "Eval"
+  #   res <- cvc(i, ai_moveP, Bs, Bg, ai_moveE, bs, bg, nsample, mateXdepth)
+  # }
   games[[i]] <- res
   draw_state(res$slist[[length(res$slist)]])
   if (length(res$mlist) %% 2 == 0) {
     winners[i] <- sente
-    title(sente)
+    title("sente")
   } else {
     winners[i] <- gote
-    title(gote)
+    title("gote")
   }
   
   if (i %% 100 == 0) {
-    saveRDS(games, "doubutsu1/gen0/selfplaysPvE.rds")
+    saveRDS(games, "doubutsu1/gen0/selfplaysE00.rds")
   }
   i <- i + 1
 }
