@@ -380,3 +380,27 @@ IntegerVector hashState(IntegerVector state0) {
     return hh2;
   }
 }
+
+//[[Rcpp::export]]
+IntegerVector expandState(IntegerVector state) {
+  IntegerVector ans(136);
+  for (int start = 1; start < 13; start++) {
+    int oind = start * 3 + 1;
+    int nind = (start-1) * 10;
+    if (state[oind] != 0) {
+      int ptype = state[oind] + state[oind + 2] + 5 * state[oind + 1];
+      ans[nind + ptype - 1] = 1;
+    }
+  }
+  for (int i = 0; i < 8; i++) {
+    int ohand = i + 40;
+    int nhand = 2 * i + 120;
+    if (state[ohand] >= 1) {
+      ans[nhand] = 1;
+    }
+    if (state[ohand] == 2) {
+      ans[nhand + 1] = 1;
+    }
+  }
+  return (ans);
+}
