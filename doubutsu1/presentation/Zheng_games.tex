@@ -312,6 +312,7 @@ V^{\pi_1,\pi_2}(s'(s, a)).
 \[
 E(s) \approx V^{\pi_1,\pi_2}(s).
 \]
+\item This is also how chess engines work--idea first proposed by Shannon (1949)
 \end{itemize}
 \end{frame}
 
@@ -319,7 +320,7 @@ E(s) \approx V^{\pi_1,\pi_2}(s).
 \frametitle{Evaluation model}
 \begin{itemize}
 \item Suppose a player does have a mental evaluation function $E$.  Should they always choose $a$ which maximizes $E(s'(s, a))$?
-\item Even in deterministic games, there is an advantage to being unpredictable!
+\item Even in perfect information games, there is an advantage to being unpredictable!
 \item This leads to a multinomial model of player choice:
 \[
 \Pr[A = a|s] = \frac{\exp[E(s'(s, a))]}{\sum_{a' \in \mathcal{A}(s)} E(s'(s, a'))}

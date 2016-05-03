@@ -30,6 +30,7 @@ filt1 <- gametable$len > 7
 swin <- gametable$sente == gametable$winner
 slose <- gametable$sente == gametable$loser
 
+set.seed(3)
 wininds <- sort(sample(which(filt1 & swin), 3))
 loseinds <- sort(sample(which(filt1 & slose), 3))
 
@@ -52,4 +53,43 @@ stateexp <- lapply(states, expand_state)
 X <- do.call(rbind, stateexp)
 pr <- predictX(X, bt)
 pr
-print_state(states[[6]])
+
+
+for (i in 1:6) {
+  pdf(paste0("doubutsu1/presentation/val", i, ".pdf"))
+  draw_state(states[[i]])
+  title(floor(pr[i] * 100)/100, cex.main = 5)
+  dev.off()
+}
+
+
+####
+##  Get stats
+####
+
+wininds <- which(filt1 & swin)
+loseinds <- which(filt1 & slose)
+
+winstates <- list()
+losestates <- list()
+
+for (ind in wininds) {
+  ll <- gametable$len[ind]
+  state <- gstates[[ind]][[ll - 4]]
+  winstates <- c(winstates, list(state))
+}
+for (ind in loseinds) {
+  ll <- gametable$len[ind]
+  state <- gstates[[ind]][[ll - 3]]
+  losestates <- c(losestates, list(state))
+}
+
+states <- c(winstates, losestates)
+stateexp <- lapply(states, expand_state)
+X <- do.call(rbind, stateexp)
+pr <- predictX(X, bt)
+pr
+
+pr1 <- pr[1:length(winstates)]
+pr2 <- pr[-(1:length(winstates))]
+boxplot(pr1, pr2, names = c("win", "lose"))
