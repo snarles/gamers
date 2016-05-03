@@ -30,7 +30,7 @@ filt1 <- gametable$len > 7
 swin <- gametable$sente == gametable$winner
 slose <- gametable$sente == gametable$loser
 
-set.seed(3)
+set.seed(0)
 wininds <- sort(sample(which(filt1 & swin), 3))
 loseinds <- sort(sample(which(filt1 & slose), 3))
 
