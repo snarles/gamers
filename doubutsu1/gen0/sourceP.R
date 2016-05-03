@@ -70,7 +70,8 @@ ai_move <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3) {
   for (i in 1:length(inds)) {
     vals[i] <- mateX(s2[inds[i], ], mateXdepth)
   }
-  vals[is.na(vals)] <- 0
+  vals[is.na(vals)] <- 0; names(vals) <- mv
+  print(vals)
   if (max(vals) < 0) return(mv[which(vals==min(vals))[1]])
   if (min(vals) > 0) return("resign")
   return(sample(mv[vals <= 0], 1))
