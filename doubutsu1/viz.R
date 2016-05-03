@@ -86,8 +86,8 @@ draw_state <- function(state) {
       draw_piece(xs[i], ys[i], board[1, i], board[2, i], board[3, i])
     } 
   }
-  ptypes1 <- sort(c(which(hand1==1), which(hand1==2)))
-  ptypes2 <- sort(c(which(hand2==1), which(hand2==2)))
+  ptypes1 <- sort(c(which(hand1==1), which(hand1==2), which(hand1==2)))
+  ptypes2 <- sort(c(which(hand2==1), which(hand2==2), which(hand2==2)))
   if (length(ptypes1) > 0) {
     for (i in 1:length(ptypes1)) {
       draw_piece(4.25, i/2-.25, ptypes1[i], 0, 0)
