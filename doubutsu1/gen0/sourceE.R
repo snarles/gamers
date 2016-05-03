@@ -1,7 +1,8 @@
-source("doubutsu1/prediction/multiclassreg.R")
+source("doubutsu1/prediction/multinom2.R")
 source("doubutsu1/source.R")
 sourceCpp("doubutsu1/Rsource.cpp")
 sourceCpp("doubutsu1/Rsource2.cpp")
+sourceCpp("doubutsu1/prediction/interaction2a.cpp")
 
 
 eye11 <- pracma::eye(11)
@@ -51,8 +52,8 @@ legal_moves <- function(state, tree = build_tree(state, 1, 200)) {
   mvs
 }
 
-ai_moveP <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3) {
-  print("AIP")
+ai_moveE <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3) {
+  print("AIE")
   if (state[4] %% 2 == 0) {
     B <- Bs
   } else {
@@ -61,15 +62,12 @@ ai_moveP <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3) {
   tree <- build_tree(state, 1, nodemax = 200)
   mvs <- legal_moves(state, tree)
   s2 <- tree[-1, , drop = FALSE]
-  ex <- expand_state(state)
-  ps <- as.numeric(mpreds(t(ex), B))
-  ps[!colnames(B) %in% mvs] <- 0
-  ps <- ps/sum(ps); names(ps) <- colnames(B); sort(ps, TRUE)
-  mv <- sample(colnames(B), pmin(nsample, sum(ps!=0)), FALSE, prob = ps)
-  inds <- match(mv, mvs)
-  vals <- 0 * inds
-  for (i in 1:length(inds)) {
-    vals[i] <- mateX(s2[inds[i], ], mateXdepth)
+  a1 <- t(apply(s2, 1, expand_state))
+  ps <- mcm_probs(a1, B)
+  mv <- sample(mvs, pmin(nsample, length(mvs)), FALSE, prob = ps)
+  vals <- numeric(length(mv))
+  for (i in 1:length(mv)) {
+    vals[i] <- mateX(s2[i, ], mateXdepth)
   }
   vals[is.na(vals)] <- 0; names(vals) <- mv
   print(vals)
