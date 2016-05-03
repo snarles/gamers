@@ -437,7 +437,7 @@ What happens if we combine the policy and evaluation models?
 Method & No. params & Accuracy\\ \hline
 Policy, order-1 & 25k & 0.565 \\ \hline
 Eval, order-2 & 9316 & 0.559 \\ \hline
-Ensemble & 9316 & 0.611 \\ \hline
+Ensemble & 34k & 0.611 \\ \hline
 \end{tabular}
 \end{center}
 \end{frame}
@@ -537,6 +537,18 @@ LandoC, 108 wins - 7 losses, $\theta = 0.38$.
 \includegraphics[scale = 0.4]{../prediction/personalized_klingon.pdf}
 \end{center}
 Klingon, 98 wins - 7 losses, $\theta = 0.44$.
+\end{frame}
+
+\begin{frame}
+\frametitle{Conclusions}
+\begin{itemize}
+\item Two approaches for prediction problem: policy model and evaluation model.
+\item Policy model works well for the most part, but may fare worse in new situations.
+\item Evaluation model may be more parameter-efficient.
+\item Ensemble works better than either model.
+\item Second-order evaluation model could likely be improved, based on validation results.
+\item Hypothesis: better players are more predictable than worse players?
+\end{itemize}
 \end{frame}
 
 \begin{frame}
