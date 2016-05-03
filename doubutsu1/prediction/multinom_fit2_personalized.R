@@ -7,7 +7,7 @@ Rcpp::sourceCpp("doubutsu1/prediction/interaction2a.cpp")
 
 tab <- readRDS("doubutsu1/prediction/player_ranks.rds")
 players <- rownames(tab)
-(player <- players[order(-tab$total)[5]])
+(player <- players[order(-tab$total)[3]])
 
 mats <- resTr$senteAlts
 choice <- resTr$senteChoice
