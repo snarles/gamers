@@ -38,7 +38,7 @@ predict_acc <- function(X, B, Y, Yc) {
     probs[i] <- ps[i, Yh[i]]/sum(ps[i, Yc[[i]]])
   }
   list(acc = sum(Yh==Y)/length(Y), logloss = sum(log(probs)),
-       pmat = ps)
+       pmat = ps, corrects = (Yh == Y)+0)
 }
 
 

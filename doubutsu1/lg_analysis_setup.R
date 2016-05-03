@@ -38,6 +38,8 @@ makeTable <- function(ginds) {
   goteMoves <- list()
   sentePos <- numeric()
   gotePos <- numeric()
+  senteTurn <- numeric()
+  goteTurn <- numeric()
   for (gind in ginds) {
     ALT <- alts[[gind]]
     meta <- gametable[gind, ]
@@ -58,6 +60,7 @@ makeTable <- function(ginds) {
         senteChosen <- c(senteChosen, mv)
         senteMoves <- c(senteMoves, list(lmv))
         sentePos <- rbind(sentePos, prev)
+        senteTurn <- rbind(senteTurn, turn)
       } else {
         goteAlts <- c(goteAlts, list(mat))
         goteChoice <- c(goteChoice, choice)
@@ -65,6 +68,7 @@ makeTable <- function(ginds) {
         goteChosen <- c(goteChosen, mv)
         goteMoves <- c(goteMoves, list(lmv))
         gotePos <- rbind(gotePos, prev)
+        goteTurn <- rbind(goteTurn, turn)
       }
     }
   }
@@ -78,7 +82,7 @@ makeTable <- function(ginds) {
        senteX = senteX, senteChosen = senteChosen,
        senteMoves = senteMoves,
        goteX = goteX, goteChosen = goteChosen,
-       goteMoves = goteMoves)
+       goteMoves = goteMoves, senteTurn = senteTurn, goteTurn = goteTurn)
 }
 
 resTr <- makeTable(trinds)

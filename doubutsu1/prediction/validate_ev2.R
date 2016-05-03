@@ -2,6 +2,7 @@ source("doubutsu1/lg_analysis_setup.R")
 Rcpp::sourceCpp("doubutsu1/prediction/interaction2a.cpp")
 lmoves <- readRDS("doubutsu1/lmoves.rds")
 gstates <- readRDS("doubutsu1/lg_states.rds")
+source("doubutsu1/viz.R")
 
 eye11 <- pracma::eye(11)
 ut3 <- pracma::eye(3); ut3[upper.tri(ut3)] <- 1
@@ -26,7 +27,8 @@ expand_state <- function(state) {
 bt <- readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
 
 ## get some sente win states and sente loss states
-filt1 <- gametable$len > 7
+filt1 <- rep(FALSE, nrow(gametable)); filt1[teinds] <- TRUE
+filt1 <- filt1 & (gametable$len > 7)
 swin <- gametable$sente == gametable$winner
 slose <- gametable$sente == gametable$loser
 
@@ -93,3 +95,8 @@ pr
 pr1 <- pr[1:length(winstates)]
 pr2 <- pr[-(1:length(winstates))]
 boxplot(pr1, pr2, names = c("win", "lose"))
+
+sp <- (mean(pr1) + mean(pr2))/2
+abline(sp, 0, col = "red")
+accsplit <- .5 * sum(pr1 > sp)/length(pr1) + .5 * sum(pr2 < sp)/length(pr2)
+title(floor(accsplit * 100)/100)

@@ -139,9 +139,11 @@ Shogi ($\approx$1500 AD) & \includegraphics[scale = 0.15]{shogi.jpg}
 \frametitle{Doubutsu Shogi (Animal Shogi)}
 \begin{center}
 \includegraphics[scale = 0.2]{Madokakitao.jpg}
+\hspace{1in}
+\includegraphics[scale = 0.3]{kid.jpg}
 
-2009, Madoka Kitao
 \end{center}
+2009, Madoka Kitao
 \end{frame}
 
 \begin{frame}
@@ -205,11 +207,11 @@ Shogi ($\approx$1500 AD) & \includegraphics[scale = 0.15]{shogi.jpg}
 \begin{frame}
 \frametitle{The prediction problem}
 \begin{itemize}
-\item \emph{Database} of games from players $p_1,\hdots, p_m$ with:
+\item \emph{Database} of games from players $p = 1,\hdots, m$ with:
 \begin{itemize}
 \item Date played
 \item Player 1 and player 2 identities
-\item List of moves $\to$ player, state, action pairs $(p_j, s_i, a_i)$
+\item List of moves $\to$ player, state, action pairs $(p_i, s_i, a_i)$
 \end{itemize}
 \item In a \emph{new game}, can we predict which move a given player $p$ will make, given the game state $s$?
 \item In other words: given $(p, s)$, guess $a \in \mathcal{A}(s)$.
@@ -443,6 +445,13 @@ Ensemble & 34k & 0.611 \\ \hline
 \end{frame}
 
 \begin{frame}
+\frametitle{Move prediction accuracy by turn}
+\includegraphics[scale = 0.4]{acc_turn.pdf}
+
+Policy (red), Eval (blue), Ensemble (violet)
+\end{frame}
+
+\begin{frame}
 \frametitle{Validating the evaluation function}
 \begin{itemize}
 \item The learned eval function should estimate some monotonic function of the probability of a win.
@@ -480,7 +489,7 @@ Lose
 \frametitle{Validating the evaluation function}
 Game states 3 or 4 moves from the end of the game, on Player 1's move.
 \begin{center}
-\includegraphics[scale = 0.5]{validation.pdf}
+\includegraphics[scale = 0.4]{validation.pdf}
 \end{center}
 \end{frame}
 
@@ -570,9 +579,9 @@ E(s) \approx \min_{a \in \mathcal{A}(s)} \max_{a' \in \mathcal{A}(s')} E(s'(s', 
 \begin{center}
 \begin{tabular}{ccc}
 & \includegraphics[scale = 0.2]{../../graphics/Pawn.png} & \\
-\includegraphics[scale = 0.2]{../../graphics/Rook.png}&
+\includegraphics[scale = 0.2]{../../graphics/Bishop.png} & 
 \includegraphics[scale = 0.2]{../../graphics/King.png}&
-\includegraphics[scale = 0.2]{../../graphics/Bishop.png}\\
+\includegraphics[scale = 0.2]{../../graphics/Rook.png}\\
 \end{tabular}
 \vspace{0.5in}
 
