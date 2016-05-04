@@ -23,7 +23,15 @@ next_move <- function(state) {
   if (mv != "unknown") return(mv)
   mv <- next_move_from_book(state)
   if (mv != "unknown") return(mv)
-  next_move_from_ai(state, bg, bs, 1, 5, 2, 10, FALSE)
+  next_move_from_ai(state, bg, bs, 1, 5, 4, 10, TRUE)
+}
+
+opening_move_from_book <- function() {
+  filt <- database[, 4] == 1
+  ind <- sample(which(filt), 1)
+  st <- database[ind, ]
+  mv <- movestr(st[49:51])
+  return(mv)
 }
 
 next_move_mateX <- function(state, mateXdepth = 3) {

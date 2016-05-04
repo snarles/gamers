@@ -27,11 +27,12 @@ query_move <- function(state) {
     }
     if (x == "P") {
       print_state(state, TRUE)
-      print(mvs)
+      print(sort(mvs))
     }
     if (x == "V") {
       draw_state(state)
-      title("Cheater~~!", sub = paste(mvs, collapse = ", "))
+      title("Cheater~~!", sub = paste(sort(mvs), collapse = ", "))
+      print(sort(mvs))
     }
     if (x %in% mvs) return(x)
   }
@@ -49,7 +50,7 @@ if (x %in% c("0", "1")) {
   state <- init_state
   game_states <- c(game_states, list(state))
   if (pl == "gote") {
-    mv <- next_move(state)
+    mv <- opening_move_from_book()
     game_record <- c(game_record, mv)
     state <- move_parser(state, mv)
     game_states <- c(game_states, list(state))
@@ -78,6 +79,7 @@ if (x %in% c("0", "1")) {
       sink()
       game_record <- c(game_record, mv)
       state <- move_parser(state, mv)
+      game_states <- c(game_states, list(state))
       if (mv == "resign") {
         catn("===YOU WIN!!===")
         draw_state(state)
