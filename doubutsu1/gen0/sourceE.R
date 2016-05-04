@@ -58,12 +58,12 @@ legal_moves <- function(state, tree = build_tree(state, 1, 200)) {
   mvs
 }
 
-ai_moveE <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3) {
+ai_moveE <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3, verbose = TRUE) {
   if (state[4] %% 2 == 0) {
-    print("AIE_sente")
+    # print("AIE_sente")
     B <- Bs
   } else {
-    print("AIE_gote")
+    # print("AIE_gote")
     B <- Bg
   }
   tree <- build_tree(state, 1, nodemax = 200)
@@ -78,7 +78,7 @@ ai_moveE <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3) {
     vals[i] <- mateX(s2[inds[i], ], mateXdepth)
   }
   vals[is.na(vals)] <- 0; names(vals) <- mv
-  print(vals)
+  if (verbose) print(vals)
   if (max(vals) < 0) return(mv[which(vals==min(vals))[1]])
   if (min(vals) > 0) return("resign")
   return(sample(mv[vals <= 0], 1))

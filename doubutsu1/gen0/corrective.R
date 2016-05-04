@@ -39,7 +39,7 @@ analyze_state <- function(state, bs, bg, nsample = 1, mateXdepth = 5, nreps = 2,
 }
 
 
-state <- states[sample(nrow(states), 1), ]
-resA <- analyze_state(state, bs, bg, verbose = TRUE)
-res <- selfplay(NULL, ai_moveE, bs, bg, nsample, mateXdepth, start = state)
-res$winner
+# state <- states[sample(nrow(states), 1), ]
+# resA <- analyze_state(state, bs, bg, verbose = TRUE)
+# res <- selfplay(NULL, ai_moveE, bs, bg, nsample, mateXdepth, start = state)
+# res$winner
