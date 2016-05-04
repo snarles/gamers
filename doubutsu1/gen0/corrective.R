@@ -23,8 +23,8 @@ analyze_state <- function(state, bs, bg, nsample = 1, mateXdepth = 5, nreps = 2,
         }
       }
     } else {
-      if (mX >= 0) vals[j] <- 0
-      if (mX < 0) vals[j] <- 1
+      if (mX > 0) vals[j] <- 0
+      if (mX <= 0) vals[j] <- 1
     }
   }
   if (verbose) {

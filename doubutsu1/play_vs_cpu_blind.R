@@ -56,6 +56,7 @@ if (x %in% c("0", "1")) {
   }
   print_state(state, TRUE)
   while(flag) {
+
     if (pl == "sente" && state[4]%%2 == 0) {
       mv <- query_move(state)
     }
@@ -69,6 +70,7 @@ if (x %in% c("0", "1")) {
     if (mv == "resign") flag <- FALSE
     if (!mv %in% c("resign", "quit")) {
       state <- move_parser(state, mv)
+      mX <- mateX(state, 3)
       game_states <- c(game_states, list(state))
       print("AI THINKING")
       sink("temp.txt")
@@ -82,6 +84,16 @@ if (x %in% c("0", "1")) {
         title("Victory!", sub = pl)
         flag <- FALSE
       }
+    }
+    mX0 <- mateX(state, 0)
+    if (!is.na(mX0) && mX0 == 0) {
+      last_mv <- movestr(state[49:51])
+      opponent <- c("Gote", "Sente")[state[4] %% 2 + 1]
+      catn(paste(opponent, "moved", last_mv))
+      catn("===YOU LOSE!!===")
+      draw_state(state)
+      title("Defeat!", sub = pl)
+      flag <- FALSE
     }
   }  
 } else {

@@ -34,17 +34,24 @@ next_move_mateX <- function(state, mateXdepth = 3) {
   alts <- tree[-1, , drop = FALSE]
   vals <- apply(alts, 1, mateX, mateXdepth)
   mvs <- legal_moves(state, tree)
-  return(mvs[which(vals < 0)[1]])
+  mv <- mvs[which(vals <= 0)[1]]
+  print(c(mv, "MATE-MOVE"))
+  return(mv)
 }
 
 next_move_from_book <- function(state) {
   pl <- state[4] %% 2
   h <- hash_state(state)
   filt <- (hashes == h) & (statepl == pl)
-  inds <- which(filt)
-  ind <- sample(inds, 1)
+  ind <- which(filt)
+  if (length(ind) == 0) return("unknown")
+  if (length(ind) > 1) ind <- sample(ind, 1)
   if (database[ind, 4] == (database[ind + 1, 4] - 1) ) {
-    return(movestr(database[ind+1, 49:51]))
+    mv <- movestr(database[ind+1, 49:51])
+    print(c(mv, "LG-(HUMAN)-MOVE"))
+    mvs <- legal_moves(state)
+    stopifnot(mv %in% mvs)
+    return(mv)
   }
   return ("unknown")
 }
@@ -52,7 +59,9 @@ next_move_from_book <- function(state) {
 next_move_from_ai <- function(state, ...) {
   res <- analyze_state(state, ...)
   bestm <- names(res$vals)[res$vals==max(res$vals)]
-  sample(bestm, 1)
+  mv <- sample(bestm, 1)
+  print(c(mv, "AI MOVE"))
+  return(mv)
 }
 
 # save.image(file = "doubutsu1/vs_cpu.rda")
