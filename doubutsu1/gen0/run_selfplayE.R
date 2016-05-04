@@ -9,28 +9,13 @@ bs <- readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
 bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
 # bs <- mult * readRDS("doubutsu1/gen0/temp_evS.rds")
 # bg <- mult * readRDS("doubutsu1/gen0/temp_evG.rds")
-nsample = 1; mateXdepth = 5
+nsample = 5; mateXdepth = 5
 #games <- list()
 #games <- readRDS("doubutsu1/gen0/selfplaysE00.rds")
 
 
 
 ####
-
-seed <- 0
-ai_move1 <- ai_moveP
-Bs1 <- Bs
-Bg1 <- Bg
-ai_move2 <- ai_moveE
-Bs2 <- bs
-Bg2 <- bg
-
-ai_move2 <- ai_moveP
-Bs2 <- Bs
-Bg2 <- Bg
-ai_move1 <- ai_moveE
-Bs1 <- bs
-Bg1 <- bg
 
 winners <- character()
 

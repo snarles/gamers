@@ -1,15 +1,14 @@
-source("doubutsu1/gen0/sourceP.R")
+
 source("doubutsu1/gen0/selfplay.R")
 source("doubutsu1/viz.R")
-Bs <- readRDS("doubutsu1/prediction/spfit1_sente.rds")
-Bg <- readRDS("doubutsu1/prediction/spfit1_gote.rds")
-source("doubutsu1/gen0/sourceE.R")
-mult <- 2
+
+source("doubutsu1/gen0/sourceE2.R")
+mult <- 1
 bs <- readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
 bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
-# bs <- mult * readRDS("doubutsu1/gen0/temp_evS.rds")
-# bg <- mult * readRDS("doubutsu1/gen0/temp_evG.rds")
-nsample = 1; mateXdepth = 5
+bse <- mult * readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
+bge <- mult * readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
+nsample = 5; mateXdepth = 5; expo <- 2
 #games <- list()
 #games <- readRDS("doubutsu1/gen0/selfplaysE00.rds")
 
@@ -17,26 +16,11 @@ nsample = 1; mateXdepth = 5
 
 ####
 
-seed <- 0
-ai_move1 <- ai_moveP
-Bs1 <- Bs
-Bg1 <- Bg
-ai_move2 <- ai_moveE
-Bs2 <- bs
-Bg2 <- bg
-
-ai_move2 <- ai_moveP
-Bs2 <- Bs
-Bg2 <- Bg
-ai_move1 <- ai_moveE
-Bs1 <- bs
-Bg1 <- bg
-
 winners <- character()
 
 i <- length(games) + 1
 while (i < 2001) {
-  res <- selfplay(i, ai_moveE, bs, bg, nsample, mateXdepth)
+  res <- selfplay2(i, ai_moveE2, bs, bg, bse, bge, nsample, mateXdepth, expo)
   # if (i %% 2 ==0) {
   #   sente <- "Eval"; gote <- "Pol"
   #   res <- cvc(i, ai_moveE, bs, bg, ai_moveP, Bs, Bg, nsample, mateXdepth)
