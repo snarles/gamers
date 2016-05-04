@@ -6,14 +6,15 @@ Bg <- readRDS("doubutsu1/prediction/spfit1_gote.rds")
 source("doubutsu1/gen0/sourceE.R")
 mult <- 2
 bs <- readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
-bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
+#bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
 # bs <- mult * readRDS("doubutsu1/gen0/temp_evS.rds")
 # bg <- mult * readRDS("doubutsu1/gen0/temp_evG.rds")
-nsample = 5; mateXdepth = 5
-#games <- list()
+bg <- readRDS("doubutsu1/gen0/lg01_evG.rds")
+nsample = 1; mateXdepth = 5
+games <- list()
 #games <- readRDS("doubutsu1/gen0/selfplaysE00.rds")
 
-
+sente <- "old"; gote <- "new"
 
 ####
 
@@ -33,14 +34,14 @@ while (i < 2001) {
   draw_state(res$slist[[length(res$slist)]])
   if (length(res$mlist) %% 2 == 0) {
     winners[i] <- sente
-    title("sente")
+    title(sente, sub = sum(winners == sente)/length(winners))
   } else {
     winners[i] <- gote
-    title("gote")
+    title(gote, sub = sum(winners == gote)/length(winners))
   }
   
   if (i %% 100 == 0) {
-    saveRDS(games, "doubutsu1/gen0/selfplaysE01.rds")
+    saveRDS(games, "doubutsu1/gen0/selfplaysE02.rds")
   }
   i <- i + 1
 }
