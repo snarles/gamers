@@ -10,7 +10,7 @@ bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
 # bs <- mult * readRDS("doubutsu1/gen0/temp_evS.rds")
 # bg <- mult * readRDS("doubutsu1/gen0/temp_evG.rds")
 # bg <- readRDS("doubutsu1/gen0/lg01_evG.rds")
-nsample = 1; mateXdepth = 5
+nsample = 3; mateXdepth = 5
 games <- list()
 #games <- readRDS("doubutsu1/gen0/selfplaysE00.rds")
 
@@ -28,7 +28,12 @@ winners <- character()
 
 i <- length(games) + 1
 while (i < 2001) {
-  start <- states[sample(nrow(states), 1), ]
+  set.seed(i)
+  flag <- TRUE
+  while(flag) {
+    start <- states[sample(nrow(states), 1), ]
+    if (is.na(mateX(start, 3))) flag <- FALSE    
+  }
   res <- selfplay(i, ai_moveE, bs, bg, nsample, mateXdepth, start)
   # if (i %% 2 ==0) {
   #   sente <- "Eval"; gote <- "Pol"
@@ -38,16 +43,18 @@ while (i < 2001) {
   #   res <- cvc(i, ai_moveP, Bs, Bg, ai_moveE, bs, bg, nsample, mateXdepth)
   # }
   games[[i]] <- res
-  draw_state(res$slist[[length(res$slist)]])
+  #draw_state(res$slist[[length(res$slist)]])
   if (res$winner == "sente") {
     winners[i] <- sente
-    title(sente, sub = sum(winners == sente)/length(winners))
+    #title(sente, sub = sum(winners == sente)/length(winners))
   } else {
     winners[i] <- gote
-    title(gote, sub = sum(winners == gote)/length(winners))
+    #title(gote, sub = sum(winners == gote)/length(winners))
   }
   
   if (i %% 100 == 0) {
+    draw_state(res$slist[[length(res$slist)]])
+    title(sum(winners == sente)/length(winners))
     saveRDS(games, "doubutsu1/gen0/selfplaysES00.rds")
   }
   i <- i + 1
