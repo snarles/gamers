@@ -7,7 +7,7 @@ mult <- 1
 bs <- readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
 bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
 bse <- mult * readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
-bge <- mult * readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
+bge <- mult * readRDS("doubutsu1/gen0/n01_evG.rds")
 nsample = 5; mateXdepth = 5; expo <- 2
 #games <- list()
 #games <- readRDS("doubutsu1/gen0/selfplaysE00.rds")
@@ -39,7 +39,7 @@ while (i < 2001) {
   }
   
   if (i %% 100 == 0) {
-    saveRDS(games, "doubutsu1/gen0/selfplaysE01.rds")
+    saveRDS(games, "doubutsu1/gen0/selfplaysE02.rds")
   }
   i <- i + 1
 }

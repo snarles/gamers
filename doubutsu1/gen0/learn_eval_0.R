@@ -33,7 +33,7 @@ train <- function(X, Y, bt = NULL, eps, nits) {
 ##  EXE CODE
 ####
 
-games <- readRDS("doubutsu1/gen0/selfplaysE00.rds")
+games <- readRDS("doubutsu1/gen0/selfplaysE01.rds")
 games <- lapply(games, function(v) {
   mat <- do.call(rbind, v$slist)
   if (length(v$mlist) %% 2 == 0) {
@@ -60,4 +60,4 @@ btS <- train(egamesS, gamesS[, 1], btS, eps = 1e-4, nits = 500)
 btG <- train(egamesG, gamesG[, 1], eps = 1e-4, nits = 20)
 btG <- train(egamesG, gamesG[, 1], btG, eps = 1e-4, nits = 500)
 # saveRDS(btG, "doubutsu1/gen0/temp_evG.rds")
-# saveRDS(btG, "doubutsu1/gen0/n01_evG.rds")
+# saveRDS(btG, "doubutsu1/gen0/n02_evG.rds")
