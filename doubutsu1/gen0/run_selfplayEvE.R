@@ -3,7 +3,7 @@ source("doubutsu1/gen0/selfplay.R")
 source("doubutsu1/viz.R")
 
 source("doubutsu1/gen0/sourceE.R")
-mult1 <- 1; mult2 <- 0.5
+mult1 <- 1; mult2 <- 1
 bs <- mult1 * readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
 bg <- mult1 * readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
 Bs <- mult2 * readRDS("doubutsu1/gen0/n01_evS.rds")

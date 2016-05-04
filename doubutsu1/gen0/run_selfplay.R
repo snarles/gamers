@@ -10,8 +10,8 @@ bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
 # bs <- mult * readRDS("doubutsu1/gen0/temp_evS.rds")
 # bg <- mult * readRDS("doubutsu1/gen0/temp_evG.rds")
 nsample = 1; mateXdepth = 5
-games <- list()
-
+#games <- list()
+games <- readRDS("doubutsu1/gen0/selfplaysE00.rds")
 
 
 
@@ -34,8 +34,8 @@ Bg1 <- bg
 
 winners <- character()
 
-i <- 1
-while (i < 1001) {
+i <- length(games) + 1
+while (i < 2001) {
   res <- selfplay(i, ai_moveE, bs, bg, nsample, mateXdepth)
   # if (i %% 2 ==0) {
   #   sente <- "Eval"; gote <- "Pol"
