@@ -12,7 +12,7 @@ bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
 # bg <- readRDS("doubutsu1/gen0/lg01_evG.rds")
 nsample = 3; mateXdepth = 5
 games <- list()
-move.limit <- 7
+move.limit <- 3
 #games <- readRDS("doubutsu1/gen0/selfplaysE00.rds")
 
 sente <- "old"; gote <- "og"
@@ -28,32 +28,26 @@ states <- states[sapply(states, length) > 2]
 states <- lapply(states, do.call, what = rbind)
 states <- do.call(rbind, states)
 length(unique(apply(states, 1, hash_state)))
-
-statesS <- states[states[, 4] %% 2 == 1, ]
-statesG <- states[states[, 4] %% 2 == 0, ]
-hashesS <- apply(statesS, 1, hash_state)
-hashesG <- apply(statesG, 1, hash_state)
-tabS <- table(hashesS)
-tabG <- table(hashesG)
 set.seed(0)
-pS <- invP(tabS, -0.8)
-pG <- invP(tabG, -0.8)
-indsS <- sample(length(hashesS), 5000, FALSE, prob = pS[hashesS])
-indsG <- sample(length(hashesG), 5000, FALSE, prob = pG[hashesG])
-states <- rbind(statesS[indsS, ], statesG[indsG, ])
-length(unique(apply(states, 1, hash_state)))
+states <- states[sample(nrow(states)), ]
 
 ####
 
 winners <- character()
 
-i <- length(games) + 1
-while (i < 2001) {
+i <- (floor(length(games)/99)+1) * 100 + 1
+while (i < nrow(states) + 1) {
   set.seed(i)
   flag <- TRUE
   while(flag) {
-    start <- states[sample(nrow(states), 1), ]
-    if (is.na(mateX(start, 3))) flag <- FALSE    
+    #start <- states[sample(nrow(states), 1), ]
+    start <- states[i, ]
+    if (is.na(mateX(start, 3))) {
+      flag <- FALSE
+    } else {
+      i <- i + 1
+    }
+
   }
   res <- selfplay(i, ai_moveE, bs, bg, nsample, mateXdepth, start, move.limit)
   # if (i %% 2 ==0) {
@@ -63,7 +57,7 @@ while (i < 2001) {
   #   sente <- "Pol"; gote <- "Eval"
   #   res <- cvc(i, ai_moveP, Bs, Bg, ai_moveE, bs, bg, nsample, mateXdepth)
   # }
-  games[[i]] <- res
+  games <- c(games, list(res))
   #draw_state(res$slist[[length(res$slist)]])
   if (res$winner == "sente") {
     winners[i] <- sente
@@ -75,7 +69,8 @@ while (i < 2001) {
   
   if (i %% 100 == 0) {
     draw_state(res$slist[[length(res$slist)]])
-    title(sum(winners == sente)/length(winners))
+    #title(sum(winners == sente)/length(winners))
+    title(i)
     saveRDS(games, "doubutsu1/gen0/selfplaysES01.rds")
   }
   i <- i + 1
