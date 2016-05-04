@@ -14,7 +14,13 @@ nsample = 1; mateXdepth = 5
 games <- list()
 #games <- readRDS("doubutsu1/gen0/selfplaysE00.rds")
 
-sente <- "old"; gote <- "new"
+sente <- "old"; gote <- "og"
+
+
+states <- readRDS("doubutsu1/lg_states.rds")
+states <- states[sapply(states, length) > 2]
+states <- lapply(states, do.call, what = rbind)
+states <- do.call(rbind, states)
 
 ####
 
@@ -22,7 +28,8 @@ winners <- character()
 
 i <- length(games) + 1
 while (i < 2001) {
-  res <- selfplay(i, ai_moveE, bs, bg, nsample, mateXdepth)
+  start <- states[sample(nrow(states), 1), ]
+  res <- selfplay(i, ai_moveE, bs, bg, nsample, mateXdepth, start)
   # if (i %% 2 ==0) {
   #   sente <- "Eval"; gote <- "Pol"
   #   res <- cvc(i, ai_moveE, bs, bg, ai_moveP, Bs, Bg, nsample, mateXdepth)
@@ -41,7 +48,7 @@ while (i < 2001) {
   }
   
   if (i %% 100 == 0) {
-    saveRDS(games, "doubutsu1/gen0/selfplaysE02.rds")
+    saveRDS(games, "doubutsu1/gen0/selfplaysES00.rds")
   }
   i <- i + 1
 }

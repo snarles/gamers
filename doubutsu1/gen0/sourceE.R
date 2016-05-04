@@ -1,9 +1,15 @@
-source("doubutsu1/prediction/multinom2.R")
+# source("doubutsu1/prediction/multinom2.R")
 source("doubutsu1/source.R")
 sourceCpp("doubutsu1/Rsource.cpp")
 sourceCpp("doubutsu1/Rsource2.cpp")
 sourceCpp("doubutsu1/prediction/interaction2a.cpp")
 
+
+mcm_probs <- function(mat, bt) {
+  ips <- predictX(mat, bt)
+  ps <- exp(ips)
+  ps/sum(ps)
+}
 
 eye11 <- pracma::eye(11)
 ut3 <- pracma::eye(3); ut3[upper.tri(ut3)] <- 1
@@ -53,10 +59,11 @@ legal_moves <- function(state, tree = build_tree(state, 1, 200)) {
 }
 
 ai_moveE <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3) {
-  print("AIE")
   if (state[4] %% 2 == 0) {
+    print("AIE_sente")
     B <- Bs
   } else {
+    print("AIE_gote")
     B <- Bg
   }
   tree <- build_tree(state, 1, nodemax = 200)

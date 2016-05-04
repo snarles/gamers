@@ -1,18 +1,19 @@
 
 
 
-selfplay <- function(seed = 0, ai_move, Bs, Bg, nsample, mateXdepth) {
-  return(cvc(seed, ai_move, Bs, Bg, ai_move, Bs, Bg, nsample, mateXdepth))
+selfplay <- function(seed = 0, ai_move, Bs, Bg, nsample, mateXdepth, start = init_state) {
+  return(cvc(seed, ai_move, Bs, Bg, ai_move, Bs, Bg, nsample, mateXdepth, start))
 }
 
 selfplay2 <- function(seed = 0, ai_move, Bs, Bg, Bse, Bge, nsample, mateXdepth, expo) {
   return(cvc2(seed, ai_move, Bs, Bg, Bse, Bge, ai_move, Bs, Bg, Bse, Bge, nsample, mateXdepth, expo))
 }
 
-cvc <- function(seed = 0, ai_move1, Bs1, Bg1, ai_move2, Bs2, Bg2, nsample, mateXdepth) {
+cvc <- function(seed = 0, ai_move1, Bs1, Bg1, ai_move2, Bs2, Bg2, nsample, mateXdepth, start = init_state) {
   set.seed(seed)  
-  slist <- list()
-  state <- init_state
+  state <- start
+  slist <- list(state)
+  print_state(state)
   mlist <- character()
   mv <- ai_move1(state, Bs1, Bg1, nsample, mateXdepth)
   mlist <- c(mlist, mv)
