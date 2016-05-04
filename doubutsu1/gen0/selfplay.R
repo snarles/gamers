@@ -12,7 +12,7 @@ selfplay2 <- function(seed = 0, ai_move, Bs, Bg, Bse, Bge, nsample, mateXdepth, 
 
 cvc <- function(seed = 0, ai_move1, Bs1, Bg1, ai_move2, Bs2, Bg2, nsample, mateXdepth, start = init_state,
                 move.limit = 100) {
-  set.seed(seed)  
+  if (!is.null(seed)) set.seed(seed)  
   state <- start
   slist <- list(state)
   print_state(state)
