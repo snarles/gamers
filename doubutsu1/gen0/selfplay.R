@@ -17,6 +17,7 @@ cvc <- function(seed = 0, ai_move1, Bs1, Bg1, ai_move2, Bs2, Bg2, nsample, mateX
   mlist <- character()
   mv <- ai_move1(state, Bs1, Bg1, nsample, mateXdepth)
   mlist <- c(mlist, mv)
+  winner = ""
   while (mv != "resign") {
     state <- move_parser(state, mv)
     slist <- c(slist, list(state))
@@ -28,7 +29,13 @@ cvc <- function(seed = 0, ai_move1, Bs1, Bg1, ai_move2, Bs2, Bg2, nsample, mateX
     }
     mlist <- c(mlist, mv)
   }
-  return(list(mlist = mlist, slist = slist, seed = seed, nsample = nsample, mateXdepth = mateXdepth))
+  if (state[4] %% 2 == 0) {
+    winner = "gote"
+  } else {
+    winner = "sente"
+  }
+  return(list(mlist = mlist, slist = slist, seed = seed, nsample = nsample, mateXdepth = mateXdepth,
+              winner = winner))
 }
 
 

@@ -39,7 +39,7 @@ while (i < 2001) {
   # }
   games[[i]] <- res
   draw_state(res$slist[[length(res$slist)]])
-  if (length(res$mlist) %% 2 == 0) {
+  if (res$winner == "sente") {
     winners[i] <- sente
     title(sente, sub = sum(winners == sente)/length(winners))
   } else {
