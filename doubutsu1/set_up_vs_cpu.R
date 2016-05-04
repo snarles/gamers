@@ -23,7 +23,7 @@ next_move <- function(state) {
   if (mv != "unknown") return(mv)
   mv <- next_move_from_book(state)
   if (mv != "unknown") return(mv)
-  next_move_from_ai(state, bg, bs, 1, 5, 4, 10, TRUE)
+  next_move_from_ai(state, bg, bs, 1, 5, 4, 10, FALSE)
 }
 
 opening_move_from_book <- function() {

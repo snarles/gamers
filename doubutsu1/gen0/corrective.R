@@ -31,8 +31,8 @@ analyze_state <- function(state, bs, bg, nsample = 1, mateXdepth = 5, nreps = 2,
     draw_state(state)
     title(paste(pl, "to move"), 
           sub = paste(paste(names(vals)[which(vals==max(vals))], collapse =", "), max(vals), sep = " = "))
-    print(sort(vals, TRUE))
   }
+  print(sort(vals, TRUE))
   alts[, 1] <- vals
   rownames(alts) <- mvs
   list(pos = state, alts = alts, vals = vals)

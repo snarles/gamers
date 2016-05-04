@@ -34,7 +34,7 @@ query_move <- function(state) {
       title("Cheater~~!", sub = paste(sort(mvs), collapse = ", "))
       print(sort(mvs))
     }
-    if (x %in% mvs) return(x)
+    if (x %in% c(mvs, "resign")) return(x)
   }
 }
 
@@ -71,31 +71,41 @@ if (x %in% c("0", "1")) {
     if (mv == "resign") flag <- FALSE
     if (!mv %in% c("resign", "quit")) {
       state <- move_parser(state, mv)
-      mX <- mateX(state, 3)
       game_states <- c(game_states, list(state))
-      print("AI THINKING")
-      sink("temp.txt")
-      mv <- next_move(state)
-      sink()
-      game_record <- c(game_record, mv)
-      state <- move_parser(state, mv)
-      game_states <- c(game_states, list(state))
-      if (mv == "resign") {
+      mX0 <- mateX(state, 0)
+      if (!is.na(mX0) && mX0 == 0) {
         catn("===YOU WIN!!===")
         draw_state(state)
         title("Victory!", sub = pl)
         flag <- FALSE
       }
+      if (flag) {
+        print("AI THINKING")
+        sink("temp.txt")
+        mv <- next_move(state)
+        sink()
+        game_record <- c(game_record, mv)
+        state <- move_parser(state, mv)
+        game_states <- c(game_states, list(state))
+        if (mv == "resign") {
+          catn("===YOU WIN!!===")
+          draw_state(state)
+          title("Victory!", sub = pl)
+          flag <- FALSE
+        }
+      }
     }
-    mX0 <- mateX(state, 0)
-    if (!is.na(mX0) && mX0 == 0) {
-      last_mv <- movestr(state[49:51])
-      opponent <- c("Gote", "Sente")[state[4] %% 2 + 1]
-      catn(paste(opponent, "moved", last_mv))
-      catn("===YOU LOSE!!===")
-      draw_state(state)
-      title("Defeat!", sub = pl)
-      flag <- FALSE
+    if (flag) {
+      mX0 <- mateX(state, 0)
+      if (!is.na(mX0) && mX0 == 0) {
+        last_mv <- movestr(state[49:51])
+        opponent <- c("Gote", "Sente")[state[4] %% 2 + 1]
+        catn(paste(opponent, "moved", last_mv))
+        catn("===YOU LOSE!!===")
+        draw_state(state)
+        title("Defeat!", sub = pl)
+        flag <- FALSE
+      }
     }
   }  
 } else {
