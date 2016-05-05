@@ -88,3 +88,6 @@ library(parallel)
 t1 <- proc.time()
 RES <- mclapply(1:100, get_lesson, mc.preschedule = FALSE, mc.cores = 8)
 proc.time() - t1
+
+saveRDS(RES, file = "doubutsu1/gen0/aws_co_000_001.rds")
+
