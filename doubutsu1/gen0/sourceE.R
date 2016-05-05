@@ -85,3 +85,48 @@ ai_moveE <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3, verbose = TRUE)
 }
 
 
+
+next_move_mateX <- function(state, mateXdepth = 3) {
+  mX <- mateX(state, mateXdepth)
+  if (is.na(mX)) return("unknown")
+  if (mX < 0) return("resign")
+  tree <- build_tree(state, 1, 200)
+  alts <- tree[-1, , drop = FALSE]
+  vals <- apply(alts, 1, mateX, mateXdepth)
+  mvs <- legal_moves(state, tree)
+  mv <- mvs[which(vals <= 0)[1]]
+  print(c(mv, "MATE-MOVE"))
+  return(mv)
+}
+
+# nsample is obsoleted
+ai_moveEM <- function(state, Bs, Bg, nsample = 3, mateXdepth = 3, verbose = TRUE) {
+  mv <- next_move_mateX(state, mateXdepth)
+  if (mv != "unknown") return(mv)
+  if (state[4] %% 2 == 0) {
+    # print("AIE_sente")
+    B <- Bs
+  } else {
+    # print("AIE_gote")
+    B <- Bg
+  }
+  tree <- build_tree(state, 1, nodemax = 200)
+  mvs <- legal_moves(state, tree)
+  s2 <- tree[-1, , drop = FALSE]
+  a1 <- t(apply(s2, 1, expandState))
+  ps <- mcm_probs(a1, B)
+  inds <- sample(length(mvs), length(mvs), FALSE, prob = ps)
+  flag <- TRUE
+  i <- 0
+  while (flag) {
+    i <- i + 1
+    if (i > length(inds)) {return("resign")}
+    mX <- mateX(s2[inds[i], ], mateXdepth)
+    if (is.na(mX)) {
+      flag <- FALSE
+    } else {
+      #cat(mvs[inds[i]]); cat(mX)
+    }
+  }
+ return(mvs[inds[i]])
+}

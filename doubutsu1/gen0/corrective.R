@@ -2,7 +2,7 @@ source("doubutsu1/gen0/sourceE.R")
 source("doubutsu1/gen0/selfplay.R")
 source("doubutsu1/viz.R")
 
-analyze_state <- function(state, bs, bg, nsample = 1, mateXdepth = 5, nreps = 2, move.limit = 10,
+analyze_state <- function(state, bs = bs, bg = bg, nsample = 1, mateXdepth = 5, nreps = 2, move.limit = 10,
                           verbose = FALSE) {
   tree <- build_tree(state, 1, 200)
   pl <- c("sente", "gote")[state[4] %% 2 + 1]
@@ -17,7 +17,7 @@ analyze_state <- function(state, bs, bg, nsample = 1, mateXdepth = 5, nreps = 2,
     mXs[j] <- mX
     if (is.na(mX)) {
       for (r in 1:nreps) {
-        res <- selfplay(NULL, ai_moveE, bs, bg, nsample, mateXdepth, start = alts[j, ], move.limit)
+        res <- selfplay(NULL, ai_moveEM, bs, bg, nsample, mateXdepth, start = alts[j, ], move.limit)
         if (res$winner == "") {
           vals[j] <- vals[j] + 0.5/nreps
         } else {
