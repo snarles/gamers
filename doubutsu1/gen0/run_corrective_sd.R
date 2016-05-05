@@ -46,7 +46,7 @@ get_lesson <- function(i) {
 i <- (floor(length(lessons)/100)+1) * 100 + 1
 while (i < nrow(states) + 1) {
   lessons[[i]] <- get_lesson(i)
-  if (i %% 100 == 0) {
+  if (i %% 50 == 0) {
     saveRDS(lessons, "doubutsu1/gen0/lessons01.rds")
   }
   i <- i + 1
