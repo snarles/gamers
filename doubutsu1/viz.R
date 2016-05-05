@@ -84,10 +84,25 @@ draw_piece <- function(x, y, ptype, pl, prom) {
   }
 }
 
-draw_state <- function(state, coords = TRUE) {
+
+
+PIECESTRS <- cbind(c(" ", "K","R","B","P"), c(" ", "k", "r", "b", "p"))
+
+LOX <- c("3a", "2a", "1a", 
+         "3b", "2b", "1b",
+         "3c", "2c", "1c",
+         "3d", "2d", "1d"
+)
+
+movestr <- function(movev) {
+  paste(PIECESTRS[movev[1] + 1, 1],
+        c("**", LOX)[movev[2] + 1],
+        c("**", LOX)[movev[3] + 1],
+        sep = "-")
+}
+draw_state <- function(state, coords = TRUE, title = FALSE) {
   xs <- rep(1:3, 4)
   ys <- rep(4:1, each = 3)
-  
   board <- matrix(state[5:40], nrow = 3)
   hand1 <- state[41:44]
   hand2 <- state[45:48]
@@ -110,5 +125,6 @@ draw_state <- function(state, coords = TRUE) {
       draw_piece(-0.25, 5.25 - i/2, ptypes2[i], 1, 0)
     }
   }
+  if (title) title(paste0(state[4], ". ", movestr(movev)))
 }
 

@@ -11,7 +11,7 @@ selfplay2 <- function(seed = 0, ai_move, Bs, Bg, Bse, Bge, nsample, mateXdepth, 
 }
 
 cvc <- function(seed = 0, ai_move1, Bs1, Bg1, ai_move2, Bs2, Bg2, nsample, mateXdepth, start = init_state,
-                move.limit = 100, verbose = TRUE) {
+                move.limit = 100, verbose = TRUE, plotit = FALSE) {
   if (!is.null(seed)) set.seed(seed)  
   state <- start
   slist <- list(state)
@@ -25,6 +25,7 @@ cvc <- function(seed = 0, ai_move1, Bs1, Bg1, ai_move2, Bs2, Bg2, nsample, mateX
     state <- move_parser(state, mv)
     slist <- c(slist, list(state))
     if (verbose) print_state(state)
+    if (plotit) draw_state(state, title = TRUE)
     if (state[4] %% 2 == 0) {
       mv <- ai_move1(state, Bs1, Bg1, nsample, mateXdepth)
     } else {
