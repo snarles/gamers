@@ -36,8 +36,8 @@ states1 <- rbind(statesS[indsS, ], statesG[indsG, ])
 
 
 games <- c(readRDS("doubutsu1/gen0/aws_sp_06000.rds"),
-            readRDS("doubutsu1/gen0/aws_sp_12000.rds"),
-            readRDS("doubutsu1/gen0/aws_sp_18000.rds"))
+           readRDS("doubutsu1/gen0/aws_sp_12000.rds"),
+           readRDS("doubutsu1/gen0/aws_sp_18000.rds"))
 games <- games[!sapply(games, is.null)]
 games <- lapply(games, function(v) {
   mat <- do.call(rbind, v$slist)
@@ -80,6 +80,11 @@ get_lesson <- function(i) {
   analyze_state(start, bs, bg, nsample, mateXdepth, nreps = 4, move.limit, TRUE)
 }
 
-sink("temp.txt")
-lesson <- get_lesson(919)
-sink()
+# sink("temp.txt")
+# lesson <- get_lesson(919)
+# sink()
+
+library(parallel)
+t1 <- proc.time()
+RES <- mclapply(1:100, get_lesson, mc.preschedule = FALSE, mc.cores = 8)
+proc.time() - t1
