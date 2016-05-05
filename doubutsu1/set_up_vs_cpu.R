@@ -66,8 +66,7 @@ next_move_from_book <- function(state) {
 
 next_move_from_ai <- function(state, ...) {
   res <- analyze_state(state, ...)
-  bestm <- names(res$vals)[res$vals==max(res$vals)]
-  mv <- sample(bestm, 1)
+  mv <- sample(res$cands, 1)
   print(c(mv, "AI MOVE"))
   return(mv)
 }

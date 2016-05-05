@@ -9,10 +9,12 @@ analyze_state <- function(state, bs, bg, nsample = 1, mateXdepth = 5, nreps = 2,
   alts <- tree[-1, , drop = FALSE]
   (na <- nrow(alts))
   vals <- numeric(na)
+  mXs <- numeric(na)
   mvs <- legal_moves(state, tree)
   names(vals) <- mvs
   for (j in 1:na) {
     mX <- mateX(alts[j, ], mateXdepth + 1)
+    mXs[j] <- mX
     if (is.na(mX)) {
       for (r in 1:nreps) {
         res <- selfplay(NULL, ai_moveE, bs, bg, nsample, mateXdepth, start = alts[j, ], move.limit)
@@ -33,9 +35,14 @@ analyze_state <- function(state, bs, bg, nsample = 1, mateXdepth = 5, nreps = 2,
           sub = paste(paste(names(vals)[which(vals==max(vals))], collapse =", "), max(vals), sep = " = "))
   }
   print(sort(vals, TRUE))
+  print(mXs)
   alts[, 1] <- vals
   rownames(alts) <- mvs
-  list(pos = state, alts = alts, vals = vals)
+  names(mXs) <- mvs
+  if (max(vals) == 0) vals[is.na(mXs)] <- vals[is.na(mXs)] + 0.001
+  cands <- names(vals)[vals == max(vals)]
+  if (sum(is.na(mXs))==0 && min(mXs) > 0) cands <- "resign"
+  list(pos = state, alts = alts, vals = vals, cands = cands)
 }
 
 
