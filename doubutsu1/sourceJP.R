@@ -63,10 +63,11 @@ ff <- solve_state_raw(states[300, ], TRUE)
 
 t1 <- proc.time()
 res <- list()
-inds <- sample(nrow(states), 10)
-for (i in inds) {
-  ff <- solve_state_raw(states[inds, ])
+for (i in 1:nrow(states)) {
+  ff <- solve_state_raw(states[i, ])
   res <- c(res, list(ff))
 }
 proc.time() - t1
+saveRDS(res, "analyses.rds")
+
 
