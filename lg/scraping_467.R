@@ -27,7 +27,8 @@ saveRDS(four_players, file = "lg/four67/four_players.rds")
 ## obtain games + metadata
 games_raws <- list()
 nrow(four_players) # 435
-for (i in 1:nrow(four_players)) {
+#for (i in 1:nrow(four_players)) {
+for (i in inds) {
 #for (i in 1:241) {
   plid <- four_players[i, 2]
   url1 <- paste0("https://www.littlegolem.net/jsp/info/player_game_list.jsp?gtid=fir&plid=", plid)
@@ -40,6 +41,7 @@ for (i in 1:nrow(four_players)) {
 saveRDS(games_raws, file = "lg/four67/all_raws.rds")
 
 valid_pl <- sapply(games_raws, function(v) nchar(v[1]) >0 && nchar(v[2]) > 0)
+inds <- setdiff(1:435, which(valid_pl))
 games_raws <- games_raws[valid_pl]
 
 dsplit <- function(v, l, r) {
