@@ -25,7 +25,8 @@ four_players <- cbind(names, nos)
 saveRDS(four_players, file = "lg/four67/four_players.rds")
 
 ## obtain games + metadata
-games_raws <- list()
+#games_raws <- list()
+games_raws <- readRDS("lg/four67/all_raws.rds")
 nrow(four_players) # 435
 #for (i in 1:nrow(four_players)) {
 for (i in inds) {
@@ -40,9 +41,9 @@ for (i in inds) {
 }
 saveRDS(games_raws, file = "lg/four67/all_raws.rds")
 
-valid_pl <- sapply(games_raws, function(v) nchar(v[1]) >0 && nchar(v[2]) > 0)
-inds <- setdiff(1:435, which(valid_pl))
-games_raws <- games_raws[valid_pl]
+# valid_pl <- sapply(games_raws, function(v) nchar(v[1]) >0 && nchar(v[2]) > 0)
+# inds <- setdiff(1:435, which(valid_pl))
+# games_raws <- games_raws[valid_pl]
 
 dsplit <- function(v, l, r) {
   strsplit(strsplit(v, l)[[1]][2], r)[[1]][1]
@@ -91,17 +92,17 @@ for (i in 1:length(games_raws)) {
 }
 
 gametable <- do.call(rbind, gametables)
-nrow(gametable)
+nrow(gametable) # 79742
 View(gametable[1000:1100, ])
 colnames(gametable) <- c("gid", "variant", "player1", "player2", "nmoves", "outcome", "game")
 unique_inds <- match(unique(gametable[, "gid"]), gametable[, "gid"])
 table(gametable[unique_inds, "variant"])
 
-# Mini Shogi          Shogi      Shogi 3x4      Shogi 5x6 Shogi 5x6 PLUS     Tori Shogi 
-# 5862           6770            916            655            147            585 
+# Size 10x10   Size 6x7   Size 8x8   Size 9x9 
+# 54        131        112      61304 
 
-save(gametable, unique_inds, file="minishogi/lg_scraping/gametable.rda")
-write.csv(gametable, file = "minishogi/lg_scraping/gametable.csv", row.names = FALSE)
+save(gametable, unique_inds, file="four67/gametable.rda")
+write.csv(gametable, file = "four67/gametable.csv", row.names = FALSE)
 
 ## validation
 
