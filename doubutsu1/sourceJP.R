@@ -96,31 +96,43 @@ analysis_to_values <- function(v) {
       tree[-1, 1] <- 2 * turnv - 1
       tree[1, 1] <- valv
       moves_in_tree <- apply(tree[-1, 49:51, drop = FALSE], 1, movestr)
+      rownames(tree) <- c("?", moves_in_tree)
       moves <- sapply(moves0, function(v) {
         strsplit(v, " ")[[1]][3]
       }, USE.NAMES = FALSE)
       moves <- sapply(moves, parse_moveJP, USE.NAMES = FALSE)
       setdiff(moves, moves_in_tree)
       matchinds <- match(moves, moves_in_tree) + 1
-      vals <- sapply(moves0, function(v) {
+      vals <- as.numeric(sapply(moves0, function(v) {
         strsplit(strsplit(v, " ")[[1]][4], "\\(")[[1]][1]
-      }, USE.NAMES = FALSE)
-      parens <- sapply(moves0, function(v) {
+      }, USE.NAMES = FALSE))
+      parens <- as.numeric(sapply(moves0, function(v) {
         w <- strsplit(strsplit(v, " ")[[1]][4], "\\(")[[1]][2]
         substr(w, 1, nchar(w)-1)
-      })
+      }))
       if ((turnv==0 && valv==-1) || (turnv==1 && valv==1))
       {
         valvs <- rep(valv, length(vals))
       } else {
-        valvs <- -as.numeric(vals) * valv  ## don't know why they encoded this way..
-        if (valv==0) {
-          valvs[as.numeric(parens)!=0] <- (2 * turnv) - 1
+        valvs <- -vals * valv  ## don't know why they encoded this way..
+      }
+      if (valv==0) {
+        loseval <- (2 * turnv) - 1
+        valvs <- 0 * as.numeric(vals)
+        if (sum(parens != 0)==0) {
+          parens <- parens + NA
+          v2 <- apply(tree, 1, function(v) maxVal(v, 3))
+          tree[v2==1, 1] <- loseval
+          tree[, 2] <- NA
+          res[[i]] <- tree
+          return(res)
+        } else {
+          valvs[parens != 0] <- loseval
         }
       }
       filt <- !is.na(matchinds)
       tree[matchinds[filt], 1] <- valvs[filt]
-      rownames(tree) <- c("?", moves_in_tree)
+      tree[matchinds[filt], 2] <- parens[filt]
       res[[i]] <- tree
     }
   }

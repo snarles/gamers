@@ -49,11 +49,19 @@ length(res)
 ## Make states to train util function
 
 
-
-v <- analyses[[2080]]
-sink("temp.txt"); cats(v); sink()
+i <- 0
+i <- i + sample(20, 1)
+v <- analyses[[i]]
 res <- analysis_to_values(v)
+while(res[[1]][1] != 0) {
+  i <- i + 10
+  v <- analyses[[i]]
+  res <- analysis_to_values(v)
+  sink("temp.txt"); cats(v); sink()
+}
+i
 res[[1]][, 1:5]
+i <- i + sample(20, 1)
 draw_state(res[[1]][1, ])
 print_state(res[[1]][1, ])
-
+apply(res[[1]])
