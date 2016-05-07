@@ -118,17 +118,14 @@ analysis_to_values <- function(v) {
       }
       if (valv==0) {
         loseval <- (2 * turnv) - 1
-        valvs <- 0 * as.numeric(vals)
-        if (sum(parens != 0)==0) {
-          parens <- parens + NA
-          v2 <- apply(tree, 1, function(v) maxVal(v, 3))
-          tree[v2==1, 1] <- loseval
-          tree[, 2] <- NA
-          res[[i]] <- tree
-          return(res)
-        } else {
-          valvs[parens != 0] <- loseval
-        }
+        v2 <- apply(tree, 1, function(v) maxVal(v, 3))
+        tree[, 1] <- 0
+        tree[v2!=0, 1] <- loseval
+        filt <- !is.na(matchinds)
+        tree[matchinds[filt], 2] <- parens[filt]
+        tree[matchinds[filt & parens != 0], 1] <- loseval
+        res[[i]] <- tree
+        return(res)
       }
       filt <- !is.na(matchinds)
       tree[matchinds[filt], 1] <- valvs[filt]
