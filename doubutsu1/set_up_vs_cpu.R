@@ -48,6 +48,7 @@ next_move_mateX <- function(state, mateXdepth = 3) {
   mvs <- legal_moves(state, tree)
   mv <- mvs[which(vals <= 0)[1]]
   print(c(mv, "MATE-MOVE"))
+  Sys.sleep(0.5)
   return(mv)
 }
 
@@ -63,6 +64,7 @@ next_move_from_book <- function(state) {
     print(c(mv, "LG-(HUMAN)-MOVE"))
     mvs <- legal_moves(state)
     stopifnot(mv %in% mvs)
+    Sys.sleep(0.5)
     return(mv)
   }
   return ("unknown")
@@ -100,11 +102,7 @@ next_move_from_ai <- function(state, ...) {
   return(mv)
 }
 
-ii <- 1340
-ii <- ii+1
-state <- database[ii, ]
-draw_state(state, title = TRUE)
-query_move(state)
+
 # next_move_from_ai(state)
 
 # save.image(file = "doubutsu1/vs_cpu.rda")

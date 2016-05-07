@@ -37,6 +37,7 @@ length(state)
 catn <- function(x) cat(paste0(x, "\n"))
 
 PIECESTRS <- cbind(c(" ", "K","R","B","P"), c(" ", "k", "r", "b", "p"))
+PTYPES <- c("K", "R", "B", "P")
 
 LOX <- c("3a", "2a", "1a", 
          "3b", "2b", "1b",

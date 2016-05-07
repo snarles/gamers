@@ -11,84 +11,22 @@ source("doubutsu1/set_up_vs_cpu.R")
 sourceCpp("doubutsu1/Rsource.cpp")
 sourceCpp("doubutsu1/Rsource2.cpp")
 source("doubutsu1/viz2.R")
+source("doubutsu1/gui.R")
 
 
 
-query_move <- function(state) {
-  xs <- rep(1:3, 4)
-  ys <- rep(4:1, each = 3)
-  pl <- state[4] %% 2
-  if (state[4] > 0) {
-    last_mv <- movestr(state[49:51])
-    opponent <- c("Gote", "Sente")[state[4] %% 2 + 1]
-    catn(paste(opponent, "moved", last_mv))
-  }
-  board <- matrix(state[5:40], nrow = 3)
-  hand1 <- state[41:44]
-  hand2 <- state[45:48]
-  hand1st <- c(); hand2st <- c()
-  for (i in 1:4) {
-    hand1st <- c(hand1st, rep(PIECESTRS[i + 1, 1], hand1[i]))
-    hand2st <- c(hand2st, rep(PIECESTRS[i + 1, 1], hand2[i]))
-  }
-  mvs <- legal_moves(state)
-  draw_state(state, title = TRUE)
-  title(sub= "QUIT")
-  # print(mvs)
-  flag <- TRUE
-  sel <- c(NA, NA)
-  while(flag) {
-    guess <- query_location()
-    if (is.na(guess)[1]) {
-      
-    } else if (guess[1]==-Inf) {
-      print("QUIT")
-      flag <- FALSE
-    } else {
-      print("SELECTED")
-      xy <- guess
-      if ((xy[1] <= 3) && (xy[1] >= 1) && (xy[2] <= 4) && (xy[2] >= 1)) {
-        start <- xy_to_start[xy[2], xy[1]]
-        if (board[2, start]==pl) {
-          if (!is.na(sel[1])) {
-            unsel_piece(sel[1], sel[2])
-          }
-          sel <- xy
-          sel_piece(xy[1], xy[2])
-        }
-      }
-      if ((xy[1] == -1) && (pl ==1) && (xy[2] <= 4) && (xy[2] >= 5-sum(hand2))) {
-        if (!is.na(sel[1])) {
-          unsel_piece(sel[1], sel[2])
-        }
-        sel <- xy
-        sel_piece(xy[1], xy[2])
-      }
-      if ((xy[1]== 5) && (pl == 0) && (xy[2] >= 1) && (xy[2] <= sum(hand1))) {
-        if (!is.na(sel[1])) {
-          unsel_piece(sel[1], sel[2])
-        }
-        sel <- xy
-        sel_piece(xy[1], xy[2])
-      }
-    }
-  }
-  
-  
-  
-}
 
-query_location <- function() {
-  pts <- locator(1); pts <- c(x=pts$x, y=pts$y)
-  if (abs(pts[1] - 1.5) < 1 && pts[2] < 0) {
-    return(c(-Inf, -Inf))
-  }
-  guess <- round(pts + 0.5)
-  if (sum(abs((pts + 0.5) - guess)) < 0.7) {
-    return(guess)
-  }
-  c(NA, NA)
-}
+
+
+
+ii <- 1340
+ii <- ii+1
+state <- database[ii, ]
+# draw_state(state, title = TRUE)
+query_move(state)
+
+
+
 
 draw_board(FALSE)
 title("Choose player")
