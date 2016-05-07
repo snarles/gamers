@@ -224,3 +224,5 @@ mateX <- function(state, maxdepth) {
   }
   return(NA)
 }
+
+uhash <- function(state) paste0(state[4] %%2, paste(state[5:48], collapse = ""))
