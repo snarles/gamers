@@ -6,6 +6,10 @@ games <- readRDS("doubutsu1/lg_states.rds")
 load("doubutsu1/lg_data.rda")
 ginds <- which(gametable$len > 2)
 alts <- readRDS("doubutsu1/solved_alts2.rds")
+source("doubutsu1/sourceJP.R")
+alt0 <- solve_state_raw(init_state, TRUE)
+res0 <- analysis_to_values(alt0)
+alts <- c(alts, res0)
 altu <- sapply(alts, function(v) uhash(v[1, ]))
 
 games <- games[ginds]
@@ -90,3 +94,45 @@ names(mnG) <- names(mnS)
 
 # save(mnS, mnG, file = "doubutsu1/prediction/mn00.rds")
 
+####
+##  Blundergraph
+####
+h0 <- uhash(init_state)
+movegraph <- list()
+for (i in 1:length(games)) {
+  (res <- list(meta = gt[i, ]))
+  vals <- numeric()
+  nm <- length(games[[i]])
+  game <- games[[i]]
+  hs <- hashes[[i]]
+  (mvs <- gl[[i]])
+  choices <- list()
+  for (j in 1:nm) {
+    h <- h0
+    if (j > 1) h <- hs[j-1]
+    stopifnot(h %in% altu)
+    alt <- alts[[which(altu==h)[1]]]
+    vals[j] = alt[1, 1]
+    mn <- alt[-1, 1:2]
+    chi <- which(rownames(mn)==mvs[j])
+    mn2 <- mn[-chi, , drop = FALSE]
+    mn2 <- mn2[order(-mn2[, 1]/(mn2[, 2]+1)), , drop = FALSE]
+    mn <- rbind(mn[chi, , drop = FALSE], mn2)
+    choices[[j]]=mn
+  }
+  res$choices <- choices
+  res$vals <- vals
+  movegraph <- c(movegraph, list(res))
+}
+
+# saveRDS(movegraph, "doubutsu1/prediction/movegraphs.rds")
+movegraph <- readRDS("doubutsu1/prediction/movegraphs.rds")
+
+np <- 10
+plot(NA, NA, xlim = c(0, 50), ylim = c(1, 3 * np + 2), ylab = "", xlab = "turn")
+inds <- sample(length(movegraph), np)
+for (i in 1:np) {
+  abline(3 * i, 0, lty = 3)
+  lines(1:length(movegraph[[inds[i]]]$vals),
+        3 * i + movegraph[[inds[i]]]$vals, col = rainbow(length(movegraph))[inds[i]])
+}

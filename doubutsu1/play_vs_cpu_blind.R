@@ -5,6 +5,11 @@
 cat("Loading...")
 cat("\n")
 
+## harder setting
+
+forget_book_prob <- 0.03
+multBt <- 1
+
 library(Rcpp)
 # load("doubutsu1/vs_cpu.rda")
 source("doubutsu1/set_up_vs_cpu.R")

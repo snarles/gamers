@@ -8,7 +8,9 @@ source("doubutsu1/gen0/corrective.R")
 source("doubutsu1/prediction/mistake_source.R")
 load("doubutsu1/prediction/mn00.rds")
 # mnBt <- smooth_mn((mnS + mnG)/2)
+multBt <- 0.5
 mnBt <- (mnS + mnG)/2
+forget_book_prob <- 0.1
 source("doubutsu1/sourceJP.R")
 
 nsample = 1; mateXdepth = 5
@@ -55,6 +57,7 @@ next_move_mateX <- function(state, mateXdepth = 3) {
 }
 
 next_move_from_book <- function(state) {
+  if (runif(1) < forget_book_prob) return("unknown")
   pl <- state[4] %% 2
   h <- hash_state(state)
   filt <- (hashes == h) & (statepl == pl)
@@ -94,7 +97,7 @@ next_move_from_ai <- function(state, ...) {
   alt <- res[[1]]
   mn <- alt[-1, 1:2, drop = FALSE]
   if (state[4] %% 2 == 1) mn[, 1] <- -mn[, 1]
-  ps2 <- mn_probs(expand_mn(mn), mnBt)
+  ps2 <- mn_probs(expand_mn(mn), multBt * mnBt)
   ps2[mn[, 1]==-1 & mn[,2]==0] <- 0; ps2 <- ps2/sum(ps2)
   mvs <- sample(names(ps2), 3, TRUE, prob = ps2)
   stopifnot(all(names(mvs) %in% names(ps)))

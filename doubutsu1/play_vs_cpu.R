@@ -1,9 +1,10 @@
 ####
-##  Play vs the cpu, blind mode
+##  Play vs the cpu, GUI
 ####
 
 cat("Loading...")
 cat("\n")
+
 
 library(Rcpp)
 # load("doubutsu1/vs_cpu.rda")
@@ -12,6 +13,14 @@ sourceCpp("doubutsu1/Rsource.cpp")
 sourceCpp("doubutsu1/Rsource2.cpp")
 source("doubutsu1/viz2.R")
 source("doubutsu1/gui.R")
+
+## easier setting.  Comment out for medium setting.
+forget_book_prob <- 0.3
+multBt <- 0.3
+## harder setting:: uncomment below
+# forget_book_prob <- 0.03
+# multBt <- 1
+
 
 game_record <- character()
 game_states <- list()
