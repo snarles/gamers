@@ -5,6 +5,7 @@ source("doubutsu1/gen0/sourceE.R")
 bs <- readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
 bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
 source("doubutsu1/gen0/corrective.R")
+source("doubutsu1/prediction/mistake_source.R")
 load("doubutsu1/prediction/mn00.rds")
 # mnBt <- smooth_mn((mnS + mnG)/2)
 mnBt <- (mnS + mnG)/2
@@ -92,6 +93,7 @@ next_move_from_ai <- function(state, ...) {
   res <- analysis_to_values(raw)
   alt <- res[[1]]
   mn <- alt[-1, 1:2, drop = FALSE]
+  if (state[4] %% 2 == 1) mn[, 1] <- -mn[, 1]
   ps2 <- mn_probs(expand_mn(mn), mnBt)
   ps2[mn[, 1]==-1 & mn[,2]==0] <- 0; ps2 <- ps2/sum(ps2)
   mvs <- sample(names(ps2), 3, TRUE, prob = ps2)

@@ -16,6 +16,8 @@ source("doubutsu1/gui.R")
 game_record <- character()
 game_states <- list()
 
+diagnostic_mode <- TRUE
+if (diagnostic_mode) sink("temp.txt")
 
 draw_board(FALSE)
 title("Choose player")
@@ -31,6 +33,7 @@ if (click$y > 2) {
 draw_state(state, title = TRUE)
 
 if (pl %in% c("gote", "sente")) {
+  mv <- ""
   flag <- TRUE
   state <- init_state
   game_states <- c(game_states, list(state))
@@ -49,7 +52,12 @@ if (pl %in% c("gote", "sente")) {
     draw_state(state, title = TRUE)
     mX <- mateX(state, 2)
     # print(list(mX = mX, pl = state[4] %%2))
-    if (!is.na(mX) && mX <= 0) {
+    if (mv == "resign") {
+      draw_state(state, title = FALSE)
+      pl <- state[4] %% 2
+      if (pl == 0) title("Sente resigns!")
+      if (pl == 1) title("Gote resigns!!")
+    } else if (!is.na(mX) && mX <= 0) {
       draw_state(state, title = FALSE)
       flag <- FALSE
       pl <- state[4] %% 2
@@ -59,9 +67,9 @@ if (pl %in% c("gote", "sente")) {
       if (pl == 1 && state[41]!=1) title("Sente wins!")
     } else {
       print("AI THINKING...")
-      sink("temp.txt")
+      if (!diagnostic_mode) sink("temp.txt")
       mv <- next_move(state)
-      sink()
+      if (!diagnostic_mode) sink()
       game_record <- c(game_record, mv)
       state <- move_parser(state, mv)
       game_states <- c(game_states, list(state))
@@ -85,3 +93,4 @@ if (pl %in% c("gote", "sente")) {
     }
   }
 } 
+if (diagnostic_mode) sink()
