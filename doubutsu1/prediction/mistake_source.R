@@ -1,6 +1,6 @@
 Rcpp::sourceCpp("doubutsu1/prediction/interaction.cpp")
 
-MN_MAX_LEN <- 70
+MN_MAX_LEN <- 120
 MN_BT_LEN <- 2 * (MN_MAX_LEN + 1)
 
 eye_mn <- pracma::eye(MN_MAX_LEN)
@@ -52,7 +52,6 @@ mn_loss <- function(mats, bt) {
     bt <- numeric(MN_BT_LEN)
   }
   for (i in 1:n) {
-    ww <- weights[i]
     xx <- expand_mn(mats[[i]])
     y <- 1
     ps <- mn_probs(xx, bt)
@@ -60,6 +59,19 @@ mn_loss <- function(mats, bt) {
     corrects[i] <- (order(-ps)[1] == y)
   }
   list(acc = sum(corrects)/n, likloss = sum(log(probs)), 
-       probs = probs, corrects = corrects, pmat = pmat)
+       probs = probs, corrects = corrects)
 }
 
+smooth_mn <- function(mn) {
+  winv <- mn[2 + (1:MN_MAX_LEN)]
+  losev <- mn[2 + MN_MAX_LEN + (1:MN_MAX_LEN)]
+  res1 <- isoreg(which(winv != 0), -winv[winv != 0])
+  winv2 <- winv
+  winv2[winv != 0] <- -res1$yf
+  res2 <- isoreg(which(losev != 0), losev[losev != 0])
+  losev2 <- losev
+  losev2[losev != 0] <- res2$yf
+  # plot(winv, type = "l"); lines(winv2, col ="red")
+  # plot(losev, type = "l"); lines(losev2, col ="red")
+  c(mn[1:2], winv2, losev2)
+}

@@ -64,3 +64,24 @@ i <- 1
 
 
 mnS <- mn_sgd(Schoices)
+for (i in 1:20) {
+#  mnS <- smooth_mn(mnS)
+  mnS <- mn_sgd(Schoices, mnS, l1p=1e-3, l2p = 0, eps = 0.1)
+  print(mn_loss(Schoices, mnS)[1:2])
+}
+
+plot(mnS, type = "l")
+
+
+mnG <- mn_sgd(Gchoices)
+for (i in 1:20) {
+  #  mnG <- smooth_mn(mnG)
+  mnG <- mn_sgd(Gchoices, mnG, l1p=1e-3, l2p = 0, eps = 0.1)
+  print(mn_loss(Gchoices, mnG)[1:2])
+}
+
+plot(mnG, type = "l")
+plot(mnG, type = "l"); lines(mnS, col = "red")
+
+# save(mnS, mnG, file = "doubutsu1/prediction/mn00.rds")
+
