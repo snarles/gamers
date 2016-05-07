@@ -57,17 +57,4 @@ solve_state_raw <- function(state, print = FALSE) {
 }
 
 
-ff <- solve_state_raw(states[300, ], TRUE)
-
-
-
-t1 <- proc.time()
-res <- list()
-for (i in 1:nrow(states)) {
-  ff <- solve_state_raw(states[i, ])
-  res <- c(res, list(ff))
-}
-proc.time() - t1
-saveRDS(res, "analyses.rds")
-
 

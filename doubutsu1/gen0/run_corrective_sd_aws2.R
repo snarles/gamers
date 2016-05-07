@@ -17,14 +17,28 @@ invP <- function(v, expo = -1) {
 states <- readRDS("doubutsu1/lg_states.rds")
 states <- states[sapply(states, length) > 2]
 states <- lapply(states, do.call, what = rbind)
-states <- do.call(rbind, states)
-hashes <- apply(states, 1, hash_state)
+states0 <- do.call(rbind, states)
+hashes <- apply(states0, 1, function(state) paste0(state[4] %%2, paste(state[5:48], collapse = "")))
 uninds <- match(unique(hashes), hashes)
-states <- states[uninds, ]
+states <- states0[uninds, ]
+
+saveRDS(states, "doubutsu1/lg_states_mat.rds")
+saveRDS(hashes, "doubutsu1/uhashes.rds")
+saveRDS(states, "doubutsu1/ustates_lg.rds")
+source("doubutsu1/sourceJP.R")
 
 
+ff <- solve_state_raw(states[300, ], TRUE)
 
+odir0 <- getwd()
 
+t1 <- proc.time()
+res <- list()
+for (i in 1:nrow(states)) {
+  ff <- solve_state_raw(states[i, ])
+  res <- c(res, list(ff))
+}
+proc.time() - t1
+saveRDS(res, "doubutsu1/solver_analyses_raw.rds")
 
-
-print_state_JP(states[1, ])
+setwd(odir0)
