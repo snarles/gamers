@@ -42,3 +42,18 @@ proc.time() - t1
 saveRDS(res, "doubutsu1/solver_analyses_raw.rds")
 
 setwd(odir0)
+
+analyses <- res
+length(res)
+
+## Make states to train util function
+
+
+
+v <- analyses[[2120]]
+sink("temp.txt"); cats(v); sink()
+res <- analysis_to_values(v)
+res[[1]][, 1:5]
+draw_state(res[[1]][1, ])
+print_state(res[[1]][1, ])
+
