@@ -49,7 +49,7 @@ convert_to_alt <- function(mat) {
 }
 
 
-alts <- readRDS("doubutsu1/solved_alts.rds")[1:1000]
+alts <- readRDS("doubutsu1/solved_alts.rds")
 alts <- do.call(c, alts)
 senteS <- sapply(alts, function(v) v[1, 4])
 table(senteS)
@@ -67,12 +67,14 @@ rm(altsS); rm(altsG); gc()
 
 
 btS <- mcm_sgd(altsStr, l1p = 1e-3, eps = 0.1)
-btS <- mcm_sgd(altsStr, btS, l2p = 1e-5, eps = 0.1)
+btS <- mcm_sgd(altsStr, btS, l2p = 1e-6, eps = 0.05)
 mcm_loss(altsStr, btS)[1]
-mcm_loss(altsSte, btS)[1]
+mcm_loss(altsSte, btS)[1] # 0.72
+# saveRDS(btS, "doubutsu1/genInf/btS.rds")
 
 btG <- mcm_sgd(altsGtr, l1p = 1e-3, eps = 0.1)
-btG <- mcm_sgd(altsGtr, btG, l2p = 1e-5, eps = 0.1)
+btG <- mcm_sgd(altsGtr, btG, l2p = 1e-6, eps = 0.05)
 mcm_loss(altsGtr, btG)[1]
-mcm_loss(altsGte, btG)[1]
+mcm_loss(altsGte, btG)[1] # 0.69
+# saveRDS(btG, "doubutsu1/genInf/btG.rds")
 
