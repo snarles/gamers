@@ -105,13 +105,17 @@ analysis_to_values <- function(v) {
       vals <- sapply(moves0, function(v) {
         strsplit(strsplit(v, " ")[[1]][4], "\\(")[[1]][1]
       }, USE.NAMES = FALSE)
+      parens <- sapply(moves0, function(v) {
+        w <- strsplit(strsplit(v, " ")[[1]][4], "\\(")[[1]][2]
+        substr(w, 1, nchar(w)-1)
+      })
       if ((turnv==0 && valv==-1) || (turnv==1 && valv==1))
       {
         valvs <- rep(valv, length(vals))
       } else {
         valvs <- -as.numeric(vals) * valv  ## don't know why they encoded this way..
         if (valv==0) {
-          valvs[as.numeric(vals)==0] <- (2 * turnv) - 1
+          valvs[as.numeric(parens)!=0] <- (2 * turnv) - 1
         }
       }
       filt <- !is.na(matchinds)

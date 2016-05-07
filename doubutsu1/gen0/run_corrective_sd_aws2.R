@@ -50,7 +50,7 @@ length(res)
 
 
 
-v <- analyses[[2120]]
+v <- analyses[[2080]]
 sink("temp.txt"); cats(v); sink()
 res <- analysis_to_values(v)
 res[[1]][, 1:5]
