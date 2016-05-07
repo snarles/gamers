@@ -6,8 +6,10 @@ source("doubutsu1/gen0/sourceE.R")
 mult1 <- 1; mult2 <- 1
 bs <- mult1 * readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
 bg <- mult1 * readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
-Bs <- mult2 * readRDS("doubutsu1/gen0/n01_evS.rds")
-Bg <- mult2 * readRDS("doubutsu1/gen0/n01_evG.rds")
+# Bs <- mult2 * readRDS("doubutsu1/gen0/n01_evS.rds")
+# Bg <- mult2 * readRDS("doubutsu1/gen0/n01_evG.rds")
+Bs <- mult2 * readRDS("doubutsu1/genInf/btS.rds")
+Bg <- mult2 * readRDS("doubutsu1/genInf/btG.rds")
 nsample = 1; mateXdepth = 5
 games <- list()
 
