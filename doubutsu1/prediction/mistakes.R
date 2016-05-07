@@ -55,4 +55,12 @@ movechoice <- readRDS("doubutsu1/lg_movechoice.rds")
 Schoices <- do.call(c, lapply(movechoice, `[[`, "Schoice"))
 Gchoices <- do.call(c, lapply(movechoice, `[[`, "Gchoice"))
 
+
+mats <- Schoices
+xxs <- lapply(mats, expand_mn)
+sort(sapply(xxs, ncol))
+i <- 1
+
+
+
 mnS <- mn_sgd(Schoices)

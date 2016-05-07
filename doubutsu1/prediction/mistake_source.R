@@ -36,9 +36,9 @@ mn_sgd <- function(mats, bt = NULL, l1p = 0.1, l2p = 0, eps = 0.1,
     ww <- weights[i]
     xx <- expand_mn(mats[[i]])
     y <- 1
-    ps <- mcm_probs(xx, bt)
+    ps <- mn_probs(xx, bt)
     ps[y] <- ps[y] - 1
-    bt <- gradientX(bt, xx, -ww * eps * ps)
+    bt <- gradient1(bt, xx, -ww * eps * ps)
     bt <- shrinker(bt, eps * l1p, eps * l2p)
   }
   bt
@@ -55,7 +55,7 @@ mn_loss <- function(mats, bt) {
     ww <- weights[i]
     xx <- expand_mn(mats[[i]])
     y <- 1
-    ps <- mcm_probs(xx, bt)
+    ps <- mn_probs(xx, bt)
     probs[i] <- ps[y]
     corrects[i] <- (order(-ps)[1] == y)
   }
