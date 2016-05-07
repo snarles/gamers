@@ -1,6 +1,6 @@
 
-source("doubutsu1/prediction/multinom2.R")
-
+source("doubutsu1/source.R")
+Rcpp::sourceCpp("doubutsu1/Rsource.cpp")
 Rcpp::sourceCpp("doubutsu1/prediction/interaction2a.cpp")
 
 mcm_probs <- function(mat, bt) {
@@ -17,7 +17,7 @@ mcm_sgd <- function(mats, bt = NULL, l1p = 0, l2p = 0, eps = 0.1) {
   for (i in 1:n) {
     xx <- t(apply(mats[[i]], 1, expandState))
     ps <- mcm_probs(xx, bt)
-    ps <- ps - xx[, 1]
+    ps <- ps - mats[[i]][, 1]
     bt <- gradientX(bt, xx, -eps * ps)
     bt <- shrinker(bt, eps * l1p, eps * l2p)
   }
@@ -30,7 +30,7 @@ mcm_loss <- function(mats, bt) {
   for (i in 1:n) {
     xx <- t(apply(mats[[i]], 1, expandState))
     ps <- mcm_probs(xx, bt)
-    ep <- sum(ps * (xx[, 1] > 0))
+    ep <- sum(ps * (mats[[i]][, 1] > 0))
     accs[i] <- ep
   }
   list(me = mean(accs), accs = accs)
@@ -49,9 +49,10 @@ convert_to_alt <- function(mat) {
 }
 
 
-alts <- readRDS("doubutsu1/solved_alts.rds")
+alts <- readRDS("doubutsu1/solved_alts.rds")[1:1000]
 alts <- do.call(c, alts)
 senteS <- sapply(alts, function(v) v[1, 4])
+table(senteS)
 alts <- lapply(alts, convert_to_alt)
 altsS <- alts[senteS==0]
 altsG <- alts[senteS==1]
@@ -65,5 +66,13 @@ altsGte <- altsG[filtG==0]
 rm(altsS); rm(altsG); gc()
 
 
-btS <- mcm_sgd(altsStr[1:10], eps = 0.01)
-mcm_loss(altsStr[1:10], btS)[1]
+btS <- mcm_sgd(altsStr, l1p = 1e-3, eps = 0.1)
+btS <- mcm_sgd(altsStr, btS, l2p = 1e-5, eps = 0.1)
+mcm_loss(altsStr, btS)[1]
+mcm_loss(altsSte, btS)[1]
+
+btG <- mcm_sgd(altsGtr, l1p = 1e-3, eps = 0.1)
+btG <- mcm_sgd(altsGtr, btG, l2p = 1e-5, eps = 0.1)
+mcm_loss(altsGtr, btG)[1]
+mcm_loss(altsGte, btG)[1]
+
