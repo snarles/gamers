@@ -125,6 +125,12 @@ draw_state <- function(state, coords = TRUE, title = FALSE) {
       draw_piece(-0.25, 5.25 - i/2, ptypes2[i], 1, 0)
     }
   }
-  if (title) title(paste0(state[4], ". ", movestr(movev)))
+  if (title) {
+    if (movev[1] != 0) {
+      title(paste0(state[4], ". ", movestr(movev)))
+    } else {
+      title(paste(c("Sente", "Gote")[state[4] %% 2 + 1], "to move"))
+    }
+  }
 }
 
