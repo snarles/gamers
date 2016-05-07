@@ -1,16 +1,16 @@
 source("doubutsu1/source.R")
 hashtab <- readRDS("doubutsu1/hashtab.rds")
-matein <- readRDS("doubutsu1/matein.rds")
+matein <- readRDS("doubutsu1/matein_solver.rds")
 
-games <- readRDS("minishogi/doubutsu/lg_states.rds")
+games <- readRDS("doubutsu1/lg_states.rds")
 hashes <- lapply(games, function(v) sapply(v, hash_state))
 
-for (mate_in_what in 1:3) {
+for (mate_in_what in 1:5) {
   for (blind in c(TRUE, FALSE)) {
     fname <- paste0("doubutsu1/book/mate", mate_in_what, c("", "blind")[blind + 1], ".txt")
     ## Mate in X puzzles
     sink(fname)
-    filt <- matein == mate_in_what * 2 + 1
+    filt <- (matein == (mate_in_what * 2 - 1)) | (matein == (mate_in_what * 2))
     for (h in names(matein)[sample(which(filt), length(which(filt)), replace = FALSE)]) {
       gameno <- which(sapply(hashes, function(v) h %in% v))[1]
       nextnode <- which(hashes[[gameno]] == h)[1]

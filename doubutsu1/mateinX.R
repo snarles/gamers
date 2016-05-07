@@ -30,13 +30,22 @@ mateXX <- sapply(alts, function(v) {
   NA
 })
 zinds <- which(mateXX == Inf)
-i <- sample(which(mateXX==2), 1)
+i <- sample(which(mateXX==5), 1)
 draw_state(alts[[i]][1, ], title = TRUE)
 v <- alts[[i]]
 SOLVER_DIR <- "~/Downloads/dobutsu"
 ares <- solve_state_raw(alts[[i]][1, ], TRUE)
 state <- alts[[i]][1, ]
 
+
+hashes <- readRDS("doubutsu1/lg_hashes.rds")
+ah <- do.call(c, hashes)
+filt <- hashX %in% ah
+matein <- list()
+matein[hashX[filt]] <- mateXX[filt]
+length(matein)
+
+saveRDS(matein, "doubutsu1/matein_solver.rds")
 
 setwd("~/github/gamers")
 
