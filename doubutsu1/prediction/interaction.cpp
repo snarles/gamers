@@ -2,8 +2,8 @@
 using namespace Rcpp;
 
 // [[Rcpp::export]]
-int ncols2(int sz) {
-  return sz + ((sz - 1) * sz)/2;
+int ncols1(int sz) {
+  return sz;
 }
 
 
@@ -26,7 +26,7 @@ NumericVector shrinker(NumericVector bt, double l1p, double l2p) {
 }
 
 // [[Rcpp::export]]
-NumericVector predict2(NumericMatrix x, NumericVector bt) {
+NumericVector predict1(NumericMatrix x, NumericVector bt) {
   int nr = x.nrow();
   int nc = x.ncol();
   NumericVector y(nr);
@@ -37,19 +37,13 @@ NumericVector predict2(NumericMatrix x, NumericVector bt) {
       s = s + x(i, j) * bt[l];
       l++;
     }
-    for (int j = 0; j < (nc - 1); j++) {
-      for (int k = (j + 1); k < nc; k++) {
-        s = s + x(i, j) * x(i, k) * bt[l];
-        l++;
-      }
-    }
     y(i) = s;
   }
   return (y);
 }
 
 // [[Rcpp::export]]
-NumericVector gradient2(NumericVector mu, NumericMatrix x, NumericVector ws) {
+NumericVector gradient1(NumericVector mu, NumericMatrix x, NumericVector ws) {
   int nr = x.nrow();
   int nc = x.ncol();
   for (int i = 0; i < nr; i++) {
@@ -57,12 +51,6 @@ NumericVector gradient2(NumericVector mu, NumericMatrix x, NumericVector ws) {
     for (int j = 0; j < nc; j++) {
       mu[l] = mu[l] + x(i, j) * ws[i];
       l++;
-    }
-    for (int j = 0; j < (nc - 1); j++) {
-      for (int k = (j + 1); k < nc; k++) {
-        mu[l] = mu[l] + x(i, j) * x(i, k) * ws[i];
-        l++;
-      }
     }
   }
   return (mu);
@@ -75,18 +63,14 @@ NumericVector gradient2(NumericVector mu, NumericMatrix x, NumericVector ws) {
 // sourceCpp("doubutsu1/prediction/interaction.cpp")
 
 /*** R
-x <- pracma::randn(3)
-bt <- rnorm(6)
-ws <- rnorm(3)
-x2 <- cbind(x, x[, 1] * x[, 2], x[, 1] * x[, 3], x[, 2] * x[, 3])
-x2 %*% bt
-predict2(x, bt)
-bt + t(ws) %*% x2
-gradient2(bt, x, ws)
-c(-(5:1) + 0.1, 0, (1:5) - 0.1) * (1 - 0.2)
-shrinker(-5:5, 0.1, 0.2)
-
-predictX <- predict2
-gradientX <- gradient2
-ncolsX <- ncols2
+# x <- pracma::randn(3)
+# bt <- rnorm(3)
+# ws <- rnorm(3)
+# x2 <- x
+# x2 %*% bt
+# predict1(x, bt)
+# bt + t(ws) %*% x2
+# gradient1(bt, x, ws)
+# c(-(5:1) + 0.1, 0, (1:5) - 0.1) * (1 - 0.2)
+# shrinker(-5:5, 0.1, 0.2)
 */

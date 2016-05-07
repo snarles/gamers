@@ -45,7 +45,14 @@ for (i in 1:length(games)) {
   }
   res$Schoice <- Schoice
   res$Gchoice <- Gchoice
+  movechoice <- c(movechoice, list(res))
 }
 
+source("doubutsu1/prediction/mistake_source.R")
+# saveRDS(movechoice, "doubutsu1/lg_movechoice.rds")
+movechoice <- readRDS("doubutsu1/lg_movechoice.rds")
 
-saveRDS(movechoice, "doubutsu1/lg_movechoice.rds")
+Schoices <- do.call(c, lapply(movechoice, `[[`, "Schoice"))
+Gchoices <- do.call(c, lapply(movechoice, `[[`, "Gchoice"))
+
+mnS <- mn_sgd(Schoices)
