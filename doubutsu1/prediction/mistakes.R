@@ -83,5 +83,10 @@ for (i in 1:20) {
 plot(mnG, type = "l")
 plot(mnG, type = "l"); lines(mnS, col = "red")
 
+names(mnS) <- c("win", "lose", 
+                paste0("w", 1:MN_MAX_LEN),
+                paste0("l", 1:MN_MAX_LEN))
+names(mnG) <- names(mnS)
+
 # save(mnS, mnG, file = "doubutsu1/prediction/mn00.rds")
 

@@ -1,7 +1,7 @@
 ## #SET THIS AS DIRECTORY TO DOBUTSU PROGRAM
 ## https://dell.tanaka.ecc.u-tokyo.ac.jp/~ktanaka/dobutsushogi/
 
-SOLVER_DIR <- "/home/snarles/Downloads/dobutsu"
+SOLVER_DIR <- "~/Downloads/dobutsu"
 
 catn <- function(x) cat(paste0(x, "\n"))
 

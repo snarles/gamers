@@ -117,18 +117,21 @@ draw_state <- function(state, coords = TRUE, title = FALSE) {
       draw_piece(xs[i], ys[i], board[1, i], board[2, i], board[3, i])
     } 
   }
-  ptypes1 <- sort(c(which(hand1==1), which(hand1==2), which(hand1==2)))
-  ptypes2 <- sort(c(which(hand2==1), which(hand2==2), which(hand2==2)))
-  if (length(ptypes1) > 0) {
-    for (i in 1:length(ptypes1)) {
-      draw_piece(4.25, i/2-.25, ptypes1[i], 0, 0)
+  for (i in 1:3) {
+    if (hand1[i+1] > 0) {
+      if (hand1[i + 1] > 1) {
+        draw_piece(4.5, i, i+1, 0, 0)
+      }
+      draw_piece(5, i, i+1, 0, 0)
+    }
+    if (hand2[i+1] > 0) {
+      if (hand2[i + 1] > 1) {
+        draw_piece(-.5, 5-i,i+1, 1, 0)
+      }
+      draw_piece(-1, 5-i, i+1, 1, 0)
     }
   }
-  if (length(ptypes2) > 0) {
-    for (i in 1:length(ptypes2)) {
-      draw_piece(-0.25, 5.25 - i/2, ptypes2[i], 1, 0)
-    }
-  }
+  
   if (title) {
     if (movev[1] != 0) {
       title(paste0(state[4], ". ", movestr(movev)))

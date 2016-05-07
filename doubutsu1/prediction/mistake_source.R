@@ -23,6 +23,7 @@ expand_mn <- function(mat) {
 mn_probs <- function(mat, bt) {
   ips <- predict1(mat, bt)
   ps <- exp(ips)
+  names(ps) <- rownames(mat)
   ps/sum(ps)
 }
 

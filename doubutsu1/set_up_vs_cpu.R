@@ -5,6 +5,10 @@ source("doubutsu1/gen0/sourceE.R")
 bs <- readRDS("doubutsu1/prediction/multinom_fit2_sente.rds")
 bg <- readRDS("doubutsu1/prediction/multinom_fit2_gote.rds")
 source("doubutsu1/gen0/corrective.R")
+load("doubutsu1/prediction/mn00.rds")
+# mnBt <- smooth_mn((mnS + mnG)/2)
+mnBt <- (mnS + mnG)/2
+source("doubutsu1/sourceJP.R")
 
 nsample = 1; mateXdepth = 5
 games <- list()
@@ -64,12 +68,44 @@ next_move_from_book <- function(state) {
   return ("unknown")
 }
 
+# next_move_from_ai <- function(state, ...) {
+#   res <- analyze_state(state, ...)
+#   mv <- sample(res$cands, 1)
+#   print(c(mv, "AI MOVE"))
+#   return(mv)
+# }
+
 next_move_from_ai <- function(state, ...) {
-  res <- analyze_state(state, ...)
-  mv <- sample(res$cands, 1)
-  print(c(mv, "AI MOVE"))
+  #raw <- solve_state_raw(state, TRUE)
+  alt <- getAlt(state)
+  X <- t(apply(alt, 1, expandState))
+  if (state[4] %% 2 == 0) {
+    ps <- predictX(X, bs)
+  } else {
+    ps <- predictX(X, bg)
+  }
+  ps <- exp(ps)/sum(exp(ps)); names(ps) <- rownames(alt)
+  raw <- solve_state_raw(state)
+  res <- analysis_to_values(raw)
+  alt <- res[[1]]
+  mn <- alt[-1, 1:2, drop = FALSE]
+  ps2 <- mn_probs(expand_mn(mn), mnBt)
+  ps2[mn[, 1]==-1 & mn[,2]==0] <- 0; ps2 <- ps2/sum(ps2)
+  mvs <- sample(names(ps2), 3, TRUE, prob = ps2)
+  stopifnot(all(names(mvs) %in% names(ps)))
+  ps3 <- ps[mvs]; ps3 <- ps3/sum(ps3)
+  ind <- sample(length(ps3), 1, prob = ps3)
+  mv <- names(ps3)[ind]
+  print(list(msg = "AI_MOVE", mn = mn, ps = ps, ps2 = ps2, ps3 = ps3, mv))
   return(mv)
 }
+
+ii <- 1340
+ii <- ii+1
+state <- database[ii, ]
+draw_state(state, title = TRUE)
+query_move(state)
+# next_move_from_ai(state)
 
 # save.image(file = "doubutsu1/vs_cpu.rda")
 

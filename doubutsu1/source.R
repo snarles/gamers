@@ -44,6 +44,8 @@ LOX <- c("3a", "2a", "1a",
          "3d", "2d", "1d"
 )
 
+xy_to_start <- pracma::flipud(t(matrix(1:12, nrow = 3)))
+
 print_state <- function(state, blind = FALSE) {
   board <- matrix(state[5:40], nrow = 3)
   hand1 <- state[41:44]
@@ -226,3 +228,12 @@ mateX <- function(state, maxdepth) {
 }
 
 uhash <- function(state) paste0(state[4] %%2, paste(state[5:48], collapse = ""))
+
+getAlt <- function(state) {
+  tt <- build_tree(state, 1, 200)
+  mvs <- legal_moves(state, tt)
+  tt <- tt[-1, , drop = FALSE]
+  rownames(tt) <- mvs
+  tt
+}
+
