@@ -2,30 +2,13 @@
 ##  Multinomial prediction with interactions
 ####
 
+
+
 if (!"allmoves" %in% ls()) source("doubutsu1/lg_analysis_setup.R")
 # Rcpp::sourceCpp("doubutsu1/prediction/interaction2a.cpp")
 # Rcpp::sourceCpp("doubutsu1/prediction/interaction3.cpp")  ## use for order-3!!!
 
-eye11 <- pracma::eye(11)
-ut3 <- pracma::eye(3); ut3[upper.tri(ut3)] <- 1
 
-expand_state <- function(state) {
-  board <- matrix(state[5:40], nrow = 3)
-  hand1 <- state[41:44]
-  hand2 <- state[45:48]
-  ptypes <- board[1, ] + board[2, ] * 5 + board[3, ]
-  ptypes[board[1, ]==0] <- 0
-  bboard <- as.numeric(eye11[, ptypes + 1][-1, ])
-  names(bboard) <- paste(rep(c("K", "R", "B", "P", "T", "k", "r", "b", "p", "t"), 12), 
-                         rep(1:12, each = 10), sep = "")
-  h1 <- as.numeric(ut3[, hand1 + 1][-1, ])
-  h2 <- as.numeric(ut3[, hand2 + 1][-1, ])
-  names(h1) <- paste(rep(c("K", "R", "B", "P"), each = 2), rep(c("x1", "x2")), sep = "")
-  names(h2) <- paste(rep(c("K", "R", "B", "P"), each = 2), rep(c("x1", "x2")), sep = "")
-  ans <- c(bboard, h1, h2)
-  ## length(ans) ## 136
-  ans
-}
 
 
 

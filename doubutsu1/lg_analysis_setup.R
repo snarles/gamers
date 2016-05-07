@@ -3,6 +3,7 @@
 ####
 
 source("doubutsu1/source.R")
+Rcpp::sourceCpp("doubutsu1/Rsource.cpp")
 # sourceCpp("doubutsu1/Rsource2.cpp")
 hashtab <- readRDS("doubutsu1/hashtab.rds")
 matein <- readRDS("doubutsu1/matein.rds")
@@ -49,7 +50,7 @@ makeTable <- function(ginds) {
     for (turn in 2:length(ALT)) {
       alt <- ALT[[turn]]
       choice <- which(alt[, 1]==1)[1]
-      mat <- t(apply(alt, 1, expand_state))
+      mat <- t(apply(alt, 1, expandState))
       mv <- game[[turn]]
       prev <- gs[[turn - 1]]
       lmv <- mvs[[turn]]
@@ -72,9 +73,9 @@ makeTable <- function(ginds) {
       }
     }
   }
-  senteX <- t(apply(sentePos, 1, expand_state))
+  senteX <- t(apply(sentePos, 1, expandState))
   rownames(senteX) <- NULL
-  goteX <- t(apply(gotePos, 1, expand_state))
+  goteX <- t(apply(gotePos, 1, expandState))
   rownames(goteX) <- NULL
   list(senteAlts = senteAlts, senteChoice = senteChoice,
        goteAlts = goteAlts, goteChoice = goteChoice,
