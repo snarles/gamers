@@ -35,6 +35,7 @@ opening_move_from_book <- function() {
   ind <- sample(which(filt), 1)
   st <- database[ind, ]
   mv <- movestr(st[49:51])
+  Sys.sleep(0.2)
   return(mv)
 }
 

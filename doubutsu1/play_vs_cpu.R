@@ -13,19 +13,8 @@ sourceCpp("doubutsu1/Rsource2.cpp")
 source("doubutsu1/viz2.R")
 source("doubutsu1/gui.R")
 
-
-
-
-
-
-
-ii <- 1340
-ii <- ii+1
-state <- database[ii, ]
-# draw_state(state, title = TRUE)
-query_move(state)
-
-
+game_record <- character()
+game_states <- list()
 
 
 draw_board(FALSE)
@@ -39,70 +28,60 @@ if (click$y > 2) {
   pl <- "sente"
 }
 
+draw_state(state, title = TRUE)
+
 if (pl %in% c("gote", "sente")) {
   flag <- TRUE
   state <- init_state
   game_states <- c(game_states, list(state))
   if (pl == "gote") {
+    print("AI THINKING...")
     mv <- opening_move_from_book()
     game_record <- c(game_record, mv)
     state <- move_parser(state, mv)
     game_states <- c(game_states, list(state))
   }
-  print_state(state, TRUE)
-  while(flag) {
-
-    if (pl == "sente" && state[4]%%2 == 0) {
-      mv <- query_move(state)
-    }
-    if (pl == "gote" && state[4] %% 2 == 1) {
-      mv <- query_move(state)
-    }
-    if (mv == "quit") {
-      flag <- FALSE
-    }
+  while(mv != "resign" && flag) {
+    mv <- query_move(state)
     game_record <- c(game_record, mv)
-    if (mv == "resign") flag <- FALSE
-    if (!mv %in% c("resign", "quit")) {
+    state <- move_parser(state, mv)
+    game_states <- c(game_states, list(state))
+    draw_state(state, title = TRUE)
+    mX <- mateX(state, 2)
+    # print(list(mX = mX, pl = state[4] %%2))
+    if (!is.na(mX) && mX <= 0) {
+      draw_state(state, title = FALSE)
+      flag <- FALSE
+      pl <- state[4] %% 2
+      if (pl == 0 && state[45]==1) title("Gote wins!")
+      if (pl == 1 && state[41]==1) title("Sente wins!")
+      if (pl == 0 && state[45]!=1) title("Gote wins!")
+      if (pl == 1 && state[41]!=1) title("Sente wins!")
+    } else {
+      print("AI THINKING...")
+      sink("temp.txt")
+      mv <- next_move(state)
+      sink()
+      game_record <- c(game_record, mv)
       state <- move_parser(state, mv)
       game_states <- c(game_states, list(state))
-      mX0 <- mateX(state, 0)
-      if (!is.na(mX0) && mX0 == 0) {
-        catn("===YOU WIN!!===")
-        draw_state(state)
-        title("Victory!", sub = pl)
+    }
+    if (mv == "resign") {
+      draw_state(state, title = FALSE)
+      pl <- state[4] %% 2
+      if (pl == 0) title("Sente resigns!")
+      if (pl == 1) title("Gote resigns!!")
+    } else {
+      mX <- mateX(state, 2)
+      if (!is.na(mX) && mX <= 0) {
+        draw_state(state, title = FALSE)
         flag <- FALSE
-      }
-      if (flag) {
-        print("AI THINKING")
-        sink("temp.txt")
-        mv <- next_move(state)
-        sink()
-        game_record <- c(game_record, mv)
-        state <- move_parser(state, mv)
-        game_states <- c(game_states, list(state))
-        if (mv == "resign") {
-          catn("===YOU WIN!!===")
-          draw_state(state)
-          title("Victory!", sub = pl)
-          flag <- FALSE
-        }
+        pl <- state[4] %% 2
+        if (pl == 0 && state[45]==1) title("Gote wins!")
+        if (pl == 1 && state[41]==1) title("Sente wins!")
+        if (pl == 0 && state[45]!=1) title("Gote wins!")
+        if (pl == 1 && state[41]!=1) title("Sente wins!")
       }
     }
-    if (flag) {
-      mX0 <- mateX(state, 0)
-      if (!is.na(mX0) && mX0 == 0) {
-        last_mv <- movestr(state[49:51])
-        opponent <- c("Gote", "Sente")[state[4] %% 2 + 1]
-        catn(paste(opponent, "moved", last_mv))
-        catn("===YOU LOSE!!===")
-        draw_state(state)
-        title("Defeat!", sub = pl)
-        flag <- FALSE
-      }
-    }
-  }  
-} else {
-  print("invalid.. choose 0 or 1 next time")
-}
-
+  }
+} 
