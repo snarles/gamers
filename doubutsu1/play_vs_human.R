@@ -16,5 +16,15 @@ while (mv != "resign" && flag) {
   draw_state(state, title = TRUE)
   mv <- query_move(state)
   state <- move_parser(state, mv)
-  print(maxVal(state, 0))
+  mX <- mateX(state, 2)
+  # print(list(mX = mX, pl = state[4] %%2))
+  if (!is.na(mX) && mX <= 0) {
+    draw_state(state, title = FALSE)
+    flag <- FALSE
+    pl <- state[4] %% 2
+    if (pl == 0 && state[45]==1) title("Gote wins!")
+    if (pl == 1 && state[41]==1) title("Sente wins!")
+    if (pl == 0 && state[45]!=1) title("Gote wins!")
+    if (pl == 1 && state[41]!=1) title("Sente wins!")
+  }
 }
