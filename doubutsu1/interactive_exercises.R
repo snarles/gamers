@@ -14,14 +14,16 @@ mate_in_what <- 3
 blind <- FALSE
 
 check_solution <- function(h) {
-  gameno <- which(sapply(hashes, function(v) h %in% v))
+  gameno <- which(sapply(hashes, function(v) h %in% v))[1]
   cnode <- which(hashes[[gameno]] == h)[1]
   problem <- games[[gameno]][[cnode]]
   draw_state(problem)
   res <- solve_state_raw(problem, TRUE)
   res2 <- analysis_to_values(res)
-  for (v in res2) {
+  for (i in 1:length(res2)) {
+    v <- res2[[i]]
     draw_state(v[1, ])
+    if (i %% 2 == 0) title(i/2)
     locator(1)
   }
   invisible(res2)
