@@ -32,7 +32,9 @@ game_records <- list()
 new_alts <- list()
 winners <- c()
 
-
+alt_summary <- function(alt) {
+  list(uh = uhash2(alt[1, ]), mn = alt[-1, 1:2, drop = FALSE])
+}
 
 
 t1 <- proc.time()
@@ -80,7 +82,7 @@ for (iii in 1:100) {
       title(sub = winner)
       winners <- c(winners, winner)
     }
-    new_alts <- c(new_alts, new_alt)
+    new_alts <- c(new_alts, lapply(new_alt, alt_summary))
     game_records <- c(game_records, list(game_record))
   }
   print(table(winners))
