@@ -68,7 +68,9 @@ next_move_from_book <- function(state) {
     mv <- movestr(database[ind+1, 49:51])
     print(c(mv, "LG-(HUMAN)-MOVE"))
     mvs <- legal_moves(state)
-    stopifnot(mv %in% mvs)
+    if(!(mv %in% mvs)) {
+      return("unknown")
+    }
     Sys.sleep(0.5)
     return(mv)
   }

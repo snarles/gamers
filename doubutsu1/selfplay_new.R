@@ -31,6 +31,10 @@ layout(t(matrix(1:9, 3, 3)))
 game_records <- list()
 new_alts <- list()
 winners <- c()
+
+
+
+
 t1 <- proc.time()
 for (iii in 1:100) {
   game_record <- character()
@@ -84,6 +88,15 @@ for (iii in 1:100) {
   Sys.sleep(9 * SPECTATOR_T + 1)
 }
 proc.time() - t1
+
+
+
+
+
+
+
+
+
 altu <- sapply(new_alts, function(v) uhash2(v[1, ]))
 oldu <- readRDS("doubutsu1/old_altu.rds")
 ua <- setdiff(unique(altu), oldu)
