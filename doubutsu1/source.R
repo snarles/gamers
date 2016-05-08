@@ -238,3 +238,5 @@ getAlt <- function(state) {
   tt
 }
 
+statu <- function(uh)
+  c(0, 0, 0, as.numeric(strsplit(substr(uh, 2, nchar(uh)), "")[[1]]), 0, 0, 0)

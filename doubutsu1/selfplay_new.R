@@ -12,7 +12,10 @@
 cat("Loading...")
 cat("\n")
 
-SPECTATOR_T <- 1
+# drawit <- TRUE
+#SPECTATOR_T <- 1
+SPECTATOR_T <- 0
+drawit <- FALSE
 
 library(Rcpp)
 # load("doubutsu1/vs_cpu.rda")
@@ -38,7 +41,7 @@ alt_summary <- function(alt) {
 
 
 t1 <- proc.time()
-for (iii in 1:100) {
+for (iii in 1:10) {
   game_record <- character()
   game_states <- list()
   state <- init_state
@@ -53,7 +56,7 @@ for (iii in 1:100) {
     sink()
     if (mv == "resign") {
       print_state(state)
-      draw_state(state, title = FALSE)
+      if(drawit) draw_state(state, title = FALSE)
       pl <- state[4] %% 2
       if (pl == 0) {
         title("Sente resigns!")
@@ -72,7 +75,7 @@ for (iii in 1:100) {
     mX <- mateX(state, 2)
     if (!is.na(mX) && mX <= 0) {
       print_state(state)
-      draw_state(state, title = TRUE)
+      if(drawit) draw_state(state, title = TRUE)
       flag <- FALSE
       pl <- state[4] %% 2
       if (pl == 0 && state[45]==1) winner <- "gote"
@@ -99,12 +102,12 @@ proc.time() - t1
 
 
 
-altu <- sapply(new_alts, function(v) uhash2(v[1, ]))
+altu <- sapply(new_alts, `[[`, "uh")
 oldu <- readRDS("doubutsu1/old_altu.rds")
 ua <- setdiff(unique(altu), oldu)
 length(ua)
 if (length(ua) > 0) {
-  new_alts <- new_alts[match(unique(altu), altu)]
+  new_alts <- new_alts[match(ua, altu)]
   length(new_alts)
   saveRDS(new_alts, "doubutsu1/temp_new_alts.rds")
 }
