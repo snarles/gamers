@@ -229,7 +229,7 @@ mateX <- function(state, maxdepth) {
 }
 
 uhash <- function(state) paste0(state[4] %%2, paste(state[5:48], collapse = ""))
-
+uhash2 <- function(state) paste0("u", paste0(state[4] %%2, paste(state[5:48], collapse = "")))
 getAlt <- function(state) {
   tt <- build_tree(state, 1, 200)
   mvs <- legal_moves(state, tt)

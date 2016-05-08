@@ -94,6 +94,7 @@ next_move_from_ai <- function(state, ...) {
   ps <- exp(ps)/sum(exp(ps)); names(ps) <- rownames(alt)
   raw <- solve_state_raw(state)
   res <- analysis_to_values(raw)
+  new_alt <<- res
   alt <- res[[1]]
   mn <- alt[-1, 1:2, drop = FALSE]
   if (state[4] %% 2 == 1) mn[, 1] <- -mn[, 1]
