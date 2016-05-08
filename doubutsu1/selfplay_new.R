@@ -59,11 +59,11 @@ for (iii in 1:10) {
       if(drawit) draw_state(state, title = FALSE)
       pl <- state[4] %% 2
       if (pl == 0) {
-        title("Sente resigns!")
+        if(drawit) title("Sente resigns!")
         winner <- "gote"
       }
       if (pl == 1) {
-        title("Gote resigns!!")
+        if(drawit) title("Gote resigns!!")
         winner <- "sente"
       }
       flag <- FALSE
@@ -82,7 +82,7 @@ for (iii in 1:10) {
       if (pl == 1 && state[41]==1) winner <- "sente"
       if (pl == 0 && state[45]!=1) winner <- "gote"
       if (pl == 1 && state[41]!=1) winner <- "sente"
-      title(sub = winner)
+      if(drawit) title(sub = winner)
       winners <- c(winners, winner)
     }
     new_alts <- c(new_alts, lapply(new_alt, alt_summary))
