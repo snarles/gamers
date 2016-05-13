@@ -68,7 +68,9 @@ next_move_from_book <- function(state) {
     mv <- movestr(database[ind+1, 49:51])
     print(c(mv, "LG-(HUMAN)-MOVE"))
     mvs <- legal_moves(state)
-    stopifnot(mv %in% mvs)
+    if(!(mv %in% mvs)) {
+      return("unknown")
+    }
     Sys.sleep(0.5)
     return(mv)
   }
@@ -94,6 +96,7 @@ next_move_from_ai <- function(state, ...) {
   ps <- exp(ps)/sum(exp(ps)); names(ps) <- rownames(alt)
   raw <- solve_state_raw(state)
   res <- analysis_to_values(raw)
+  new_alt <<- res
   alt <- res[[1]]
   mn <- alt[-1, 1:2, drop = FALSE]
   if (state[4] %% 2 == 1) mn[, 1] <- -mn[, 1]
