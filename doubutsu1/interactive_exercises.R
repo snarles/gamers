@@ -29,19 +29,19 @@ check_solution <- function(h) {
   invisible(res2)
 }
 
-## Mate in X puzzles
-
-h <- names(matein)[sample(which(matein == mate_in_what * 2 + 1), 1)]
-gameno <- which(sapply(hashes, function(v) h %in% v))
-cnode <- which(hashes[[gameno]] == h)[1]
-problem <- games[[gameno]][[cnode]]
-{
-  print_state(problem, blind = blind)
-  if (problem[4] %% 2 == 0) {
-    catn(paste0("** SENTE TO MOVE (mate in ", mate_in_what, ") **"))
-  } else {
-    catn(paste0("** GOTE TO MOVE (mate in ", mate_in_what, ") **"))
-  }
-}
+# ## Mate in X puzzles
+# 
+# h <- names(matein)[sample(which(matein == mate_in_what * 2 + 1), 1)]
+# gameno <- which(sapply(hashes, function(v) h %in% v))
+# cnode <- which(hashes[[gameno]] == h)[1]
+# problem <- games[[gameno]][[cnode]]
+# {
+#   print_state(problem, blind = blind)
+#   if (problem[4] %% 2 == 0) {
+#     catn(paste0("** SENTE TO MOVE (mate in ", mate_in_what, ") **"))
+#   } else {
+#     catn(paste0("** GOTE TO MOVE (mate in ", mate_in_what, ") **"))
+#   }
+# }
 
 ## find the answer:
