@@ -56,13 +56,30 @@ solve_state_raw <- function(state, print = FALSE) {
   ff  
 }
 
+get_annotation_raw <- function(jgame, print = FALSE) {
+  odir <- getwd()
+  setwd(SOLVER_DIR)
+  sink("temp.txt")
+  for (m in jgame) catn(m)
+  sink()
+  system("./checkcsa temp.txt 2> out.txt")
+  ff <- readLines("out.txt")
+  setwd(odir)
+  if (print) {
+    for (ll in ff) {
+      catn(ll)
+    }
+  }
+  ff
+}
+
 cats <- function(v) {
   for (w in v) catn(w)
 }
 
 typesJP <- c("LI"=1, "KI"=2, "ZO"=3, "HI"=4, "NI"=4)
 promJP <- c("LI"=0, "KI"=0, "ZO"=0, "HI"=0, "NI"=1)
-transJP <- c("LI"="K", "KI"="R", "ZO"="B", "NI"="P", "HI"="P")
+transJP <- c("LI"="K", "KI"="R", "ZO"="B",  "HI"="P", "NI"="P")
 ltransJP <- c("A1"="3a", "B1"="2a", "C1"="1a",
               "A2"="3b", "B2"="2b", "C2"="1b",
               "A3"="3c", "B3"="2c", "C3"="1c",
@@ -167,3 +184,89 @@ parse_moveJP <- function(chosen) {
   (mv <- paste0(transJP[l3], "-", ltransJP[l1], "-", ltransJP[l2]))
   mv
 }
+
+move_to_JP <- function(mv, pl, prom = 0) {
+  pcs <- strsplit(mv, "-")[[1]]
+  spl <- c("+", "-")[pl + 1]
+  if (prom == 0) {
+    pc <- names(transJP)[transJP == pcs[1]][1]
+  } else {
+    pc <- names(transJP)[transJP == pcs[1]][2]
+  }
+  paste0(spl, 
+         names(ltransJP)[ltransJP == pcs[2]], 
+         names(ltransJP)[ltransJP == pcs[3]], pc)
+}
+
+alt_df_2s <- function(df, ind) {
+  paste0(rownames(df)[ind], " (", df[ind, 1], ":", df[ind, 2], ")")
+}
+
+analyze_game <- function(game, MODE = c("print", "draw", "return")) {
+  MODE <- MODE[1]
+  states <- statesFromGame(game)
+  jgame <- c()
+  for (i in 1:length(states)) {
+    state <- states[[i]]
+    board <- matrix(state[5:40], nrow = 3)
+    hand1 <- state[41:44]
+    hand2 <- state[45:48]
+    movev <- state[49:51]
+    prom <- 0
+    if (movev[1] > 0 && board[3, movev[1]]==1) prom <- 1
+    jgame[i] <- move_to_JP(game[i], (i + 1) %% 2, prom)
+  }
+  ff <- get_annotation_raw(jgame)
+  divs <- which(sapply(ff, function(v) substr(v, 1, 3)=="0 :"))
+  divs <- c(divs, length(ff) + 1)
+  dlist <- list()
+  for (i in 1:length(states)) {
+    mstr <- paste(i, game[i], sep = ". ")
+    br <- ff[divs[i]:(divs[i + 1] - 1)]
+    ind <- which(sapply(br, function(v) substr(v, 1, 4) == "Move"))
+    br <- br[1:ind]
+    br <- sapply(br, function(v) strsplit(v, " ")[[1]][3])
+    jpmv <- br[ind]
+    br <- br[1:(ind - 1)]
+    altmvs <- sapply(br, substr, 1, 7)
+    wl <- sapply(br, substr, 12, 18)
+    wl1 <- as.numeric(sapply(wl, function(v) strsplit(v, "\\(")[[1]][1]))
+    wl2 <- sapply(wl, function(v) as.numeric(sub(")", "", strsplit(v, "\\(")[[1]][2])))
+    wstr <- c("W", "D", "L")[wl1 + 2]
+    vals <- wl1/(1 + wl2)
+    o <- order(vals)
+    altmvs <- sapply(altmvs, parse_moveJP)
+    df <- data.frame(value = wstr, time = wl2)
+    rownames(df) <- altmvs
+    df <- df[o, ]
+    dlist[[mstr]] <- df
+    chose_ind <- which(rownames(df)==game[i])
+    if (chose_ind == 1) {
+      printst <- paste0(i, ". ", alt_df_2s(df, chose_ind))
+    } else {
+      printst <- paste0(i, ". ", alt_df_2s(df, chose_ind), " [", alt_df_2s(df, 1), "]")
+    }
+    if (MODE == "draw") {
+      if (i == 1) {
+        draw_state(init_state, title = TRUE)
+      } else {
+        draw_state(states[[i - 1]], title = TRUE)
+      }
+      print(dlist[i])
+      title(sub = printst)
+      locator(1)
+    }
+    if (MODE == "print") {
+      if (i == 1) {
+        print_state(init_state)
+      } else {
+        print_state(states[[i - 1]])
+      }
+      catn(printst)
+      readline("             (Continue):")
+    }
+  }
+  if (MODE == "return") return(dlist)
+}
+
+analyze_game(glist[[1]], MODE = "draw")
