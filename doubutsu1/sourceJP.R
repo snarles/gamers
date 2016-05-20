@@ -202,7 +202,8 @@ alt_df_2s <- function(df, ind) {
   paste0(rownames(df)[ind], " (", df[ind, 1], ":", df[ind, 2], ")")
 }
 
-analyze_game <- function(game, MODE = c("print", "draw", "return")) {
+analyze_game <- function(game, MODE = c("print", "draw", "return"),
+                         extra_pause = FALSE) {
   MODE <- MODE[1]
   states <- statesFromGame(game)
   jgame <- c()
@@ -252,6 +253,7 @@ analyze_game <- function(game, MODE = c("print", "draw", "return")) {
       } else {
         draw_state(states[[i - 1]], title = TRUE)
       }
+      if (extra_pause) locator(1)
       print(dlist[i])
       title(sub = printst)
       locator(1)
@@ -262,6 +264,7 @@ analyze_game <- function(game, MODE = c("print", "draw", "return")) {
       } else {
         print_state(states[[i - 1]])
       }
+      if (extra_pause) readline("             (Continue):")
       catn(printst)
       readline("             (Continue):")
     }
@@ -269,4 +272,4 @@ analyze_game <- function(game, MODE = c("print", "draw", "return")) {
   if (MODE == "return") return(dlist)
 }
 
-analyze_game(glist[[1]], MODE = "draw")
+# analyze_game(glist[[2]], MODE = "draw", TRUE)
