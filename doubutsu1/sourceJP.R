@@ -273,3 +273,26 @@ analyze_game <- function(game, MODE = c("print", "draw", "return"),
 }
 
 # analyze_game(glist[[2]], MODE = "draw", TRUE)
+
+
+solve_game_disp <- function(problem, extra_pause = FALSE) {
+  draw_state(problem, title = TRUE)
+  res <- solve_state_raw(problem)
+  res2 <- analysis_to_values(res)
+  for (i in 1:length(res2)) {
+    v <- res2[[i]]
+    draw_state(v[1, ])
+    if (extra_pause) locator(1)
+    catn(" ")
+    mn <- v[-1, 1:2, drop = FALSE]
+    vals <- mn[, 1]/(1 + mn[, 2])
+    if (v[1, 4] %% 2 == 0) vals <- -vals
+    mn <- mn[order(vals), , drop = FALSE]
+    print(mn)
+    title(sub = paste0(
+      paste(rownames(mn)[sort(vals) == min(vals)], collapse = ", "),
+      " (", mn[1, 2], ")"))
+    locator(1)
+  }
+  invisible(res2)
+}
