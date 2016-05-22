@@ -276,12 +276,12 @@ analyze_game <- function(game, MODE = c("print", "draw", "return"),
 
 
 solve_game_disp <- function(problem, extra_pause = FALSE) {
-  draw_state(problem, title = TRUE)
+  #draw_state(problem, title = TRUE)
   res <- solve_state_raw(problem)
   res2 <- analysis_to_values(res)
   for (i in 1:length(res2)) {
     v <- res2[[i]]
-    draw_state(v[1, ])
+    draw_state(v[1, ], title = TRUE)
     if (extra_pause) locator(1)
     catn(" ")
     mn <- v[-1, 1:2, drop = FALSE]

@@ -17,16 +17,13 @@ check_solution <- function(h) {
   gameno <- which(sapply(hashes, function(v) h %in% v))[1]
   cnode <- which(hashes[[gameno]] == h)[1]
   problem <- games[[gameno]][[cnode]]
-  draw_state(problem)
-  res <- solve_state_raw(problem, TRUE)
-  res2 <- analysis_to_values(res)
-  for (i in 1:length(res2)) {
-    v <- res2[[i]]
-    draw_state(v[1, ])
-    if (i %% 2 == 0) title(i/2)
-    locator(1)
-  }
-  invisible(res2)
+  solve_game_disp(problem, TRUE)
+}
+
+rand_problem <- function(m.min = 2, m.max = 10) {
+  h <- sample(names(matein)[matein %in% m.min:m.max], 1)
+  print(h)
+  check_solution(h)
 }
 
 # ## Mate in X puzzles
