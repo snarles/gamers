@@ -214,7 +214,7 @@ analyze_game <- function(game, MODE = c("print", "draw", "return"),
     hand2 <- state[45:48]
     movev <- state[49:51]
     prom <- 0
-    if (movev[1] > 0 && board[3, movev[1]]==1) prom <- 1
+    if (movev[1] > 0 && board[3, movev[3]]==1) prom <- 1
     jgame[i] <- move_to_JP(game[i], (i + 1) %% 2, prom)
   }
   ff <- get_annotation_raw(jgame)
