@@ -23,10 +23,6 @@ multBt <- 0.3
 # multBt <- 1
 
 source("doubutsu1/matein_based_AI.R")
-mseekS <- 15
-mavoidS <- 15
-mseekG <- 15
-mavoidG <- 15
 
 game_record <- character()
 game_states <- list()
