@@ -41,8 +41,10 @@ next_move <- function(state, mseekS1 = mseekS, mavoidS1 = mavoidS,
 }
 
 ## resigns if less than seek value
+## avoids repeats if possible
 next_move2 <- function(state, mseekS1 = mseekS, mavoidS1 = mavoidS, 
-                       mseekG1 = mseekG, mavoidG1 = mavoidG) {
+                       mseekG1 = mseekG, mavoidG1 = mavoidG,
+                       prevs = character()) {
   #raw <- solve_state_raw(state, TRUE)
   if (state[4] %% 2 == 1) {
     mseek <- mseekG1; mavoid <- mavoidG1
@@ -54,14 +56,18 @@ next_move2 <- function(state, mseekS1 = mseekS, mavoidS1 = mavoidS,
   res <- analysis_to_values(raw)
   alt <- res[[1]]
   mn <- alt[-1, 1:2, drop = FALSE]
+  uh_new <- apply(alt[-1, , drop = FALSE], 1, uhash2)
+  nonrep_filt <- !(uh_new %in% prevs)
+  if (sum(nonrep_filt) == 0) nonrep_filt <- rep(TRUE, length(nonrep_filt))
   if (state[4] %% 2 == 1) mn[, 1] <- -mn[, 1]
-  filt1 <- mn[, 1]==1 & mn[, 2] < mseek
+  filt1 <- mn[, 1]==1 & mn[, 2] < mseek & nonrep_filt
   if (sum(filt1) > 0) {
     mvs <- rownames(mn)[filt1]
     print(mn[filt1, , drop = FALSE])
     return(sample(mvs, 1))
   }
-  filt2 <- (mn[, 1]==0) | (mn[, 1]==1) | (mn[, 1]==-1 & mn[, 2] > mavoid)
+  filt2 <- (mn[, 1]==0) | (mn[, 1]==1) | (mn[, 1]==-1 & mn[, 2] > mavoid) &
+    nonrep_filt
   if (sum(filt2) > 0) {
     mvs <- rownames(mn)[filt2]
     print(mn[filt2, , drop = FALSE])
@@ -77,7 +83,7 @@ get_sp <- function(seek_val = 20, state = init_state, move.limit = 200,
   uhs <- character()
   flag <- TRUE
   while (flag) {
-    mv <- next_move2(state, seek_val, seek_val, seek_val, seek_val)
+    mv <- next_move2(state, seek_val, seek_val, seek_val, seek_val, uhs)
     game <- c(game, mv)
     state <- move_parser(state, mv)
     uh <- uhash2(state)
@@ -92,6 +98,3 @@ get_sp <- function(seek_val = 20, state = init_state, move.limit = 200,
   }
   return(game)
 }
-
-# svs <- rep(10 * (1:5), each = 100)
-# res <- lapply(svs, get_sp)
