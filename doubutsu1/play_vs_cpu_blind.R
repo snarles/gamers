@@ -5,16 +5,31 @@
 cat("Loading...")
 cat("\n")
 
-## harder setting
-
-forget_book_prob <- 0.03
-multBt <- 1
 
 library(Rcpp)
 # load("doubutsu1/vs_cpu.rda")
 source("doubutsu1/set_up_vs_cpu.R")
 sourceCpp("doubutsu1/Rsource.cpp")
 sourceCpp("doubutsu1/Rsource2.cpp")
+
+## harder setting
+
+nquery <- function(prpt, def) {
+  x <- readline(prpt)
+  if (x == "") return(def)
+  return(as.numeric(x))
+}
+val_in_env <- function(var, def) {
+  if (var %in% ls()) {
+    return(.GlobalEnv[[var]])
+  }
+  def
+}
+
+forget_book_prob <- val_in_env("forget_book_prob", 0.1)
+multBt <- val_in_env("mult_bt", 2)
+print(list(forget_book_prob = forget_book_prob, multBt = multBt))
+
 
 query_move <- function(state) {
   if (state[4] > 0) {
