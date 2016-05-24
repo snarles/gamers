@@ -68,7 +68,7 @@ next_move2 <- function(state, mseekS = mseekS, mavoidS = mavoidS, mseekG = mseek
   return("resign")
 }
 
-get_sp <- function(state = init_state, seek_val = 20) {
+get_sp <- function(seek_val = 20, state = init_state) {
   mv <- ""
   game <- character()
   while (mv != "resign") {
@@ -78,3 +78,6 @@ get_sp <- function(state = init_state, seek_val = 20) {
   }
   return(game)
 }
+
+# svs <- rep(10 * (1:5), each = 100)
+# res <- lapply(svs, get_sp)
