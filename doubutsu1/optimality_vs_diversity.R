@@ -19,4 +19,11 @@ res <- list()
   }
   res[[nct]] <- gms
   nct <- nct - 1  
+  length(gms)
 # }
+
+  
+resigned <- grep("resign", gms)
+gmsub <- gms[resigned]
+rct <- sapply(gmsub, function(v) which(strsplit(v, " ")[[1]] == "resign"))
+table(rct %% 2)
