@@ -1,5 +1,6 @@
 source("doubutsu1/source.R")
 Rcpp::sourceCpp("doubutsu1/Rsource.cpp")
+Rcpp::sourceCpp("doubutsu1/Rsource2.cpp")
 source("doubutsu1/sourceJP.R")
 source("doubutsu1/viz.R")
 source("doubutsu1/matein_based_AI.R")
@@ -16,10 +17,13 @@ res <- list()
     gm <- paste(gm, collapse = " ")
     if (gm %in% gms) flag <- FALSE
     gms <- c(gms, gm)
+    print("PAUSING")
+    Sys.sleep(2)
   }
   res[[nct]] <- gms
-  nct <- nct - 1  
+  nct
   length(gms)
+  nct <- nct - 1  
 # }
 
   

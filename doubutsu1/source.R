@@ -240,3 +240,8 @@ getAlt <- function(state) {
 
 statu <- function(uh)
   c(0, 0, 0, as.numeric(strsplit(substr(uh, 2, nchar(uh)), "")[[1]]), 0, 0, 0)
+
+legal_moves <- function(state, tree = build_tree(state, 1, 200)) {
+  mvs <- apply(tree[-1, 49:51, drop = FALSE], 1, movestr)
+  mvs
+}
