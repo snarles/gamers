@@ -4,9 +4,9 @@ deca <- cbind(sin(0:12/12 * 2 * pi),cos(0:12/12 * 2 * pi))
 plot(NA, NA, xlim = c(-2, 2), ylim = c(-2, 2), axes = FALSE, asp=1)
 #polygon(circle, col='black')
 #lines(deca)
-shuriken <- .6 * modifier * deca
 mult <- 3
 modifier <- rep(c(mult, 1), 7)[1:13]
+shuriken <- .6 * modifier * deca
 lines(shuriken, lwd=3)
 shuriken <- shuriken[c(12, 1:12), ]
 #shuriken <- shuriken[c(2:13, 1), ]
@@ -33,9 +33,12 @@ colortable <- c( 0,
   3, 3, 6, 2, 1, 3, 4
 ) + 1
 
-colors <- c("black","yellow","red",
-            "gray94", "blue", 
-            "maroon4", "green3")
+colors <- c("black","yellow","coral",
+            "gray94", "cyan3", 
+            "maroon4", "lawngreen")
+tcolors <- c("white","black","black",
+            "black", "black", 
+            "white", "black")
 
 theta <- 0.7
 scaling <- 0.2
@@ -60,6 +63,10 @@ for (i in 1:48) {
   lines(endpt[1]+c(0, -arrowtip[1]),
         endpt[2]+c(0, -arrowtip[2]),
         lwd=3)
+  text(shuriken2[i, 1]-0.005, shuriken2[i, 2]+0.003, colortable[i]-1, 
+       col = tcolors[colortable[i]], cex = 0.8)
+  text(shuriken2[i, 1]+0.005, shuriken2[i, 2]+0.003, colortable[i]-1, 
+       col = tcolors[colortable[i]], cex = 0.8)
 }
 
 
