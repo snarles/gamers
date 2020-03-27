@@ -77,3 +77,99 @@ table(seqz[1:1118], seqz[2:1119])
 # 4 24 19 21 16 35 16 24
 # 5 22 14 20 22 23 46 19
 # 6 20 21 21 25 24 20 46
+
+# Positions of all doubles
+gcyc <- as.numeric(t(cycle1))
+doubles <- cbind(gcyc[which(gcyc==gcyc[c(2:2238, 1)])],
+      which(gcyc==gcyc[c(2:2238, 1)]))
+
+#      [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14] [,15] [,16] [,17] [,18] [,19]
+# [1,]    1    2   11   26   20    7   28   18   22    34    38    47     4    12    35    27    30    36     5
+# [2,]    1    3   11   18   42   66  116  143  145   152   206   246   250   449   496   673   869   871   879
+#      [,20] [,21] [,22] [,23] [,24] [,25] [,26] [,27] [,28] [,29] [,30] [,31] [,32] [,33] [,34] [,35] [,36] [,37]
+# [1,]    10    31    33    37    43    42     9    14    21    23    25    13    17    44     3    45    19    46
+# [2,]   881  1266  1270  1300  1304  1331  1343  1345  1349  1608  1763  1788  1790  1808  1816  1841  1859  1879
+#      [,38] [,39] [,40] [,41] [,42]
+# [1,]    15    39     6    29    41
+# [2,]  1918  2048  2061  2104  2112
+
+## Break up the large segments into smaller segments
+
+search_pair <- function(a1, a2, target=gcyc) {
+  which((target[1:(length(target)-1)]==a1) & (target[2:length(target)]==a2))
+}
+
+manual_split <- function(begin, end, target=gcyc) {
+  max_gap <- sapply(1:48, function(i) max(diff(c(1, which(target[begin:end]==i), end-begin+1))))
+  max_gap[max_gap < 0] <- Inf
+  nhits <- sapply(1:48, function(i) sum(target[begin:end]==i))
+  rights <- sapply(1:48, function(i) {
+    inds <- which(target==i)
+    inds <- inds[(inds >= begin) & (inds <= end)]
+    inds
+    right <- c(target, target[1])[inds + 1]
+    paste(i, '/', paste0(right, collapse=","))
+  })
+  tab <- data.frame(max_gap, nhits, rights)
+  tab <- tab[order(tab$max_gap),]
+  tab<- tab[order(tab$nhits),]
+  tab
+}
+
+split_seq <- function(begin, end, target = gcyc) {
+  max_gap <- sapply(1:48, function(i) max(diff(c(1, which(target[begin:end]==i), end-begin+1))))
+  max_gap[max_gap < 0] <- Inf
+  print(min(max_gap))
+  splitter <- which(max_gap==min(max_gap))[1]
+  inds <- which(target==splitter)
+  inds <- inds[(inds >= begin) & (inds <= end)]
+  inds
+  right <- c(target, target[1])[inds + 1]
+  list(splitter=splitter, table=rbind(right, inds))
+}
+
+# 10/10 -> 31/31
+manual_split(881, 1265)
+# 16/(12,17,33,43,4,42,45,30,41,34,3)
+
+# 4/4 -> 12/12
+manual_split(250, 448)
+# 12/(11,27,3,30,23)
+
+# 35/35 -> 27/27 -> 30/30
+manual_split(496, 868)
+# 48/(41,9,37,17,10,21,15)
+
+# 21/21 -> 23/23 -> 25/25
+manual_split(1349, 1762)
+# 33/(28,40,42,9,6,11,41,44,30,22,46,4)
+
+# 15/15 -> 39/39
+manual_split(1918, 2047)
+# 35/(27,10,15,14,46)
+
+# 41/41 -> 1/1
+manual_split(2112, 2238)
+# 34/(22,13,1)
+
+# Occurences of loc 10
+
+k <- 10
+inds <- which(gcyc==k)
+k
+max(diff(c(inds, 2238 + inds[1])))
+rbind(gcyc[inds + 1], inds, diff(c(inds, 2238 + inds[1])))
+
+# [,1] [,2] [,3] [,4] [,5] [,6] [,7] [,8] [,9] [,10] [,11] [,12] [,13] [,14] [,15] [,16] [,17] [,18] [,19]
+#    9    8   13   25   12    1   24   29   26     6    19     2    44    20    48     5    27     3    22
+#   36  138  140  170  253  359  366  368  394   478   514   537   655   666   687   689   756   779   788
+#  102    2   30   83  106    7    2   26   84    36    23   118    11    21     2    67    23     9    38
+# [,20] [,21] [,22] [,23] [,24] [,25] [,26] [,27] [,28] [,29] [,30] [,31] [,32] [,33] [,34] [,35] [,36] [,37]
+#    23    34    10    15    28    43    38    30    32    37    33    46    16    21     4    36    39    42
+#   826   847   881   882   923   972   987  1090  1148  1150  1180  1252  1287  1289  1312  1380  1429  1474
+#    21    34     1    41    49    15   103    58     2    30    72    35     2    23    68    49    45    39
+# [,38] [,39] [,40] [,41] [,42] [,43] [,44] [,45] [,46] [,47] [,48]
+#    17    47    18    41    14    11    40    45    35     7    31
+#  1513  1596  1632  1743  1853  1915  1943  1945  1988  2032  2163
+#    83    36   111   110    62    28     2    43    44   131   111
+
