@@ -220,9 +220,10 @@ propagate_values <- function(state_nos) {
 # saveRDS(tab, "deterministic_pokes/arih_tab.rds")
 
 tab <- readRDS("deterministic_pokes/arih_tab.rds")
+max_mv <- max(abs(tab[, 12]))
 utility_vals <- 0 * tab[, 12]
-utility_vals[tab[, 11]==1] <- 500 - tab[tab[, 11]==1, 12]
-utility_vals[tab[, 11]==-1] <- -(500 - tab[tab[, 11]==-1, 12])
+utility_vals[tab[, 11]==1] <- (max_mv+1) - tab[tab[, 11]==1, 12]
+utility_vals[tab[, 11]==-1] <- -((max_mv+1) - tab[tab[, 11]==-1, 12])
 tab <- cbind(tab, utility_vals)
 
 starting_table <- matrix(NA, 20, 20)
@@ -232,17 +233,32 @@ for (i in 1:20) {
   }
 }
 
+order(-apply(starting_table, 1, min))[1]
+# 130 116 108 124 114
+# 110 118 128 116  74
+# 102 126 106 122 116
+# 124 122 112 126 122
+
+# 10 is the best P1 location
+
 p2_optimal_loc <- apply(starting_table, 1, function(i) order(i)[1])
+#  9  7 14  1 18
+# 18  8  9  2 13
+# 18 13 19  4 13
+#  7  6 17  8  8
 
 state <- rep(1, 10)
 # p1 initial loc
-state[1] <- 1
+state[1] <- 10
 # p2 optimal response to p1 loc
 state[6] <- p2_optimal_loc[state[1]]
 
 next_state <- function(state, player = 1) {
   if (player == 2) {
     state <- c(state[6:10], state[1:5])
+  }
+  if (tab[, 12][state_codes[t(state)]] == 0) {
+    return(999)
   }
   ss <- successor_states[[state_codes[t(state)]]]
   uvs <- tab[, 13][ss]
@@ -253,12 +269,116 @@ next_state <- function(state, player = 1) {
   next_s
 }
 
-print_game <- function(state, player = 1) {
-  while(tab[, 12][state_codes[t(state)]] != 0) {
+get_optimal_game <- function(state, player = 1) {
+  game <- state
+  print(state)
+  flag <- TRUE
+  while(flag) {
     state <- next_state(state, player)
-    player <- 3 - player
-    print(state)
+    if (state[1]==999) {
+      flag <- FALSE
+    }
+    else {
+      player <- 3 - player
+      print(state)
+      game <- rbind(game, state)
+    }
   }
+  game
 }
 
 
+game <- get_optimal_game(state)
+
+tab[, 12][state_codes[game]]
+
+code_to_states <- tab[, 1:10]
+
+depths <- tab[, 12]
+depths[state_codes[t(state)]]
+successor_states[[state_codes[t(state)]]]
+code_to_states[successor_states[[state_codes[t(state)]]], ]
+depths[successor_states[[state_codes[t(state)]]]]
+
+cbind(game, rowSums(game[, 2:5]-1), rowSums(game[, 7:10]-1))
+plot(1:dim(game)[1], rowSums(game[, 2:5]-1), type="l")
+lines(1:dim(game)[1], rowSums(game[, 7:10]-1), col="red")
+
+####
+##  PLAY AGAINST
+####
+
+print_track <- function(l1, l2) {
+  lbrac <- rep(" ", 20)
+  rbrac <- rep(" ", 20)
+  lbrac[l1] <- "["
+  rbrac[l1] <- "]"
+  if (l2 > 0) {
+    lbrac[l2] <- "{"
+    rbrac[l2] <- "}"
+    if (l1==l2) lbrac[l1] <- '['
+  }
+  cat("   ")
+  cat(paste0(lbrac, track, rbrac, collapse=""))
+  cat("\n")
+}
+
+print_state <- function(state) {
+  print_track(state[1], state[6])
+  es <- c("F", "A", "W", "E")
+  cat("[P1]: ")
+  for (i in 1:4) {
+    if (state[1 + i] > zero_amt) {
+      for (j in 1:(state[1 + i]-1)) cat(es[i])
+      cat(" ")
+    }
+  }
+  cat("\n")
+  cat("{P2}: ")
+  for (i in 1:4) {
+    if (state[6 + i] > zero_amt) {
+      for (j in 1:(state[6 + i]-1)) cat(es[i])
+      cat(" ")
+    }
+  }
+  cat("\n")
+}
+
+
+play_game_p2 <- function() {
+  state <- rep(1, 10)
+  # p1 initial loc
+  state[1] <- sample(20, 1)
+  {
+    print_track(state[1], 0)
+    loc2 <- readline("Pick loc: ")
+    state[6] <- as.numeric(loc2)
+    print_state(state)
+  }
+  game <- state
+  while (TRUE) {
+    # p1 move
+    cat("--P1 move--\n")
+    state <- next_state(state)
+    game <- rbind(game, state)
+    print_state(state)
+    
+    paused <- readline("Paused")
+    
+    # p2 move
+    cat("--P2 move--\n")
+    ss <- successor_states[[state_codes[t(c(state[6:10], state[1:5]))]]]
+    for (ind in 1:length(ss)) {
+      cat(paste("Option", ind, '\n'))
+      print_state(code_to_states[ss[ind], ])
+    }
+    
+    choice <-   readline("pick 1:")
+    state <- code_to_states[ss[as.numeric(choice)], ]
+    print_state(state)
+    
+    paused <- readline("Paused")
+    
+  }
+  
+}
