@@ -139,19 +139,22 @@ successor_states <- list(n_states)
 # t2 <- proc.time()
 # t2 - t1
 
-batch_size <- 100
+batch_size <- 800
 batches <- list()
-for (ii in 1:2000) {
-  batches[[ii]] <- (ii-1) * batch_size + 1:100
+for (ii in 1:(n_states/batch_size)) {
+  batches[[ii]] <- (ii-1) * batch_size + 1:batch_size
 }
 
 library(parallel)
 t1 <- proc.time()
-allres <- mclapply(batches, compute_successors, mc.cores = 96)
+allres <- mclapply(batches[1:729], compute_successors, mc.cores = 80)
 t2 <- proc.time()
 t2 - t1
 
 successor_states <- unlist(allres, recursive = FALSE)
 
+compute_successors(27891)
+successor_states[27891]
+
 length(successor_states)
-saveRDS(successor_states, 'deterministic_pokes/aristotelian_ss.rds')
+saveRDS(successor_states, 'deterministic_pokes/ari_ss_1.rds')
