@@ -238,6 +238,11 @@ ordered_succ <- lapply(1:ns, function(rs) {
   ss <- del_z(successors[rs, ])
   ss[order(uts[ss])]
 })
+get_succ <- function(sseq) {
+  rs <- sseq[length(sseq)]
+  ss <- ordered_succ[[rs]]
+  setdiff(ss, sseq)
+}
 get_succ_sseq <- function(sseq) {
   rs <- sseq[length(sseq)]
   ss <- ordered_succ[[rs]]
@@ -385,3 +390,67 @@ cbind(depths, length_and_winner)
 # [23,]       2       4     20     1
 # [24,]       3       4     20     1
 # [25,]       4       4     18     1
+
+
+####
+##  Play vs CPU (as P1)
+####
+
+display_game <- function(sseq, ncols = 8){
+  states <- c2s[sseq, , drop=FALSE]
+  chars <- c(" ", "X", "O")
+  for (iii in 1:ceiling(length(sseq)/ncols)) {
+    sub_states <- states[1:min(ncols, dim(states)[1]), , drop=FALSE]
+    cat(paste0(rep('  --- ', dim(sub_states)[1])))
+    cat('\n')
+    for (i in 1:3) {
+      rr <- sub_states[, (i-1)*3 + 1:3, drop=FALSE]
+      for (j in 1:dim(rr)[1]) {
+        cat(" |")
+        cat(paste0(chars[rr[j, ]], collapse=''))
+        cat("| ")
+      }
+      cat('\n')
+    }
+    cat(paste0(rep('  --- ', dim(sub_states)[1])))
+    cat('\n')
+    states <- states[-(1:min(ncols, dim(states)[1])), , drop=FALSE]
+  }
+}
+display_game(sseq)
+
+play_as_p1 <- function(aidepth, sseq=1) {
+  while(length(get_succ_sseq(sseq)) > 0) {
+    display_game(sseq)
+    cat('\n')
+    readline("Paused:")
+    if (p1_to_play[sseq[length(sseq)]]) {
+      flag <- TRUE
+      while (flag) {
+        choice <- as.numeric(readline('Next move (1-9):'))
+        rs <- sseq[length(sseq)]
+        choices <- get_succ_sseq(sseq)
+        succ <- get_succ(sseq)
+        if (length(succ)==0) {
+          cat('----YOU LOSE----\n')
+          return()
+        }
+        if (is.element(successors[rs, choice], succ)) {
+          flag <- FALSE
+        }
+        else {
+          cat("--INVALID MOVE--\n")
+        }
+      }
+      sseq <- c(sseq, successors[rs, choice])
+    }
+    else {
+      sseq <- next_sseq(sseq, aidepth)
+    }
+  }
+  if (p2_to_play[sseq[length(sseq)]]) cat('---YOU WIN!---\n')
+  if (p1_to_play[sseq[length(sseq)]]) {
+    display_game(sseq)
+    cat('---YOU LOSE---\n')
+  }
+}
