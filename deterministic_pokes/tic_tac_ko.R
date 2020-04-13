@@ -448,9 +448,8 @@ play_as_p1 <- function(aidepth, sseq=1) {
       sseq <- next_sseq(sseq, aidepth)
     }
   }
+  display_game(sseq)
   if (p2_to_play[sseq[length(sseq)]]) cat('---YOU WIN!---\n')
-  if (p1_to_play[sseq[length(sseq)]]) {
-    display_game(sseq)
-    cat('---YOU LOSE---\n')
-  }
+  if (p1_to_play[sseq[length(sseq)]]) cat('---YOU LOSE---\n')
+  sseq
 }
