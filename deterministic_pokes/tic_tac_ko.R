@@ -355,14 +355,14 @@ p2_to_play[sseq[length(sseq)]] # p1 wins
 ##  The only way to balance may to impose a move limit, after which P2 wins
 ####
 
-depths <- which(matrix(TRUE, 5, 5), TRUE) - 1
-colnames(depths) <- c("p1depth", "p2depth")
-length_and_winner <- t(apply(depths, 1, function(v) {
-  sseq <- ai_vs_ai(v[1], v[2])
-  c(length(sseq), p2_to_play[sseq[length(sseq)]])
-}))
-colnames(length_and_winner) <- c("length", "p1win")
-cbind(depths, length_and_winner)
+# depths <- which(matrix(TRUE, 5, 5), TRUE) - 1
+# colnames(depths) <- c("p1depth", "p2depth")
+# length_and_winner <- t(apply(depths, 1, function(v) {
+#   sseq <- ai_vs_ai(v[1], v[2])
+#   c(length(sseq), p2_to_play[sseq[length(sseq)]])
+# }))
+# colnames(length_and_winner) <- c("length", "p1win")
+# cbind(depths, length_and_winner)
 
 #      p1depth p2depth length p1win
 # [1,]       0       0      9     0
@@ -393,7 +393,7 @@ cbind(depths, length_and_winner)
 
 
 ####
-##  Play vs CPU (as P1)
+##  Play vs CPU
 ####
 
 display_game <- function(sseq, ncols = 8){
@@ -419,12 +419,12 @@ display_game <- function(sseq, ncols = 8){
 }
 display_game(sseq)
 
-play_as_p1 <- function(aidepth, sseq=1) {
+play_vs_ai <- function(aidepth, p1_plays=TRUE, sseq=1) {
   while(length(get_succ_sseq(sseq)) > 0) {
     display_game(sseq)
     cat('\n')
     readline("Paused:")
-    if (p1_to_play[sseq[length(sseq)]]) {
+    if (p1_to_play[sseq[length(sseq)]]==p1_plays) {
       flag <- TRUE
       while (flag) {
         choice <- as.numeric(readline('Next move (1-9):'))
@@ -449,7 +449,7 @@ play_as_p1 <- function(aidepth, sseq=1) {
     }
   }
   display_game(sseq)
-  if (p2_to_play[sseq[length(sseq)]]) cat('---YOU WIN!---\n')
-  if (p1_to_play[sseq[length(sseq)]]) cat('---YOU LOSE---\n')
+  if (p2_to_play[sseq[length(sseq)]]==p1_plays) cat('---YOU WIN!---\n')
+  if (p1_to_play[sseq[length(sseq)]]==p1_plays) cat('---YOU LOSE---\n')
   sseq
 }
