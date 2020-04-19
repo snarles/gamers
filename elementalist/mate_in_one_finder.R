@@ -33,25 +33,21 @@ MAX_ELT <- 20
 dims <- c(48, 48, rep(MAX_ELT, 6), rep(2, 5), 2)
 cns <- c("l1", "l2", "L", "F", "A", "W", "E", "G", 
          "Lu", "Fu", "Au", "Wu", "Eu", "Mvd")
-arr <- simple_sparse_zero_array(dims, mode = "integer")
-
-state0 <- t(c(4, 5,
-            4, 1, 4, 5, 6, 5,
-            1, 1, 1, 1, 1,
-            1))
-state0 <- kronecker(t(t(rep(1, 48))), state0)
-state0[, 1] <- 1:48
-ids <- 1:48
 
 op_move <- function(state1) {
   state1[, 1] <- state1[, 1] + shuriken[state1[, 2]] # move
   state1[state1[, 1] > 48, 1] <- state1[state1[, 1] > 48, 1] - 48
   # collect if not at void
-  state1[(state1[, 1] %% 8) != 0, 
-         2 + shuriken[state1[(state1[, 1] %% 8) != 0, 1]]] <- 
-    state1[(state1[, 1] %% 8) != 0, 
-           2 + shuriken[state1[(state1[, 1] %% 8) != 0, 1]]] +1
+  state1 <- op_collect(state1)
   state1  
+}
+
+op_collect <- function(state1) {
+  eltype <- shuriken[state1[, 1]]
+  for (i in 1:6) {
+    state1[eltype==i, 2+i] <- state1[eltype==i, 2+i]+1
+  }
+  state1
 }
 
 op_light <- function(state1) {
@@ -62,7 +58,6 @@ op_light <- function(state1) {
 }
 
 op_air <- function(state1) {
-  state1[, 5] <- state1[, 5] - 1 # use up one
   state1[, 2] <- state1[, 2] + 1 # move op ahead one
   # if at void move yet again
   state1[(state1[, 2] %% 8) == 0, 2] <- state1[(state1[, 2] %% 8) == 0, 2] + 1
@@ -71,7 +66,6 @@ op_air <- function(state1) {
 }
 
 op_water <- function(state1) {
-  state1[, 6] <- state1[, 6] - 1 # use up one
   state1[, 1] <- state1[, 1] + 1 # move ahead one
   # if at void move yet again
   state1[(state1[, 1] %% 8) == 0, 1] <- state1[(state1[, 1] %% 8) == 0, 1] + 1
@@ -79,101 +73,111 @@ op_water <- function(state1) {
   state1
 }
 
-op_earth <- function(state1) {
-  # collect if not at void
-  state1[(state1[, 1] %% 8) != 0, 
-         2 + shuriken[state1[(state1[, 1] %% 8) != 0, 1]]] <- 
-    state1[(state1[, 1] %% 8) != 0, 
-           2 + shuriken[state1[(state1[, 1] %% 8) != 0, 1]]] +1
-  state1
-}
+op_earth <- op_collect
 
-use_one_power <- function(state0_ids) {
-  state0 <- state0_ids[, 1:14]
-  ids <- state0_ids[, 15]
-  ans <- matrix(NA, 0, length(dims))
-  ans_pred_ids <- numeric()
-  # post-movement state
-  ids1 <- ids[state0[, 14] != 2]
-  state1 <- state0[state0[, 14] != 2, , drop=FALSE]
-  state1[, 14] <- 2 # update to indicate post-move
-  state1 <- op_move(state1)
-  ans <- rbind(ans, state1)
-  ans_pred_ids <- c(ids, ids1)
-  # using light power
-  ids1 <- ids[state0[, 3] != 1]
-  state1 <- state0[state0[, 3] != 1, , drop=FALSE]
-  state1[, 9] <- 2 # indicate power used
-  state1[, 3] <- state1[, 3] - 1 # use up one
-  state1 <- op_light(state1)
-  ans <- rbind(ans, state1)
-  ans_pred_ids <- c(ids, ids1)
-  # using air power
-  ids1 <- ids[state0[, 5] != 1]
-  state1 <- state0[state0[, 5] != 1, , drop=FALSE]
-  state1[, 11] <- 2 # indicate power used
-  state1[, 5] <- state1[, 5] - 1 # use up one
-  state1 <- op_air(state1)
-  ans <- rbind(ans, state1)
-  ans_pred_ids <- c(ids, ids1)
-  # using water power
-  ids1 <- ids[state0[, 6] != 1]
-  state1 <- state0[state0[, 6] != 1, , drop=FALSE]
-  state1[, 12] <- 2 # indicate power used
-  state1[, 6] <- state1[, 6] - 1 # use up one
-  state1 <- op_water(state1)
-  ans <- rbind(ans, state1)
-  ans_pred_ids <- c(ids, ids1)
-  # using earth power
-  ids1 <- ids[state0[, 7] != 1]
-  state1 <- state0[state0[, 7] != 1, , drop=FALSE]
-  state1[, 13] <- 2 # indicate power used
-  state1[, 7] <- state1[, 7] - 1 # use up one
-  state1 <- op_earth(state1)
-  ans <- rbind(ans, state1)
-  ans_pred_ids <- c(ids, ids1)
-  # using grass->light
-  ids1 <- ids[state0[, 8] != 1 & state0[, 9] == 2]
-  state1 <- state0[state0[, 8] != 1, , drop=FALSE]
-  state1[, 8] <- state1[, 8] - 1 # use up one
-  state1 <- op_light(state1)
-  ans <- rbind(ans, state1)
-  ans_pred_ids <- c(ids, ids1)
-  # using grass->air
-  ids1 <- ids[state0[, 8] != 1 & state0[, 11] == 2]
-  state1 <- state0[state0[, 8] != 1, , drop=FALSE]
-  state1[, 8] <- state1[, 8] - 1 # use up one
-  state1 <- op_air(state1)
-  ans <- rbind(ans, state1)
-  ans_pred_ids <- c(ids, ids1)
-  # using grass->water
-  ids1 <- ids[state0[, 8] != 1 & state0[, 12] == 2]
-  state1 <- state0[state0[, 8] != 1, , drop=FALSE]
-  state1[, 8] <- state1[, 8] - 1 # use up one
-  state1 <- op_water(state1)
-  ans <- rbind(ans, state1)
-  ans_pred_ids <- c(ids, ids1)
-  # using grass->earth
-  ids1 <- ids[state0[, 8] != 1 & state0[, 13] == 2]
-  state1 <- state0[state0[, 8] != 1, , drop=FALSE]
-  state1[, 8] <- state1[, 8] - 1 # use up one
-  state1 <- op_earth(state1)
-  ans <- rbind(ans, state1)
-  ans_pred_ids <- c(ids, ids1)
-  colnames(ans) <- cns
-  cbind(ans, ans_pred_ids)  
+actions <- c('Mv','L','A','W','E','Gl','Ga','Gw','Ge')
+# expands states and returns table of successors
+build_successors <- function(states, rri, state0, successors) {
+  check_id <- rri[state0]
+  new_ids <- (check_id==0)
+  rri[state0[new_ids, , drop=FALSE]] <- nrow(states) + 1:sum(new_ids)
+  ids0 <- rri[state0]
+  states <- rbind(states, state0[new_ids, , drop=FALSE])
+  if (nrow(successors) < nrow(states)) {
+    successors <- rbind(successors, 
+                        matrix(0, nrow(states) - nrow(successors), length(actions)))
+  }
+  for (action_ind in 1:length(actions)) {
+    action <- actions[action_ind]
+    cat(action)
+    if (action=='Mv') {
+      ids1 <- ids0[state0[, 14] != 2]
+      state1 <- state0[state0[, 14] != 2, , drop=FALSE]
+      state1[, 14] <- 2 # update to indicate post-move
+      state1 <- op_move(state1)
+    }
+    if (action=='L') {
+      ids1 <- ids0[state0[, 3] != 1]
+      state1 <- state0[state0[, 3] != 1, , drop=FALSE]
+      state1[, 9] <- 2 # indicate power used
+      state1[, 3] <- state1[, 3] - 1 # use up one
+      state1 <- op_light(state1)
+    }
+    if (action=='A') {
+      ids1 <- ids0[state0[, 5] != 1]
+      state1 <- state0[state0[, 5] != 1, , drop=FALSE]
+      state1[, 11] <- 2 # indicate power used
+      state1[, 5] <- state1[, 5] - 1 # use up one
+      state1 <- op_air(state1)
+    }
+    if (action=='W') {
+      ids1 <- ids0[state0[, 6] != 1]
+      state1 <- state0[state0[, 6] != 1, , drop=FALSE]
+      state1[, 12] <- 2 # indicate power used
+      state1[, 6] <- state1[, 6] - 1 # use up one
+      state1 <- op_water(state1)
+    }
+    if (action=='E') {
+      ids1 <- ids0[state0[, 7] != 1]
+      state1 <- state0[state0[, 7] != 1, , drop=FALSE]
+      state1[, 13] <- 2 # indicate power used
+      state1[, 7] <- state1[, 7] - 1 # use up one
+      state1 <- op_earth(state1)
+    }
+    if (action %in% c('Gl','Ga','Gw','Ge')) {
+      ids1 <- ids0[state0[, 8] != 1]
+      state1 <- state0[state0[, 8] != 1, , drop=FALSE]
+      state1[, 8] <- state1[, 8] - 1 # use up one
+      if (action=='Gl') state1 <- op_light(state1)
+      if (action=='Ga') state1 <- op_air(state1)
+      if (action=='Gw') state1 <- op_water(state1)
+      if (action=='Ge') state1 <- op_earth(state1)
+    }
+    s1_ids <- rri[state1]
+    # assign new ids to states with index 0 and add them to states
+    new_s1 <- (s1_ids == 0)
+    rri[state1[new_s1, , drop = FALSE]] <- nrow(states) + 1:sum(new_s1)
+    states <- rbind(states, state1[new_s1, , drop = FALSE])
+    s1_ids <- rri[state1]
+    # print(dim(states))
+    # update successors
+    successors[ids1, action_ind] <- s1_ids
+  } # end for loop over actions
+  list(states = states, rri = rri, successors = successors, state0 = state0)
 }
 
 
 
+# index array
+rri <- simple_sparse_zero_array(dims, mode = "integer")
+# value array, 1 = Mate-in-1, 0 = unknown, -1 = No mate in 1
+rrv <- simple_sparse_zero_array(dims, mode = "integer")
+state_init <- t(c(4, 5,
+              2, 1, 1, 2, 2, 2,
+              1, 1, 1, 1, 1,
+              1))
+states <- matrix(0, 0, length(dims))
+successors <- matrix(0, 0, length(actions))
 
-ans <- cbind(state0, ids)
+state0 <- kronecker(t(t(rep(1, 48))), state_init)
+res <- build_successors(states, rri, state0, successors)
 
-arr[state0] <- ids
-
-colnames(ans) <- c(cns, "ans_pred_ids")
-
-res <- use_one_power(ans)
-# check uniqueness
-id_check <- arr[res[, 1:14]]
-res <- res[id_check == 0, , drop = FALSE]
+# loop
+flag <- TRUE
+while(flag) {
+  prev_size <- nrow(states)
+  states <- res$states
+  rri <- res$rri
+  successors <- res$successors
+  if (nrow(states) > prev_size) {
+    successors <- rbind(successors, matrix(0, nrow(states)-prev_size, 9))
+    state0 <- states[(prev_size+1):nrow(states), , drop=FALSE]
+    res <- build_successors(states, rri, state0, successors)
+  }
+  else {
+    flag <- FALSE
+  }
+}
+dim(states)
+dim(successors)
+table(rowSums(states[, 3:8] - 1))
