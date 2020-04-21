@@ -132,19 +132,40 @@ build_successors <- function(states, rri, state0, successors) {
       state1[, 7] <- state1[, 7] - 1L # use up one
       state1 <- op_earth(state1)
     }
-    if (action %in% c('Gl','Ga','Gw','Ge')) {
-      filt <- (state0[, 14] != 2) & (state0[, 8] != 1)
+    if (action=='Gl') {
+      filt <- (state0[, 14] != 2) & (state0[, 8] != 1) & (state0[, 9] == 2)
       ids1 <- ids0[filt]
       state1 <- state0[filt, , drop=FALSE]
       state1[, 8] <- state1[, 8] - 1L # use up one
-      if (action=='Gl') state1 <- op_light(state1)
-      if (action=='Ga') state1 <- op_air(state1)
-      if (action=='Gw') state1 <- op_water(state1)
-      if (action=='Ge') state1 <- op_earth(state1)
+      state1 <- op_light(state1)
     }
-    # delete all states that go below total 4
-    ids1 <- ids1[rowSums(state1[, 3:8] - 1) >= 4]
-    state1 <- state1[rowSums(state1[, 3:8] - 1) >= 4, , drop=FALSE]
+    if (action=='Ga') {
+      filt <- (state0[, 14] != 2) & (state0[, 8] != 1) & (state0[, 11] == 2)
+      ids1 <- ids0[filt]
+      state1 <- state0[filt, , drop=FALSE]
+      state1[, 8] <- state1[, 8] - 1L # use up one
+      state1 <- op_air(state1)
+    }
+    if (action=='Gw') {
+      filt <- (state0[, 14] != 2) & (state0[, 8] != 1) & (state0[, 12] == 2)
+      ids1 <- ids0[filt]
+      state1 <- state0[filt, , drop=FALSE]
+      state1[, 8] <- state1[, 8] - 1L # use up one
+      state1 <- op_water(state1)
+    }
+    if (action=='Ge') {
+      filt <- (state0[, 14] != 2) & (state0[, 8] != 1) & (state0[, 13] == 2)
+      ids1 <- ids0[filt]
+      state1 <- state0[filt, , drop=FALSE]
+      state1[, 8] <- state1[, 8] - 1L # use up one
+      state1 <- op_earth(state1)
+    }
+    # delete all states that go below total 5
+    ids1 <- ids1[rowSums(state1[, 3:8] - 1) >= 5]
+    state1 <- state1[rowSums(state1[, 3:8] - 1) >= 5, , drop=FALSE]
+    # delete all states with too many fire elts
+    ids1 <- ids1[state1[, 4] <= 2]
+    state1 <- state1[state1[, 4] <= 2, , drop=FALSE]
     s1_ids <- rri[state1]
     # assign new ids to states with index 0 and add them to states
     new_s1 <- (s1_ids == 0)
@@ -174,8 +195,14 @@ rri <- simple_sparse_zero_array(dims, mode = "integer")
 # value array, 1 = Mate-in-1, 0 = unknown, -1 = No mate in 1
 rrv <- simple_sparse_zero_array(dims, mode = "integer")
 
-state_init <- t(c(4,15, 2,1,3,3,3,3, 1,1,1,1,1, 1))
-state0 <- kronecker(t(t(rep(1L, 48^2))), state_init)
+# state0 <- t(c(4,15, 2,1,3,3,3,3, 1,1,1,1,1, 1))
+
+temp <- which(array(TRUE, c(5, 5, 5, 5, 5, 5)), TRUE)
+state0 <- temp[rowSums(temp-1)==5, ]
+state0 <- state0[apply(state0, 1, min)==1, ]
+state0 <- state0[state0[, 2]<=2, ]
+state0 <- kronecker(state0, t(t(rep(1L, 48^2))))
+state0 <- cbind(1, 1, state0, 1, 1, 1, 1, 1, 1)
 state0[, 1:2] <- which(matrix(TRUE, 48, 48), TRUE)
 # state0 <- t(c(4,15, 2,1,3,3,3,3, 1,1,1,1,1, 1))
 states <- matrix(0L, 0, length(dims))
@@ -184,7 +211,7 @@ res <- build_successors(states, rri, state0, successors)
 
 
 
-# for (iii in 1:2) {
+for (iii in 1:3) {
   size_at_prev_stage <- nrow(states)
   # loop
   flag <- TRUE
@@ -231,33 +258,45 @@ res <- build_successors(states, rri, state0, successors)
   }
   stopifnot(sum(rrv[states] == 0)==0)
 #   # create next states to explore
-#   init_states <- (apply(states[,9:14], 1, max)==1)
-#   state_c <- states[init_states & new_states & rrv[states]==-1, , drop=FALSE]
-#   # increase each elt by 1
-#   mod_column <- function(a, i, v=1) {
-#     a[, i] <- a[, i] + v
-#     a
-#   }
-#   state0 <- rbind(mod_column(state_c, 3),
-#                   mod_column(state_c, 4),
-#                   mod_column(state_c, 5),
-#                   mod_column(state_c, 6),
-#                   mod_column(state_c, 7),
-#                   mod_column(state_c, 8))
-#   # delete with over max_elt
-#   state0 <- state0[apply(state0[, 3:8], 1, max) <= MAX_ELT, , drop=FALSE]
-#   state0 <- state0[state0[, 4] <= 2, ,drop=FALSE]
-#   # delete winning states
-#   state0 <- state0[apply(state0[, 3:8], 1, min) == 1, , drop=FALSE]
-#   state0 <- unique(state0)
-#   # put states into it
-#   res <- build_successors(states, rri, state0, successors)
-# }
+  init_states <- (apply(states[,9:14], 1, max)==1)
+  state_c <- states[init_states & new_states & rrv[states]==-1, , drop=FALSE]
+  # increase each elt by 1
+  mod_column <- function(a, i, v=1) {
+    a[, i] <- a[, i] + v
+    a
+  }
+  state0 <- rbind(mod_column(state_c, 3),
+                  mod_column(state_c, 4),
+                  mod_column(state_c, 5),
+                  mod_column(state_c, 6),
+                  mod_column(state_c, 7),
+                  mod_column(state_c, 8))
+  # delete with over max_elt
+  state0 <- state0[apply(state0[, 3:8], 1, max) <= MAX_ELT, , drop=FALSE]
+  state0 <- state0[state0[, 4] <= 2, ,drop=FALSE]
+  # delete winning states
+  state0 <- state0[apply(state0[, 3:8], 1, min) == 1, , drop=FALSE]
+  state0 <- unique(state0)
+  # put states into it
+  res <- build_successors(states, rri, state0, successors)
+}
 
 dim(states)
 dim(successors)
-table(rowSums(states[, 3:8] - 1))
+nelts <- rowSums(states[, 3:8] - 1)
+table(nelts)
 table(rrv[states])
 length(unique(rri[states]))
 max(rri[states])
 
+init_states <- (apply(states[,9:14], 1, max)==1)
+table(rrv[states[init_states,]], nelts[init_states])
+nelts[init_states][1e3 * (1:floor(sum(init_states)/1e3))]
+
+randomRows = function(df,n=5){
+  return(df[sample(nrow(df),n),])
+}
+randomRows(states[init_states,][rrv[states[init_states, ]]==1,1:8],5)
+randomRows(states[init_states,][rrv[states[init_states, ]]==-1,1:8],5)
+
+save(res, states, successors, rri, rrv, file='mi1_data.rda')
