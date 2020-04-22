@@ -10,7 +10,7 @@ shuriken = np.array([0,
 ])
 
 # Maximum number of tokens per element
-ME = 5
+ME = 6
 # First dimension: (value, solved vs not, temp variable).
 # Fire limited to 2 due to inutility for mate-in-one
 dims = (3, 48, 48, ME, 2, ME, ME, ME, ME, 2, 2, 2, 2, 2, 2)
@@ -74,100 +74,100 @@ def action_output(vals,action,i,j,z):
             newv=vals[:,inew,j, :,:,:,:,:,1:, :,:,:,:,:,1]
             return oldv,newv,eval_flag
     if action=='L':
-        oldv = vals[:, i,j, 1:,:,:,:,:,:, z,:,:,:,:,:]
-        newv = vals[:, j,i, :-1,:,:,:,:,:, 1,:,:,:,:,:]
+        oldv = vals[:, i,j, 1:,:,:,:,:,:, z,:,:,:,:,0]
+        newv = vals[:, j,i, :-1,:,:,:,:,:, 1,:,:,:,:,0]
         return oldv,newv,eval_flag
     if action=='A':
         newj = (j + 1) % 48
         if (newj % 8)==0:
             newj = (newj + 1) % 48
-        oldv = vals[:, i,j, :,:,1:,:,:,:, :,:,z,:,:,:]
-        newv = vals[:, i,newj, :,:,:-1,:,:,:, :,:,1,:,:,:]
+        oldv = vals[:, i,j, :,:,1:,:,:,:, :,:,z,:,:,0]
+        newv = vals[:, i,newj, :,:,:-1,:,:,:, :,:,1,:,:,0]
         return oldv,newv,eval_flag
     if action=='W':
         newi = (i + 1) % 48
         if (newi % 8)==0:
             newi = (newi + 1) % 48
-        oldv = vals[:, i,j, :,:,:,1:,:,:, :,:,:,z,:,:]
-        newv = vals[:, newi,j, :,:,:,:-1,:,:, :,:,:,1,:,:]
+        oldv = vals[:, i,j, :,:,:,1:,:,:, :,:,:,z,:,0]
+        newv = vals[:, newi,j, :,:,:,:-1,:,:, :,:,:,1,:,0]
         return oldv,newv,eval_flag
     if action=='E':
         if shuriken[i]==0:
-            oldv=vals[:,i,j, :,:,:,:,1:,:, :,:,:,:,z,:]
-            newv=vals[:,i,j, :,:,:,:,:-1,:, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:,:,1:,:, :,:,:,:,z,0]
+            newv=vals[:,i,j, :,:,:,:,:-1,:, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==1:
-            oldv=vals[:,i,j, :-1,:,:,:,1:,:, :,:,:,:,z,:]
-            newv=vals[:,i,j, 1:,:,:,:,:-1,:, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :-1,:,:,:,1:,:, :,:,:,:,z,0]
+            newv=vals[:,i,j, 1:,:,:,:,:-1,:, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==2:
-            oldv=vals[:,i,j, :,:-1,:,:,1:,:, :,:,:,:,z,:]
-            newv=vals[:,i,j, :,1:,:,:,:-1,:, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:-1,:,:,1:,:, :,:,:,:,z,0]
+            newv=vals[:,i,j, :,1:,:,:,:-1,:, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==3:
-            oldv=vals[:,i,j, :,:,:-1,:,1:,:, :,:,:,:,z,:]
-            newv=vals[:,i,j, :,:,1:,:,:-1,:, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:-1,:,1:,:, :,:,:,:,z,0]
+            newv=vals[:,i,j, :,:,1:,:,:-1,:, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==4:
-            oldv=vals[:,i,j, :,:,:,:-1,1:,:, :,:,:,:,z,:]
-            newv=vals[:,i,j, :,:,:,1:,:-1,:, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:,:-1,1:,:, :,:,:,:,z,0]
+            newv=vals[:,i,j, :,:,:,1:,:-1,:, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==5 and z==0:
-            oldv=vals[:,i,j, :,:,:,:,:,:, :,:,:,:,z,:]
-            newv=vals[:,i,j, :,:,:,:,:,:, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:,:,:,:, :,:,:,:,z,0]
+            newv=vals[:,i,j, :,:,:,:,:,:, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==5 and z==1:
             # to prevent self-loop
             return 0,0,False
         if shuriken[i]==6:
-            oldv=vals[:,i,j, :,:,:,:,1:,:-1, :,:,:,:,z,:]
-            newv=vals[:,i,j, :,:,:,:,:-1,1:, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:,:,1:,:-1, :,:,:,:,z,0]
+            newv=vals[:,i,j, :,:,:,:,:-1,1:, :,:,:,:,1,0]
             return oldv,newv,eval_flag
     if z==1:
         # Should only occur for Grass moves
         return 0,0,False
     if action=='Gl':
-        oldv = vals[:, i,j, :,:,:,:,:,1:, 1,:,:,:,:,:]
-        newv = vals[:, j,i, :,:,:,:,:,:-1, 1,:,:,:,:,:]
+        oldv = vals[:, i,j, :,:,:,:,:,1:, 1,:,:,:,:,0]
+        newv = vals[:, j,i, :,:,:,:,:,:-1, 1,:,:,:,:,0]
         return oldv,newv,eval_flag
     if action=='Ga':
         newj = (j + 1) % 48
         if (newj % 8)==0:
             newj = (newj + 1) % 48
-        oldv = vals[:, i,j, :,:,:,:,:,1:, :,:,1,:,:,:]
-        newv = vals[:, i,newj, :,:,:,:,:,:-1, :,:,1,:,:,:]
+        oldv = vals[:, i,j, :,:,:,:,:,1:, :,:,1,:,:,0]
+        newv = vals[:, i,newj, :,:,:,:,:,:-1, :,:,1,:,:,0]
         return oldv,newv,eval_flag
     if action=='Gw':
         newi = (i + 1) % 48
         if (newi % 8)==0:
             newi = (newi + 1) % 48
-        oldv = vals[:, i,j, :,:,:,:,:,1:, :,:,:,1,:,:]
-        newv = vals[:, newi,j, :,:,:,:,:,:-1, :,:,:,1,:,:]
+        oldv = vals[:, i,j, :,:,:,:,:,1:, :,:,:,1,:,0]
+        newv = vals[:, newi,j, :,:,:,:,:,:-1, :,:,:,1,:,0]
         return oldv,newv,eval_flag
     if action=='Ge':
         if shuriken[i]==0:
-            oldv=vals[:,i,j, :,:,:,:,:,1:, :,:,:,:,1,:]
-            newv=vals[:,i,j, :,:,:,:,:,:-1, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:,:,:,1:, :,:,:,:,1,0]
+            newv=vals[:,i,j, :,:,:,:,:,:-1, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==1:
-            oldv=vals[:,i,j, :-1,:,:,:,:,1:, :,:,:,:,1,:]
-            newv=vals[:,i,j, 1:,:,:,:,:,:-1, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :-1,:,:,:,:,1:, :,:,:,:,1,0]
+            newv=vals[:,i,j, 1:,:,:,:,:,:-1, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==2:
-            oldv=vals[:,i,j, :,:-1,:,:,:,1:, :,:,:,:,1,:]
-            newv=vals[:,i,j, :,1:,:,:,:,:-1, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:-1,:,:,:,1:, :,:,:,:,1,0]
+            newv=vals[:,i,j, :,1:,:,:,:,:-1, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==3:
-            oldv=vals[:,i,j, :,:,:-1,:,:,1:, :,:,:,:,1,:]
-            newv=vals[:,i,j, :,:,1:,:,:,:-1, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:-1,:,:,1:, :,:,:,:,1,0]
+            newv=vals[:,i,j, :,:,1:,:,:,:-1, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==4:
-            oldv=vals[:,i,j, :,:,:,:-1,:,1:, :,:,:,:,1,:]
-            newv=vals[:,i,j, :,:,:,1:,:,:-1, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:,:-1,:,1:, :,:,:,:,1,0]
+            newv=vals[:,i,j, :,:,:,1:,:,:-1, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==5:
-            oldv=vals[:,i,j, :,:,:,:,:-1,1:, :,:,:,:,1,:]
-            newv=vals[:,i,j, :,:,:,:,1:,:-1, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:,:,:-1,1:, :,:,:,:,1,0]
+            newv=vals[:,i,j, :,:,:,:,1:,:-1, :,:,:,:,1,0]
             return oldv,newv,eval_flag
         if shuriken[i]==6:
             # to prevent self-loop
@@ -195,6 +195,6 @@ while (np.sum(vals[1]==0) > 0):
 
 
 
-np.nonzero(vals[0, 5,:, 2,1,2,0,3,3, 0,0,0,0,0,0])
+np.nonzero(vals[0, 1,:, 1,0,1,0,1,5, 0,0,0,0,0,0]) # 13
 
 np.save('mi1.npy', vals[0][:,:, :,:,:,:,:,:, 0,0,0,0,0,0])
