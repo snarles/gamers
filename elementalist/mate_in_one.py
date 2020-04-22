@@ -46,7 +46,9 @@ def action_output(vals,action,i,j,z):
     if action=='Mv' and z==0:
         inew = (i + shuriken[j]) % 48
         if shuriken[inew]==0:
-            return 0,0,False
+            oldv=vals[:,i,j, :,:,:,:,:,:, :,:,:,:,:,0]
+            newv=vals[:,inew,j, :,:,:,:,:,:, :,:,:,:,:,1]
+            return oldv,newv,eval_flag
         if shuriken[inew]==1:
             oldv=vals[:,i,j, :-1,:,:,:,:,:, :,:,:,:,:,0]
             newv=vals[:,inew,j, 1:,:,:,:,:,:, :,:,:,:,:,1]
@@ -91,7 +93,9 @@ def action_output(vals,action,i,j,z):
         return oldv,newv,eval_flag
     if action=='E':
         if shuriken[i]==0:
-            return 0,0,False
+            oldv=vals[:,i,j, :,:,:,:,1:,:, :,:,:,:,z,:]
+            newv=vals[:,i,j, :,:,:,:,:-1,:, :,:,:,:,1,:]
+            return oldv,newv,eval_flag
         if shuriken[i]==1:
             oldv=vals[:,i,j, :-1,:,:,:,1:,:, :,:,:,:,z,:]
             newv=vals[:,i,j, 1:,:,:,:,:-1,:, :,:,:,:,1,:]
@@ -109,21 +113,70 @@ def action_output(vals,action,i,j,z):
             newv=vals[:,i,j, :,:,:,1:,:-1,:, :,:,:,:,1,:]
             return oldv,newv,eval_flag
         if shuriken[i]==5 and z==0:
-            oldv=vals[:,i,j, :,:,:,:,1:,:, :,:,:,:,z,:]
-            newv=vals[:,i,j, :,:,:,:,:-1,:, :,:,:,:,1,:]
+            oldv=vals[:,i,j, :,:,:,:,:,:, :,:,:,:,z,:]
+            newv=vals[:,i,j, :,:,:,:,:,:, :,:,:,:,1,:]
             return oldv,newv,eval_flag
-        if shuriken[i]==5 and z==0:
+        if shuriken[i]==5 and z==1:
+            # to prevent self-loop
             return 0,0,False
         if shuriken[i]==6:
             oldv=vals[:,i,j, :,:,:,:,1:,:-1, :,:,:,:,z,:]
             newv=vals[:,i,j, :,:,:,:,:-1,1:, :,:,:,:,1,:]
             return oldv,newv,eval_flag
+    if z==1:
+        # Should only occur for Grass moves
+        return 0,0,False
+    if action=='Gl':
+        oldv = vals[:, i,j, :,:,:,:,:,1:, 1,:,:,:,:,:]
+        newv = vals[:, j,i, :,:,:,:,:,:-1, 1,:,:,:,:,:]
+        return oldv,newv,eval_flag
+    if action=='Ga':
+        newj = (j + 1) % 48
+        if (newj % 8)==0:
+            newj = (newj + 1) % 48
+        oldv = vals[:, i,j, :,:,:,:,:,1:, :,:,1,:,:,:]
+        newv = vals[:, i,newj, :,:,:,:,:,:-1, :,:,1,:,:,:]
+        return oldv,newv,eval_flag
+    if action=='Gw':
+        newi = (i + 1) % 48
+        if (newi % 8)==0:
+            newi = (newi + 1) % 48
+        oldv = vals[:, i,j, :,:,:,:,:,1:, :,:,:,1,:,:]
+        newv = vals[:, newi,j, :,:,:,:,:,:-1, :,:,:,1,:,:]
+        return oldv,newv,eval_flag
+    if action=='Ge':
+        if shuriken[i]==0:
+            oldv=vals[:,i,j, :,:,:,:,:,1:, :,:,:,:,1,:]
+            newv=vals[:,i,j, :,:,:,:,:,:-1, :,:,:,:,1,:]
+            return oldv,newv,eval_flag
+        if shuriken[i]==1:
+            oldv=vals[:,i,j, :-1,:,:,:,:,1:, :,:,:,:,1,:]
+            newv=vals[:,i,j, 1:,:,:,:,:,:-1, :,:,:,:,1,:]
+            return oldv,newv,eval_flag
+        if shuriken[i]==2:
+            oldv=vals[:,i,j, :,:-1,:,:,:,1:, :,:,:,:,1,:]
+            newv=vals[:,i,j, :,1:,:,:,:,:-1, :,:,:,:,1,:]
+            return oldv,newv,eval_flag
+        if shuriken[i]==3:
+            oldv=vals[:,i,j, :,:,:-1,:,:,1:, :,:,:,:,1,:]
+            newv=vals[:,i,j, :,:,1:,:,:,:-1, :,:,:,:,1,:]
+            return oldv,newv,eval_flag
+        if shuriken[i]==4:
+            oldv=vals[:,i,j, :,:,:,:-1,:,1:, :,:,:,:,1,:]
+            newv=vals[:,i,j, :,:,:,1:,:,:-1, :,:,:,:,1,:]
+            return oldv,newv,eval_flag
+        if shuriken[i]==5:
+            oldv=vals[:,i,j, :,:,:,:,:-1,1:, :,:,:,:,1,:]
+            newv=vals[:,i,j, :,:,:,:,1:,:-1, :,:,:,:,1,:]
+            return oldv,newv,eval_flag
+        if shuriken[i]==6:
+            # to prevent self-loop
+            return 0,0,False
 
-
-for iii in range(5):
+while (np.sum(vals[1]==0) > 0):
     # set to 1 to check if all visited states were solved
     vals[2] = 1
-    actions = ['Mv','L','A','W','E']
+    actions = ['Mv','L','A','W','E','Gl','Ga','Gw','Ge']
     for action in actions:
         for i in range(48):
             for j in range(48):
@@ -143,3 +196,5 @@ for iii in range(5):
 
 
 np.nonzero(vals[0, 5,:, 2,1,2,0,3,3, 0,0,0,0,0,0])
+
+np.save('mi1.npy', vals[0][:,:, :,:,:,:,:,:, 0,0,0,0,0,0])
